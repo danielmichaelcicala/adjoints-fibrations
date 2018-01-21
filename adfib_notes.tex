@@ -1,0 +1,44 @@
+%
+% notes on adjoints and fibrations
+%
+
+\input{adfib_preamble}
+
+\newcommand{\nice}{\emph{nice}}
+
+\begin{document}
+
+We are closing in on a pair of theorems.
+
+\begin{thm}
+	Fix an adjunction 
+	\[
+	\begin{tikzpicture}
+		\node (C) at (0,0) {$ C $}	;
+		\node (D) at (2,0) {$ D $}	;
+		\draw [->] (C.30) to node {$ L $} (D.150);
+		\draw [->] (D.210) to node [swap] {$ R $} (C.-30);
+	\end{tikzpicture}
+	\]
+	$ R $ is a Street opfibration if and only if the adjunction in \nice.	
+\end{thm}
+
+\begin{theorem}
+	Given a Street opfibration $ R $, it has a left adjoint when it is \nice.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
