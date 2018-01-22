@@ -8,24 +8,72 @@
 
 \begin{document}
 
-We are closing in on a pair of theorems.
+%We are closing in on a pair of theorems.
+
+%\begin{thm}
+%	Fix an adjunction 
+%	\[
+%	\begin{tikzpicture}
+%		\node (C) at (0,0) {$ C $}	;
+%		\node (D) at (2,0) {$ D $}	;
+%		\draw [->] (C.30) to node {$ L $} (D.150);
+%		\draw [->] (D.210) to node [swap] {$ R $} (C.-30);
+%	\end{tikzpicture}
+%	\]
+%	$ R $ is a Street opfibration if and only if the adjunction in \nice.	
+%\end{thm}
 
 \begin{thm}
-	Fix an adjunction 
-	\[
-	\begin{tikzpicture}
-		\node (C) at (0,0) {$ C $}	;
-		\node (D) at (2,0) {$ D $}	;
-		\draw [->] (C.30) to node {$ L $} (D.150);
-		\draw [->] (D.210) to node [swap] {$ R $} (C.-30);
-	\end{tikzpicture}
-	\]
-	$ R $ is a Street opfibration if and only if the adjunction in \nice.	
+	Given a Street opfibration $ R \from \cat{D} \to \cat{C} $, it is a right adjoint when it is \nice.
+\end{thm}
+ 
+Let's try to figure out what \nice could be. For this, we use the general adjoint functor theorem.
+
+\begin{thm}[Freyd's general adjoint functor theorem]
+\label{thm:GAFT}
+	A functor $ F \from X \to Y $ is a right adjoint if  $ x $ is complete, locally small, and $ F $ satisfies the \emph{solution set condition}. The latter says, for any $ Y $-object $ y $, there exists a small set $ I $ indexing a collection of $ X $-objects $ {x_i}_I $ and $ Y $-arrows $ {f_i \from y \to F ( x_i ) } $ such that every $ F $-valued $ Y $-arrow $ y \to R x $ factors as $ Fg . f_k $ for $ k \in I $ and $ g \from x_k \to x $.
 \end{thm}
 
-\begin{theorem}
-	Given a Street opfibration $ R $, it has a left adjoint when it is \nice.
-\end{theorem}
+Now, let's prove a strong theorem then try to weaken it
+
+\begin{thm}
+	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, surjective-on-objects Grothendiek opfibration.  Then $ R $ is a right adjoint.
+\end{thm}
+
+\begin{proof}
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \cat{C} $-arrows consists of the identity.  Any map $ f \from c \to Rd $ has a cocartesian lifting $ \hat{f} \from x_c \to x_{Rd} $ and $ f = R \hat{f} . 1_c $.
+\end{proof}
+
+\begin{thm}
+	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, surjective-on-objects, conservative Street opfibration.  Then $ R $ is a right adjoint.
+\end{thm}
+
+\begin{proof}
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \cat{C} $-arrows consists of the identity.  For any map $ f \from c \to Rd $, there exists an essential cocartesian lifting $ \hat{f} \from x_c \to d' $ together with a $ \cat{C} $-isomorphism $ h \from Rd' \to Rd $ such that $ f = h . R \hat{f} $. But $ f = h . R \hat{f} = R \hat{h} . R \hat{f} . 1_c = R (\hat{h} . \hat{f}) . 1_c $ where $ h = R \hat{h} $ because $ R $ is conservative.
+\end{proof}
+
+\begin{thm}
+	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
+\end{thm}
+
+\begin{proof}
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-object $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ d' $ where $ \theta \from c \cong Rd' $ (which exists by essential surjectivity), and the collection of $ \cat{C} $-arrows is $ { \theta } $.  For any $ \cat{C} $-arrow $ f \from c \to Rd $, we have (by Street opfibrationness) $ f . \theta^{-1} \from Rd' \to c \to Rd $, a cocartesian essential lifting $ \hat{ f . \theta^{-1} } \from d' \to d'' $ in $ \cat{D} $, and an isomorphism $ h \from d \to d'' $ (by conservatism) such that $ f . \theta^{-1} = Rh . R \hat{ f . \theta^{-1} } $.  This implies, as required by GAFT, that $ f = R (h\hat{ f . \theta }) . \theta $.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
