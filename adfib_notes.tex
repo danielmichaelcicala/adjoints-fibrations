@@ -24,6 +24,60 @@
 %\end{thm}
 
 \begin{thm}
+	Let $ \D $ have pushouts. Given a coreflection $ L \dashv R \from \C \to \D $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
+\end{thm}
+
+\begin{proof}
+	Fix an arrow $ f \from a \to b $ in $ \C $ and an object $ x $ such that $ Rx \bydef a $.  Define $ \hat{f} $ as the pushout of $ Lf $ along the counit $ \epsilon_x $
+	\[
+	\begin{tikzpicture}
+		\node (ul) at (0,2) {$ LRx $};
+		\node (ll) at (0,0) {$ x $};
+		\node (ur) at (2,2) {$ Lb $};
+		\node (lr) at (2,0) {$ x +_{LRx} Lb$};
+		\draw [->] (ul) to node [left] {$ \epsilon $} (ll);
+		\draw [->] (ul) to node [above] {$ Lf $} (ur);
+		\draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
+		\draw [->] (ur) to (lr);
+	\end{tikzpicture}
+	\] 
+	Observe that $ R \hat{f} \from Rx \to R( x +_{LRx} Lb ) $. Also there is a string of isomorphisms  
+	\[
+		R( x +_{LRx} Lb ) \to Rx +_{RLRx} RLb \to Rx +_{Rx} b \to b
+	\]
+	whose composite we call $ h $. Then $ R \hat{f} = f . h^{-1} $ as desired.  \emph{(note: some details are needed here)}
+	
+	Now show that $ \hat{f} $ is cocartesian.  Consider a $ \D $-arrow $ g \from x \to y $ with a $ C $-arrow $ \theta \from R( x +_{LRx} Lb ) \to Ry  $ so that $ R \hat{f} . \theta = Rg $.  Can we uniquely lift $ \theta $? Set up the diagram
+	\[
+	\begin{tikzpicture}
+		\node (ul) at (0,2) {$ LRx $};
+		\node (ll) at (0,0) {$ x $};
+		\node (ur) at (2,2) {$ Lb $};
+		\node (lr) at (2,0) {$ x +_{LRx} Lb$};
+		\node (comp) at (4,-2) {y};
+		\draw [->] (ul) to node [left] {$ \epsilon_x $} (ll);
+		\draw [->] (ul) to node [above] {$ Lf $} (ur);
+		\draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
+		\draw [->] (ur) to (lr);
+		\draw [->] (ll) to [bend right=20] node [above] {$ g $} (comp);
+		\draw [->] (ur) to [bend left=20] node [above] {$ g' $} (comp);
+	\end{tikzpicture}
+	\] 
+	where $ g' \bydef Lh^{-1} . L\theta.\epsilon_y $.  To show the outer square commutes, it suffices to show that $ Lf . g' $ and $ \epsilon_x . g $ have the same image under the adjunction homset correspondence.  We have
+	\[
+		Lf . g' = Lf . Lh^{-1} . L\theta.\epsilon_y 
+			\mapsto \eta_{Rx} . RLf . RLh^{-1} . RL\theta.R\epsilon_y 
+			= f . h^{-1} . \theta  
+			= R \hat{f} . \theta 
+			= Rg
+	\]
+	and 
+	\[
+	\epsilon_x . g \mapsto \eta_{Rx} . Rg = Rg.	
+	\]
+\end{proof}
+
+\begin{thm}
 	Given a Street opfibration $ R \from \cat{D} \to \cat{C} $, it is a right adjoint when it is \nice.
 \end{thm}
  
@@ -74,6 +128,32 @@ Thoughts about these assumptions. Here are the desired examples I can think of n
 
 Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ L \dashv R \from \cat{C} \leftrightarrow \cat{D} $ where $ L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ L $ is conservative, but is $ R $?
 
+\begin{ex}
+	No, $ R $ is not in general conservative.  Consider the underlying node functor $ \Graph \to \Set $.  All $ \Graph $-endomorphisms on
+	\[
+	\begin{tikzpicture}
+		\node (a) at (0,0) {$ \bullet $};
+		\node (b) at (2,0) {$ \bullet $};
+		\draw [->] (a.30) to (b.150);
+		\draw [->] (a.-30) to (b.-150);
+	\end{tikzpicture}
+	\]
+	are sent to the identity on $ 2 $.
+\end{ex}
+
+At this point, we have partial converses:
+
+\fbox{
+\begin{minipage}{0.4\textwidth}
+		Let $ \D $ have pushouts. Given a coreflection $ L \dashv R \from \C \to \D $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
+\end{minipage}
+}
+\hfill
+\fbox{
+\begin{minipage}{0.4\textwidth}
+		Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
+\end{minipage}
+}
 
 
 
