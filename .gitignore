@@ -7,3 +7,5 @@
 *.bib
 adfib_notes.pdf
 *.log
+*.tex~
+*.backup
