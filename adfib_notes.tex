@@ -133,6 +133,10 @@ Let's try to figure out what \nice could be. Here are some helpful theorems.
 	A functor $ F \from X \to Y $ is a right adjoint if  $ x $ is complete, locally small, and $ F $ satisfies the \emph{solution set condition}. The latter says, for any $ Y $-object $ y $, there exists a small set $ I $ indexing a collection of $ X $-objects $ {x_i}_I $ and $ Y $-arrows $ {f_i \from y \to F ( x_i ) } $ such that every $ F $-valued $ Y $-arrow $ y \to R x $ factors as $ Fg . f_k $ for $ k \in I $ and $ g \from x_k \to x $.
 \end{thm}
 
+\begin{proof}
+	The proof is V.6.2 in CWM.  Define the left adjoint $ G \from Y \to X $ by $ G (y) \coloneqq x $ where $ y \to F x $ is initial in the comma category $ y \downarrow F $.  
+\end{proof}
+
 \begin{thm}[Gabriel-Zisman]
 \label{thm:GabZis}
 	An adjunction $ L \dashv R \from \cat{C} \leftrightarrow \cat{D} $. TFAE:
