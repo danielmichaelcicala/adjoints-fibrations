@@ -19,6 +19,56 @@ Fibrations and Adjunctions rock.
 \tableofcontents
 
 \section{Introduction}
+{\chris Christina's questions to Steve:}
+
+I had a question regarding choice of (co)limits in categories. Please excuse my naivety, I haven't really gone into depths of such
+questions before because I guess if one can avoid them, they tend to! But any insight or 'big picture' idea from you would be really,
+really appreciated to help me understand better a situation I find myself in. In particular, feel free to correct me in the following
+statements.
+
+(1) 'Choosing limits' in a complete category amounts to choosing a specific (of the many isomorphic ones) adjoint to the
+constant diagram functor. Therefore if a category has limits, we can assume it has chosen ones. Does this already require the axiom of
+choice?
+
+(2) Therefore this choice is already 'functorial'. However, can we 'choose the choice'? In particular, is it reasonable
+to say that if C has pushouts for example, there is such a specific choice such that the pushout of f along the identity 'is'
+exactly f (and the identity)?
+
+(3) If a functor $F:C\to D$ between categories with pushouts preserves them in the ordinary sense, can we actually make a
+choice of them in C and in D, such that F strictly preserves them? What assumptions should I make to be able to do that?
+Or this is somehow extra, i.e. needs to be checked or required?
+
+Thanks so much in advance for any intuition that would help wrap my head around these!
+
+A quick question to end: it is a fact that every Grothendieck fibration is a particular case of Street fibration,
+and I also read that every Street fibration factors as an equivalence of categories followed by a Grothendieck one.
+(I am in the process of reading Street's paper, but) does this by any chance induce an equivalence of categories? Fib with StreetFib?
+
+{\chris Steve's response:}
+
+1. As you say, choosing limits amounts to choosing a specific adjoint to the diagonal functor (with corresponding
+statements holding if you are using weighted limits). I certainly allow myself to regard a category with limits as having
+chosen ones if I wish. I suppose from a formal point of view that does require the axiom of choice, but I also use this as necessary.
+The category of sets does have a canonical choice, which means that many of the most commonly occurring complete categories
+also have a canonical choice.
+
+2. Functoriality is automatic, irrespective of choice issues. There is also no problem with first using the canonical
+choice where it exists (for example with pushouts along identities) and then extending this arbitrarily to deal with other cases.
+I guess that once again you need the axiom of choice for this, but are you actually worried about that?
+
+3. I have never thought about this - at first sight it seems a bit unnatural. In any case, I think that this
+is not automatic. Let $2={0->1}$ be the arrrow category, and let $C=2\times 2\times 2$ be the free-living commutative cube.
+Each face of the cube is in fact a pushout; in fact C has a unique choice of pushouts. Let D be the category obtained from the
+square $2\times 2$ by adding an extra object c isomorphic to (1,1). Then D contains two commutative squares:
+the original 2x2, and one using the new object. This category once again has pushouts, but now there are choices to make.
+There is an evident (unique) functor f:C->D sending the top face of the cube to the first square and the bottom
+face the second square. Whatever choice of pushouts you make in D, either the pushout in the top face of
+C or that in the bottom face will fail to be preserved strictly.
+
+Regarding your question about fibrations, there is a question as to what your “categories of fibrations” are.
+But perhaps more natural would be to consider 2-categories, and then look for a biequivalence between these. This can be done.
+
+
 
 \section{Preliminaries}
 
