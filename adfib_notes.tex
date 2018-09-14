@@ -111,10 +111,12 @@ Then, probably lift to (2-)categories of such things.
 %X\ar[rr]_-{g} && Y & \textrm{in }\caa{X}.}
 %\end{equation}
 
-{\chris Start with Gray's known thing, written for opfibrations}
+\subsection{Newer}
 
 Recall that \emph{lari} is an acronym for `left adjoint, right inverse', the latter meaning that the unit of %be careful, TRICKY! for rari, it is the counit!
-the adjunction is the identity. The following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
+the adjunction is the identity. For example, if $G\colon\cat{D}\to\cat{C}$ has a lari $L$, then $L\dashv G$ and
+$\eta\colon1_\cat{C}=GL$. Notice that if a functor has a \emph{rari} analogously, then the counit is the identity instead.
+ The following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 \begin{prop}
  Let $U\colon\cat{D}\to\caa{C}$ be an opfibration. Then its fibres have initial objects which are preserved by the reindexing functors
@@ -148,9 +150,53 @@ namely the unit $\eta\colon1_\caa{C}\to UL$ is the identity: $ULx=U(\bot_x)=x$, 
 the identity morphism on $\bot_x$ necessarily corresponds to the identity on $x$.
 \end{proof}
 
+{\chris The following lemma might be useful to create a big theorem with everything inside.
+Ref my thesis, which is ref to Hermida; even though I recall his emails being a bit confusing.}
+\begin{lem}
+ For an (op)fibration, and $\cat{J}$ a small category, the following two statements are equivalent
+given that the base category has the relevant (co)limits:
+\begin{enumerate}
+ \item all fibres have $\cat{J}$-(co)limits, and the reindexing functors preserve them;
+ \item the total category has $\cat{J}$-(co)limits, and the (op)fibration strictly preserves them.
+\end{enumerate}
+These equivalent statements define when an (op)fibration \emph{has (op)fibred (co)limits}.
+\end{lem}
+
+In the opposite direction, the following result establishes when an adjoint
+is an opfibration; the relevant colimits now are pushouts.
+
+\begin{prop}
+ Suppose that $U\colon\cat{D}\to\caa{C}$ has a lari $L$. If $\cat{D}$ and $\caa{C}$ have (chosen) pushouts
+such that $U$ strictly preserves them, $U$ is an opfibration.
+\end{prop}
+
+\begin{proof}
+Take a morphism $f\colon x\to y$ in $\caa{C}$, and an object $a\in\cat{D}$ above $x$:
+\begin{displaymath}
+\xymatrix @C=.5in @R=.3in
+{a \ar @{.>}[d]_-U &&& \textrm{in }\cat{D} \\
+x\ar[rr]_-{f} && y & \textrm{in }\caa{C}}
+\end{displaymath}
+We will construct a cocartesian lifting of $a$ along $f$, using pushouts along the counit $\varepsilon\colon LU\Rightarrow1_\cat{D}$
+of the adjunction $L\dashv U$. Indeed, consider the pushout of the following diagram in $\cat{D}$
+\begin{displaymath}
+ \begin{tikzcd}
+  LUa\ar[r,"Lf"]\ar[d,"\varepsilon_a"'] & Ly\ar[d,dashed] \\
+a\ar[r,dashed] & a+_{LUa}Ly
+ \end{tikzcd}
+\end{displaymath}
+and define $\Cocart(f,a)$ to be precisely the horizontal dashed arrow. For this definition to make sense,
+we first of all need to check that this morphism is mapped to $f$ via $U$. Indeed, if we apply $U$
+to the above square and use the facts that $U\varepsilon_a=1_{x}$, $ULf=f$ and
+$$U(a+_{LUa}Ly)=Ua+_{ULUa}ULy=x+_{x}y$$ since $L$ is a lari and $U$ strictly preserves pushouts, the
+resulting colimit diagram is in fact `the' pushout of $f$ along the identity, namely $f$.
+
+{\chris Universal property is missing, pushout universality should take care of everything and we have checked it in the past}
+\end{proof}
 
 
 
+\subsection{Older}
 
 \begin{thm}
 	Let $ \D $ have pushouts. Given a coreflection $ L \dashv R \from \C \to \D $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
