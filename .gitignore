@@ -4,7 +4,6 @@
 *.swp
 *.aux
 *.bbl
-*.bib
 adfib_notes.pdf
 *.log
 *.tex~
