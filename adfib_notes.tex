@@ -72,46 +72,38 @@ But perhaps more natural would be to consider 2-categories, and then look for a 
 
 \section{Preliminaries}
 
-Mainly basics of fibrations and adjunctions, to fix terminology. Also Street stuff.
-
-\section{Sth}
-Gray's and our theorem as one big thing. Maybe start from Street, and restrict to Grothendieck.
-
-Then, monoidal analogue.
-
-Then, probably lift to (2-)categories of such things.
+{\chris Mainly basics of fibrations and adjunctions, to fix terminology. Also Street stuff. Fill out as we go and organize better at the very end.
+I have kept some older stuff, we can at any point decide if they are to be discarded!}
 
 
-[Here probably ends more or less what is needed for network big picture. Surely we can think of other things we wanna say.]
-
-%We are closing in on a pair of theorems.
-
-%\begin{thm}
-%	Fix an adjunction 
-%	\[
-%	\begin{tikzpicture}
-%		\node (C) at (0,0) {$ C $}	;
-%		\node (D) at (2,0) {$ D $}	;
-%		\draw [->] (C.30) to node {$ L $} (D.150);
-%		\draw [->] (D.210) to node [swap] {$ R $} (C.-30);
-%	\end{tikzpicture}
-%	\]
-%	$ R $ is a Street opfibration if and only if the adjunction in \nice.	
-%\end{thm}
+\begin{thm}
+	Fix an adjunction 
+	\[
+	\begin{tikzpicture}
+		\node (C) at (0,0) {$ C $}	;
+		\node (D) at (2,0) {$ D $}	;
+		\draw [->] (C.30) to node {$ L $} (D.150);
+		\draw [->] (D.210) to node [swap] {$ R $} (C.-30);
+	\end{tikzpicture}
+	\]
+	$ R $ is a Street opfibration if and only if the adjunction in \nice.	
+\end{thm}
 
 
-%\begin{equation}\label{factor}
-%\xymatrix @C=.4in @R=.2in
-%{A\ar[rr]^\theta\ar @{-->}[d]_-{\psi} && B \ar @{.>}[dd] &\\
-%f^*B\ar[urr]_-{\;\Cart(f,B)} \ar @{.>}[d] &&& \textrm{in }\ca{A} \\
-%X\ar[rr]_-{f} && Y & \textrm{in }\caa{X},}\qquad
-%\xymatrix @C=.4in @R=.2in
-%{C \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(g,C)} && D &\\
-%&& f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\ca{C} \\
-%X\ar[rr]_-{g} && Y & \textrm{in }\caa{X}.}
-%\end{equation}
+\begin{equation}\label{factor}
+\xymatrix @C=.4in @R=.2in
+{A\ar[rr]^\theta\ar @{-->}[d]_-{\psi} && B \ar @{.>}[dd] &\\
+f^*B\ar[urr]_-{\;\Cart(f,B)} \ar @{.>}[d] &&& \textrm{in }\ca{A} \\
+X\ar[rr]_-{f} && Y & \textrm{in }\caa{X},}\qquad
+\xymatrix @C=.4in @R=.2in
+{C \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(g,C)} && D &\\
+&& f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\ca{C} \\
+X\ar[rr]_-{g} && Y & \textrm{in }\caa{X}.}
+\end{equation}
 
-\subsection{Newer}
+\section{Grothendieck fibrations and laris}
+
+{\chris Could we perhaps find a cool name, like coreflection, for such an adjunction? Lari refers to only one adjoint...}
 
 Recall that \emph{lari} is an acronym for `left adjoint, right inverse', the latter meaning that the unit of %be careful, TRICKY! for rari, it is the counit!
 the adjunction is the identity. For example, if $G\colon\cat{D}\to\cat{C}$ has a lari $L$, then $L\dashv G$ and
@@ -203,8 +195,10 @@ is an opfibration.
 doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.}
 
 
-\subsection{Older}
+\section{Street fibrations and coreflections}
 
+
+{\chris I haven't messed with anything in this section!}
 \begin{thm}
 	Let $ \D $ have pushouts. Given a coreflection $ L \dashv R \from \C \to \D $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
 \end{thm}
@@ -259,25 +253,7 @@ doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.
 	\]
 \end{proof}
 
-Perhaps it will be helpful to also tackle the special case of Grothendieck fibrations.
 
-\begin{cnj}
-If $\cat{C}$ and $\cat{D}$ have chosen pushouts (where a pushout of a morphism $f$ along the
-identity `is' $f$) such that $R\colon\cat{D}\to\cat{C}$ strictly preserves them, then $R$ is an opfibration
-when $R$ is a lari.
-\end{cnj}
-
-\begin{proof}
-{\chris Wait for Lack's response to untangle the mess with chosen limits and colimits, and preserving them}
-\end{proof}
-
-For the converse, Gray already gives an answer for the Grothendieck case.
-
-\begin{thm}
- {\chris write Gray and proof. Looks like choice issues are better understood here.}
-\end{thm}
-
-For the Street case, we can 'relax' the above, or go to a different direction as below. {(\chris write the relaxed Gray as well)}
 
 \begin{thm}
 	Given a Street opfibration $ R \from \cat{D} \to \cat{C} $, it is a right adjoint when it is \nice.
@@ -361,6 +337,10 @@ At this point, we have partial converses:
 \end{minipage}
 }
 
+\section{Categories of fibrations and adjunctions}
+
+{\chris Also, not sure if separate section for that, but we should try and include as many reasonable examples as possible. The quality rather
+than the quantity is important I think! Grph Set the first such.}
 
 \bibliographystyle{alpha}
 \bibliography{references}
