@@ -78,10 +78,10 @@ But perhaps more natural would be to consider 2-categories, and then look for a 
 \begin{equation}\label{factor}
 \xymatrix @C=.4in @R=.2in
 {A\ar[rr]^\theta\ar @{-->}[d]_-{\psi} && B \ar @{.>}[dd] &\\
-f^*B\ar[urr]_-{\;\Cart(f,B)} \ar @{.>}[d] &&& \textrm{in }\ca{A} \\
+f^*B\ar[urr]_-{\;\ca{C}art(f,B)} \ar @{.>}[d] &&& \textrm{in }\ca{A} \\
 X\ar[rr]_-{f} && Y & \textrm{in }\caa{X},}\qquad
 \xymatrix @C=.4in @R=.2in
-{C \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(g,C)} && D &\\
+{C \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\ca{C}ocart(g,C)} && D &\\
 && f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\ca{C} \\
 X\ar[rr]_-{g} && Y & \textrm{in }\caa{X}.}
 \end{equation}
@@ -89,50 +89,50 @@ X\ar[rr]_-{g} && Y & \textrm{in }\caa{X}.}
 \section{Grothendieck fibrations and ralis}
 
 Recall that \emph{lari} is an acronym for `left adjoint, right inverse', the latter meaning that the unit of %be careful, TRICKY! for rari, it is the counit!
-the adjunction is the identity. For example, if $G\colon\cat{D}\to\cat{C}$ has a lari $L$, then $L\dashv G$ and
-$\eta\colon1_\cat{C}=GL$. Notice that if a functor has a \emph{rari} analogously, then the counit is the identity instead.
+the adjunction is the identity. For example, if $G\colon\ca{D}\to\ca{C}$ has a lari $L$, then $L\dashv G$ and
+$\eta\colon1_\ca{C}=GL$. Notice that if a functor has a \emph{rari} analogously, then the counit is the identity instead.
  The following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 \begin{prop}
- Let $U\colon\cat{D}\to\caa{C}$ be an opfibration. Then its fibres have initial objects which are preserved by the reindexing functors
+ Let $U\colon\ca{D}\to\caa{C}$ be an opfibration. Then its fibres have initial objects which are preserved by the reindexing functors
  if and only if $U$ has a lari.
 \end{prop}
 
 \begin{proof}
-Denote by $\bot_x$ the initial object in each fiber $\cat{D}_x$ above an object $x\in\caa{C}$. Define the left adjoint
+Denote by $\bot_x$ the initial object in each fiber $\ca{D}_x$ above an object $x\in\caa{C}$. Define the left adjoint
 of $U$ as follows:
 \begin{displaymath}
 \begin{tikzcd}[row sep=.1in]
-L\colon\caa{C}\ar[rr] && \cat{D} &\\
-x\ar[rr,mapsto]\ar[dd,"f"'] && \bot_x\ar[dd,dashed,"Lf"']\ar[ddr,"{\Cocart(f,\bot_x)}"] & \\
+L\colon\caa{C}\ar[rr] && \ca{D} &\\
+x\ar[rr,mapsto]\ar[dd,"f"'] && \bot_x\ar[dd,dashed,"Lf"']\ar[ddr,"{\ca{C}ocart(f,\bot_x)}"] & \\
 \hole \\
 y\ar[rr,mapsto] && \bot_y\ar[r,"\cong"] & f_!(\bot_x)
 \end{tikzcd}
 \end{displaymath}
 This mapping is well-defined and functorial due to the universal properties of cocartesian liftings.
 To show it is a left adjoint of $U$, it suffices to establish a natural bijection
-$\cat{D}(Lx,a)\cong\caa{C}(x,Ua)$ for any $x\in\caa{C}$, $a\in\cat{D}$. Indeed, each morphism
+$\ca{D}(Lx,a)\cong\caa{C}(x,Ua)$ for any $x\in\caa{C}$, $a\in\ca{D}$. Indeed, each morphism
 $k\colon Lx\to a$ above $f=Uk$ factorizes uniquely as
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
-{\bot_x \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\Cocart(f,\bot_x)} && a &\\
-&& f_!(\bot_x) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\cat{D} \\
+{\bot_x \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\ca{C}ocart(f,\bot_x)} && a &\\
+&& f_!(\bot_x) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\ca{D} \\
 x\ar[rr]_-{f} && Ua & \textrm{in }\caa{C}}
 \end{displaymath}
 but since $f_!(\bot_x)\cong\bot_{Ua}$ is the initial object, the morphism $s$ is unique
 and thus $k$ uniquely corresponds to $f$. Finally, this left adjoint is right inverse,
-namely the unit $\eta\colon1_\caa{C}\to UL$ is the identity: $ULx=U(\bot_ x)=x$, and from $\cat{D}(Lx,Lx)\cong\caa{C}(x,ULx)$,
+namely the unit $\eta\colon1_\caa{C}\to UL$ is the identity: $ULx=U(\bot_ x)=x$, and from $\ca{D}(Lx,Lx)\cong\caa{C}(x,ULx)$,
 the identity morphism on $\bot_x$ necessarily corresponds to the identity on $x$.
 \end{proof}
 
 {\chris The following lemma might be useful to create a big theorem with everything inside.
 Ref my thesis, which is ref to Hermida; even though I recall his emails being a bit confusing.}
 \begin{lem}
- For an (op)fibration, and $\cat{J}$ a small category, the following two statements are equivalent
+ For an (op)fibration, and $\ca{J}$ a small category, the following two statements are equivalent
 given that the base category has the relevant (co)limits:
 \begin{enumerate}
- \item all fibres have $\cat{J}$-(co)limits, and the reindexing functors preserve them;
- \item the total category has $\cat{J}$-(co)limits, and the (op)fibration strictly preserves them.
+ \item all fibres have $\ca{J}$-(co)limits, and the reindexing functors preserve them;
+ \item the total category has $\ca{J}$-(co)limits, and the (op)fibration strictly preserves them.
 \end{enumerate}
 These equivalent statements define when an (op)fibration \emph{has (op)fibred (co)limits}.
 \end{lem}
@@ -141,26 +141,26 @@ In the opposite direction, the following result establishes when an adjoint
 is an opfibration; the relevant colimits now are pushouts.
 
 \begin{prop}
- Suppose that $U\colon\cat{D}\to\caa{C}$ has a lari $L$. If $\cat{D}$ and $\caa{C}$ have (chosen) pushouts
+ Suppose that $U\colon\ca{D}\to\caa{C}$ has a lari $L$. If $\ca{D}$ and $\caa{C}$ have (chosen) pushouts
 such that $U$ strictly preserves them, $U$ is an opfibration.
 \end{prop}
 
 \begin{proof}
-Take a morphism $f\colon x\to y$ in $\caa{C}$, and an object $a\in\cat{D}$ above $x$:
+Take a morphism $f\colon x\to y$ in $\caa{C}$, and an object $a\in\ca{D}$ above $x$:
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
-{a \ar @{.>}[d]_-U &&& \textrm{in }\cat{D} \\
+{a \ar @{.>}[d]_-U &&& \textrm{in }\ca{D} \\
 x\ar[rr]_-{f} && y & \textrm{in }\caa{C}}
 \end{displaymath}
-We will construct a cocartesian lifting of $a$ along $f$, using pushouts along the counit $\varepsilon\colon LU\Rightarrow1_\cat{D}$
-of the adjunction $L\dashv U$. Indeed, consider the pushout of the following diagram in $\cat{D}$
+We will construct a cocartesian lifting of $a$ along $f$, using pushouts along the counit $\varepsilon\colon LU\Rightarrow1_\ca{D}$
+of the adjunction $L\dashv U$. Indeed, consider the pushout of the following diagram in $\ca{D}$
 \begin{displaymath}
  \begin{tikzcd}
   LUa\ar[r,"Lf"]\ar[d,"\varepsilon_a"'] & Ly\ar[d,dashed] \\
 a\ar[r,dashed] & a+_{LUa}Ly
  \end{tikzcd}
 \end{displaymath}
-and define $\Cocart(f,a)$ to be precisely the horizontal dashed arrow. For this definition to make sense,
+and define $\ca{C}ocart(f,a)$ to be precisely the horizontal dashed arrow. For this definition to make sense,
 we first of all need to check that this morphism is mapped to $f$ via $U$. Indeed, if we apply $U$
 to the above square and use the facts that $U\varepsilon_a=1_{x}$, $ULf=f$ and
 $$U(a+_{LUa}Ly)=Ua+_{ULUa}ULy=x+_{x}y$$ since $L$ is a lari and $U$ strictly preserves pushouts, the
@@ -171,7 +171,7 @@ resulting colimit diagram is in fact `the' pushout of $f$ along the identity, na
 
 {\chris Make sure the theorem below follows 'logically'. Irrelatedly to that, recall that initial+pushout=all.finite.colimits}
 \begin{thm}
- Suppose a functor $U\colon\cat{D}\to\caa{C}$ strictly preserves all finite colimits. Then $U$ has a lari if and only if $U$
+ Suppose a functor $U\colon\ca{D}\to\caa{C}$ strictly preserves all finite colimits. Then $U$ has a lari if and only if $U$
 is an opfibration.
 \end{thm}
 {\chris Perhaps move the theorem on top, and use propositions to exhibit how each part works. I do not oppose into
@@ -183,11 +183,11 @@ doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.
 
 {\chris I haven't messed with anything in this section!}
 \begin{thm}
-	Let $ \D $ have pushouts. Given a coreflection $ L \dashv R \from \C \to \D $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
+	Let $ \ca{D} $ have pushouts. Given a coreflection $ L \dashv R \from \ca{C} \to \ca{D} $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
 \end{thm}
 
 \begin{proof}
-	Fix an arrow $ f \from a \to b $ in $ \C $ and an object $ x $ such that $ Rx \bydef a $.  Define $ \hat{f} $ as the pushout of $ Lf $ along the counit $ \epsilon_x $
+	Fix an arrow $ f \from a \to b $ in $ \ca{C} $ and an object $ x $ such that $ Rx \bydef a $.  Define $ \hat{f} $ as the pushout of $ Lf $ along the counit $ \epsilon_x $
 	\[
 	\begin{tikzpicture}
 		\node (ul) at (0,2) {$ LRx $};
@@ -206,7 +206,7 @@ doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.
 	\]
 	whose composite we call $ h $. Then $ R \hat{f} = f . h^{-1} $ as desired.  \emph{(note: some details are needed here)}
 	
-	Now show that $ \hat{f} $ is cocartesian.  Consider a $ \D $-arrow $ g \from x \to y $ with a $ C $-arrow $ \theta \from R( x +_{LRx} Lb ) \to Ry  $ so that $ R \hat{f} . \theta = Rg $.  Can we uniquely lift $ \theta $? Set up the diagram
+	Now show that $ \hat{f} $ is cocartesian.  Consider a $ \ca{D} $-arrow $ g \from x \to y $ with a $ C $-arrow $ \theta \from R( x +_{LRx} Lb ) \to Ry  $ so that $ R \hat{f} . \theta = Rg $.  Can we uniquely lift $ \theta $? Set up the diagram
 	\[
 	\begin{tikzpicture}
 		\node (ul) at (0,2) {$ LRx $};
@@ -239,7 +239,7 @@ doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.
 
 
 \begin{thm}
-	Given a Street opfibration $ R \from \cat{D} \to \cat{C} $, it is a right adjoint when it is \nice.
+	Given a Street opfibration $ R \from \ca{D} \to \ca{C} $, it is a right adjoint when it is \nice.
 \end{thm}
  
 Let's try to figure out what \nice could be. Here are some helpful theorems.
@@ -255,43 +255,43 @@ Let's try to figure out what \nice could be. Here are some helpful theorems.
 
 \begin{thm}[Gabriel-Zisman]
 \label{thm:GabZis}
-	An adjunction $ L \dashv R \from \cat{C} \leftrightarrow \cat{D} $. TFAE:
+	An adjunction $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $. TFAE:
 	\begin{enumerate}
 		\item $ L $ is full and faithful;
 		\item the unit is an isomorphism;
-		\item the induced comonad on $ \cat{D} $ is idempotent, $ L $ is conservative, and $ R $ is essentially surjective.
+		\item the induced comonad on $ \ca{D} $ is idempotent, $ L $ is conservative, and $ R $ is essentially surjective.
 	\end{enumerate}
 \end{thm}
 
 Now, let's prove a strong theorem then try to weaken it
 
 \begin{thm}
-	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, surjective-on-objects Grothendiek opfibration.  Then $ R $ is a right adjoint.
+	Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, surjective-on-objects Grothendiek opfibration.  Then $ R $ is a right adjoint.
 \end{thm}
 
 \begin{proof}
-	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \cat{C} $-arrows consists of the identity.  Any map $ f \from c \to Rd $ has a cocartesian lifting $ \hat{f} \from x_c \to x_{Rd} $ and $ f = R \hat{f} . 1_c $.
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \ca{C} $-arrows consists of the identity.  Any map $ f \from c \to Rd $ has a cocartesian lifting $ \hat{f} \from x_c \to x_{Rd} $ and $ f = R \hat{f} . 1_c $.
 \end{proof}
 
 \begin{thm}
-	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, surjective-on-objects, conservative Street opfibration.  Then $ R $ is a right adjoint.
+	Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, surjective-on-objects, conservative Street opfibration.  Then $ R $ is a right adjoint.
 \end{thm}
 
 \begin{proof}
-	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \cat{C} $-arrows consists of the identity.  For any map $ f \from c \to Rd $, there exists an essential cocartesian lifting $ \hat{f} \from x_c \to d' $ together with a $ \cat{C} $-isomorphism $ h \from Rd' \to Rd $ such that $ f = h . R \hat{f} $. But $ f = h . R \hat{f} = R \hat{h} . R \hat{f} . 1_c = R (\hat{h} . \hat{f}) . 1_c $ where $ h = R \hat{h} $ because $ R $ is conservative.
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \ca{C} $-arrows consists of the identity.  For any map $ f \from c \to Rd $, there exists an essential cocartesian lifting $ \hat{f} \from x_c \to d' $ together with a $ \ca{C} $-isomorphism $ h \from Rd' \to Rd $ such that $ f = h . R \hat{f} $. But $ f = h . R \hat{f} = R \hat{h} . R \hat{f} . 1_c = R (\hat{h} . \hat{f}) . 1_c $ where $ h = R \hat{h} $ because $ R $ is conservative.
 \end{proof}
 
 \begin{thm}
-	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
+	Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
 \end{thm}
 
 \begin{proof}
-	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-object $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ d' $ where $ \theta \from c \cong Rd' $ (which exists by essential surjectivity), and the collection of $ \cat{C} $-arrows is $ { \theta } $.  For any $ \cat{C} $-arrow $ f \from c \to Rd $, we have (by Street opfibrationness) $ f . \theta^{-1} \from Rd' \to c \to Rd $, a cocartesian essential lifting $ \hat{ f . \theta^{-1} } \from d' \to d'' $ in $ \cat{D} $, and an isomorphism $ h \from d \to d'' $ (by conservatism) such that $ f . \theta^{-1} = Rh . R \hat{ f . \theta^{-1} } $.  This implies, as required by GAFT, that $ f = R (h\hat{ f . \theta }) . \theta $.
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-object $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ d' $ where $ \theta \from c \cong Rd' $ (which exists by essential surjectivity), and the collection of $ \ca{C} $-arrows is $ { \theta } $.  For any $ \ca{C} $-arrow $ f \from c \to Rd $, we have (by Street opfibrationness) $ f . \theta^{-1} \from Rd' \to c \to Rd $, a cocartesian essential lifting $ \hat{ f . \theta^{-1} } \from d' \to d'' $ in $ \ca{D} $, and an isomorphism $ h \from d \to d'' $ (by conservatism) such that $ f . \theta^{-1} = Rh . R \hat{ f . \theta^{-1} } $.  This implies, as required by GAFT, that $ f = R (h\hat{ f . \theta }) . \theta $.
 \end{proof}
 
-Thoughts about these assumptions. Here are the desired examples I can think of now: $ \cat{Set} $ together with $ \cat{Graph} $ or $ \cat{Top} $. The enriched over sets and completeness are both there. So is essential surjectivity. And reflection of isomorphisms.  The continuity is definitely needed, since it's necessary if $ R $ is a right adjoint. 
+Thoughts about these assumptions. Here are the desired examples I can think of now: $ \ca{Set} $ together with $ \ca{Graph} $ or $ \ca{Top} $. The enriched over sets and completeness are both there. So is essential surjectivity. And reflection of isomorphisms.  The continuity is definitely needed, since it's necessary if $ R $ is a right adjoint. 
 
-Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ L \dashv R \from \cat{C} \leftrightarrow \cat{D} $ where $ L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ L $ is conservative, but is $ R $?
+Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $ where $ L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ L $ is conservative, but is $ R $?
 
 \begin{ex}
 	No, $ R $ is not in general conservative.  Consider the underlying node functor $ \Graph \to \Set $.  All $ \Graph $-endomorphisms on
@@ -310,17 +310,20 @@ At this point, we have partial converses:
 
 \fbox{
 \begin{minipage}{0.4\textwidth}
-		Let $ \D $ have pushouts. Given a coreflection $ L \dashv R \from \C \to \D $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
+		Let $ \ca{D} $ have pushouts. Given a coreflection $ L \dashv R \from \ca{C} \to \ca{D} $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
 \end{minipage}
 }
 \hfill
 \fbox{
 \begin{minipage}{0.4\textwidth}
-		Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
+		Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
 \end{minipage}
 }
 
 \section{Categories of fibrations and adjunctions}
+
+The key players here are subcategories of $\OpFib$ of those opfibrations that are fibred cocomplete, and of something like
+$\Rali$ of ralis that strictly preserve all colimits.
 
 {\chris Also, not sure if separate section for that, but we should try and include as many reasonable examples as possible. The quality rather
 than the quantity is important I think! Grph Set the first such.}

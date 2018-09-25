@@ -12,73 +12,10 @@
 \usepackage{tikz}
 \usepackage[all,2cell]{xy}\UseAllTwocells\SilentMatrices
 
-
 \usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd,math,external}
 
-
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\DD}{\mathbb{D}}
-\newcommand{\MM}{\mathbb{M}}
-\newcommand{\Set}{\cat{Set}}
-\newcommand{\Top}{\cat{Top}}
-\newcommand{\Graph}{\cat{Graph}}
-\newcommand{\Cat}{\cat{Cat}}
-\newcommand{\C}{\cat{C}}
-\newcommand{\D}{\cat{D}}
-\renewcommand{\epsilon}{\varepsilon}
-\newcommand{\ca}{\mathcal}
-\newcommand{\caa}{\mathbb}
-\newcommand{\Cocart}{\mathrm{Cocart}}
-\newcommand{\Cart}{\mathrm{Cart}}
-
-\newcommand{\op}[1]{\operatorname{#1}}
-\newcommand{\cat}[1]{\mathbf{#1}}
-\newcommand{\dblcat}[1]{\mathbb{#1}}
-\renewcommand{\t}[1]{\text{#1}}
-
-\newcommand{\from}{\colon}
-\newcommand{\xto}[1]{\xrightarrow{#1}}
-\newcommand{\bydef}{\coloneqq}
-\newcommand{\sm}{\smallsetminus}
-\newcommand{\tospan}{\xrightarrow{\mathit{sp}}}
-\newcommand{\tocospan}{\xrightarrow{\mathit{csp}}}
-\newcommand{\diagram}[1]{\raisebox{-0.5\height}{\includegraphics{#1}}}
-
-\newcommand{\bispmap}[1]{\mathbf{Sp(#1)}}
-\newcommand{\dblspmap}[1]{\mathbb{S}\mathbf{p(#1)}}
-\newcommand{\bicspmap}[1]{\mathbf{Csp(#1)}}
-\newcommand{\dblcspmap}[1]{\mathbb{C}\mathbf{sp(#1)}}
-\newcommand{\bispsp}[1]{\mathbf{Sp(Sp(#1))}}
-\newcommand{\dblspsp}[1]{\mathbb{S}\mathbf{p(Sp(#1))}}
-\newcommand{\bicspcsp}[1]{\mathbf{Csp(Csp(#1))}}
-\newcommand{\dblcspcsp}[1]{\mathbb{C}\mathbf{sp(Csp(#1))}}
-\newcommand{\bimonspcsp}[1]{\mathbf{MonicSp(Csp(#1))}}
-\newcommand{\dblmonspcsp}[1]{\mathbb{M}\mathbf{onicSp(Csp(#1))}}
-\newcommand{\biepiccspsp}[1]{\mathbf{EpicCsp(Sp(#1))}}
-\newcommand{\dblepiccspsp}[1]{\mathbb{E}\mathbf{picCsp(Sp(#1))}}
-\newcommand{\spcsp}[1]{\mathbf{Sp(Csp(#1))}}
-\newcommand{\dblspcsp}[1]{\mathbb{S}\mathbf{p(Csp(#1))}}
-
 %
-% math operators
-%
-
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\ob}{Ob}
-\DeclareMathOperator{\arr}{arr}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Bij}{Bij}
-\DeclareMathOperator{\Sub}{Sub}
-\DeclareMathOperator{\colim}{colim}
-
-%
-% envirnments and counters
+% environments and counters
 %
 
 \newtheorem{thm}{Theorem}[section]
@@ -94,13 +31,50 @@
 \theoremstyle{definition}
 	\newtheorem{ex}[thm]{Example} 
 	\newtheorem{defn}[thm]{Definition}
+%
+%
+%
+
+\newcommand{\B}{\mathbf}
+\newcommand{\Set}{\ca{Set}}
+\newcommand{\Top}{\ca{Top}}
+\newcommand{\Graph}{\ca{Graph}}
+\newcommand{\Cat}{\ca{Cat}}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\Cocart}{\mathrm{Cocart}}
+\newcommand{\Cart}{\mathrm{Cart}}
+
+\newcommand{\OpFib}{\B{OpFib}}
+\newcommand{\Rali}{\B{Rali}}%Subject to change!
+
+\newcommand{\op}[1]{\operatorname{#1}}
+\newcommand{\ca}[1]{\mathbf{#1}}%or mathcal?
+\newcommand{\caa}[1]{\mathbb{#1}}
+\renewcommand{\t}[1]{\text{#1}}
+
+\newcommand{\from}{\colon}
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\bydef}{\coloneqq}
+\newcommand{\sm}{\smallsetminus}
+\newcommand{\tospan}{\xrightarrow{\mathit{sp}}}
+\newcommand{\tocospan}{\xrightarrow{\mathit{csp}}}
+\newcommand{\diagram}[1]{\raisebox{-0.5\height}{\includegraphics{#1}}}
+
+%
+% math operators
+%
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\arr}{arr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Sub}{Sub}
+\DeclareMathOperator{\colim}{colim}
+
 
 \definecolor{purple(x11)}{rgb}{0.5, 0.0, 0.5}
 \newcommand{\chris}{\color{purple(x11)}}
-
-
-
-
-
-
-
