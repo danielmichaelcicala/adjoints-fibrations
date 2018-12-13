@@ -68,7 +68,94 @@ C or that in the bottom face will fail to be preserved strictly.
 Regarding your question about fibrations, there is a question as to what your “categories of fibrations” are.
 But perhaps more natural would be to consider 2-categories, and then look for a biequivalence between these. This can be done.
 
+{\chris John's questions and ideas:}
 
+"a right adjoint [left inverse] is an opfibration if both categories have pushouts and the functor (strictly) preserves them. But it's not an iff!"
+Nice result - except for the "strictly preserves pushouts".   I don't mind that it's not an iff.
+
+One almost never considers categories with chosen pushouts, and you need chosen pushouts to talk about strict preservation of pushouts.
+Let me see; maybe it's not so evil if we do things right.
+
+If we take the usual forgetful functor Graph -> Set, its left adjoint lets us see Set as a full subcategory of Gph - is that always true when we have a right adjoint left inverse functor?
+We can pick chosen pushouts for all pushout diagrams in Graph (if we have a lot of time on our hands ) and for diagrams which happen to live in the subcategory Set these give chosen pushouts in Set.
+Does it work that way whenever both categories have pushouts and our functor is a right adjoint left inverse?
+
+Next, does making this choice of pushouts (which is the best possible way I can imagine to choose pushout for both Graph and Set in a compatible way) make the forgetful functor Gph -> Set preserve those pushouts strictly???
+(I'm using Gph and Graph interchangeably here, sorry.)
+
+Summary: if in examples we can figure out an easy procedure to choose pushouts to make our right adjoint left inverse strictly preserve those chosen pushouts, it's not too terrible to assume strict preservation for a theorem.
+However, it's still evil in the technical sense.
+
+And if we can figure out general conditions under which we can get this strict preservation we should state them, because otherwise this result looks bizarre and useless.
+
+Indeed, I'd be happier to state a theorem that didn't mention strict preservation of pushouts, and use some clever trick to get strict preservation of pushouts as part of the proof.
+
+That black-boxes the evil.
+
+December 6, 2018
+Christina12/06/2018
+
+I am sorry, I am really not as good as everyone else in understanding and writing math in a chat :smiley: 
+
+As far as I understand this, choosing limits or colimits is really not that bad to begin with (or that's what I thought after some emails with Steve Lack), it's really just saying "the" adjoint to the constant diagram functor as opposes to "an" adjoint to the constant diagram functor. So it is natural to for example choose pushouts in Set in a way such that the pushout of a function along the identity IS the same function.(edited)
+Now strict preservation is used to induce a Grothendieck opfibration structure rather than a Street opfibration structure. (the plan is to have both versions of the theorem in the paper). So given that, working so much with fibrations, I feel very comfortable around that particular evilness :smiley: , I don't mind that strict clause there.
+
+Finally, and I still want/need to understand this better, it seems like for functors that are fibrations/opfibrations, preserving some limit ends up being equivalent to strictly preserving it!!!!! For some choice. Of course that's not true for arbitrary functors.
+
+I am sorry if I am out of topic John, I hope I'm not
+
+John Baez12/06/2018
+Hi Christina!  I was hoping you'd tell me how to choose pushouts in Set and Gph in such a way that the right adjoint Gph -> Set strictly preserves the chosen pushouts.
+Maybe this is too easy and obvious for you; if so, maybe you can tell me a general theorem that says when a functor that preserves pushouts (in the usual up-to-canonical-isomorphism sense) can be "improved" to a naturally isomorphic functor that strictly preserves pushouts.
+
+Of course I'll let you choose the pushouts in any you want as well as replacing the functor by a naturally isomorphic functor.
+
+If I had a general theorem like this, I'd agree that "strictly preserving pushouts" is not so bad - I could just use this theorem.
+I have similar questions about the "right adjoint left inverse" idea.
+
+For one functor to strictly be the left inverse of another is an evil concept, i.e. not invariant under natural isomorphism.   But maybe you know a theorem that says "if you have a functor that's left inverse of another functor up to natural isomorphism, under some conditions we can replace it with one that's left inverse on the nose, i.e. strictly."
+
+And then, of course, if I'm trying to get a right adjoint left inverse to also strictly preserve pushouts, I need these two theorems I'm hoping for to not conflict with each other!
+
+That is, it would be bad if making the functor be a strict left inverse required changing it in a way that would destroy its strict preservation of chosen pushouts.
+
+Maybe we should first change the functor so that it's a left inverse, and then choose pushouts so they're strictly preserved.
+
+Christina12/06/2018
+
+No definitely choosing the pushouts in a way that they are strictly preserved is not easy or obvious to me. That has been a worry of mine within the connecting ladder between decorated cospans and structured cospans since before last summer. So I definitely think the things you mentioned above should be clarified, and it would be great if they did.
+
+1) Hermida seemed to imply that whenever an opfibration preserves colimits, there is a way to replace the functor by a naturally isomorphic one that strictly preserves them. I want to better understand this.
+
+2) For Graph and Set I'm more relaxed in specific, but for the coproducts not for the pushouts, because the monoidal Grothendieck construction gives a strict preservation of + and 0 right away, so our decorated->structured theorem will certainly work.
+
+3) For the left inverse VS (co)reflection (where the (co)unit is an isomorphism rather than the identity) I'm even less sure about. At least Grph->Set indeed satisfies the strict case already.
+
+4) And then the mixing of those two things up would of course be divine. :smiley:
+
+John Baez12/06/2018
+Okay, so this is some stuff that would be nice to understand.
+
+Todd Trimble and I came up with a general guess about when a functor between categories induces a fibration, or cofibration, between their presheaf categories.
+This guess is probably quite easy to prove.
+
+It then explains why the usual forgetful functor from Gph to Set is an opfibration.
+
+Moreover, in these cases - where the right adjoint we're interested in goes between presheaf categories, and comes from a functor going the other way between the underlying sites - I think it's easy to get pushouts to be strictly preserved.
+
+That's my feeling based on the case Gph -> Set.   In this case we can first choose pushouts in Set, any way we want.
+
+Then, to do a pushout out in Gph, we need to do a pushout of the sets of vertices and a pushout of the sets of edges - "in a presheaf category, pushouts are computed pointwise".
+
+So, we just need to choose pushouts in Gph so that we use our chosen pushouts in Set when computing the pushout for the sets of vertices!
+
+We can do that... it doesn't matter how we push out the sets of edges.
+
+And then our functor Gph -> Set will strictly preserve pushouts.
+
+I think it's also easy in this example to see how to make Gph -> Set into a "right adjoint left inverse".
+
+So, my main point is that this example can probably be generalized to a bunch of examples involving presheaf categories.
 
 \section{Preliminaries}
 
