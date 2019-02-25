@@ -4,7 +4,7 @@
 \newcommand{\nice}{\emph{nice}}
 
 \begin{document}
-\title{Fibrations and Adjunctions}
+\title{A note on Fibrations and Adjunctions}
 
 \author{Daniel Cicala and Christina Vasilakopoulou} 
 \address{Departement of Mathematics, University of California, Riverside, 900 University Avenue, 92521, USA}
@@ -219,6 +219,20 @@ respectively, for each morphism $f\colon x\to y$ and $h\colon x\to y$ in the bas
 It can be verified by the (co)cartesian universal property that $1_{\A _x}\cong(1_x)^*$ 
 and that for composable morphism in the base category, $g^*\circ f^*\cong(g\circ f)^* $, as well as $(1_x)_!\cong1_{\C_x}$ and $(k\circ h)_!\cong k_!\circ h_!$. If these isomorphisms are equalities, we have the notion of a \define{split} (op)fibration.
 
+{\chris fibrations and limits, as briefly as possible?}
+The following relates the existence of (co)limits in the total category of an (op)fibration to their existence in the fibres; for more details, see \cite{hermidaphd}.
+
+\begin{lem}\label{lem:fibrewiselimits}
+Suppose $\ca{J}$ is a small category and $\P\colon\A\to\B$ is an (op)fibration. If $\B$ has $\ca{J}$-(co)limits,
+the following are equivalent:
+\begin{enumerate}
+ \item all fibres have $\ca{J}$-(co)limits, and the reindexing functors preserve them;
+ \item $\A$ has $\ca{J}$-(co)limits, and $\P$ strictly preserves them.\label{it:2}
+\end{enumerate}
+\end{lem}
+This formulation relates fibrations with limits and opfibrations with colimits.
+In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not necessarily having a $\ca{J}$-(co)complete base) has \emph{(op)fibred $\ca{J}$-(co)limits}.
+
 {\chris Street fibrations stuff}
 
 ...
@@ -233,7 +247,7 @@ $\eta\colon1_\ca{C}=GL$. Notice that if a functor has a \emph{rari} analogously,
 
 In this section, we investigate conditions under which opfibrations and adjunctions with identity unit relate to one another. The main result, \cref{thm:mainthm}, essentially exhibits their bijective correspondence under the intersection of the respective conditions. {\chris say something about duality, and also in theorems below.} {\chris choice is everywhere, clarify earlier though, don't get into details here!}
 
-First of all, the following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
+Initially we establish when an opfibration has a left adjoint; the following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 \begin{prop}
  Let $\U\colon\D\to\C$ be an opfibration. Then $\U$ has a lari if (and only if) its fibers have initial objects which are preserved by the reindexing functors. 
@@ -267,29 +281,19 @@ but since $f_!(\bot_x)\cong\bot_{\U a}$ is the initial object in the fibre above
 Finally, this left adjoint $L$ is in fact a right inverse of $\U$, namely the unit of the adjunction $\eta\colon1_\C\to\U\L$ is the identity natural transformation: $\U\L x=x$ and moreover $\ca{D}(\L x,\L x)\cong\C(x,\U\L x)$ ensures that the identity $\bot_x$ corresponds to the identity on $x$. %which should be clear from the above described bijection!
 \end{proof}
 
-The other direction of the statement is not of relevance for our purposes. Notice that in particular, since $\U$ has a left adjoint $L$, it preserves all limits that exist in $\D$; this makes the condition for its existence look unintuitive. 
+The other direction of the statement is not of relevance for our purposes. Notice that in particular, since $\U$ has a left adjoint $L$, it ends up preserving all limits that exist in $\D$; this makes the condition for its existence look slightly unintuitive. 
 
 The dual result states that a fibration has a right adjoint right inverse %still counit needs to be id
-if and only if the fibers have terminal objects that are preserved by the reindexing functors. 
+if and only if the fibers have terminal objects that are preserved by the reindexing functors. Due to \cref{lem:fibrewiselimits}, we can express both these results as follows.
 
-{\chris The following lemma might be useful to create a big theorem with everything inside.
-Ref my thesis, which is ref to Hermida; even though I recall his emails being a bit confusing.}
-\begin{lem}
- For an (op)fibration, and $\ca{J}$ a small category, the following two statements are equivalent
-given that the base category has the relevant (co)limits:
-\begin{enumerate}
- \item all fibres have $\ca{J}$-(co)limits, and the reindexing functors preserve them;
- \item the total category has $\ca{J}$-(co)limits, and the (op)fibration strictly preserves them.
-\end{enumerate}
-These equivalent statements define when an (op)fibration \emph{has (op)fibred (co)limits}.
-\end{lem}
+\begin{cor}
+An (op)fibration has a (left) right adjoint right inverse if the base category has and the functor strictly preserves the initial object.
+\end{cor}
 
-In the opposite direction, the following result establishes when an adjoint
-is an opfibration; the relevant colimits now are pushouts.
+Next, we examine when a left adjoint (right inverse) has an opfibration structure. The relevant colimits in this case are pushouts, and the following result provides sufficient conditions in terms of them. {\chris{in progress}}
 
 \begin{prop}
- Suppose that $U\colon\ca{D}\to\caa{C}$ has a lari $L$. If $\ca{D}$ and $\caa{C}$ have (chosen) pushouts
-such that $U$ strictly preserves them, $U$ is an opfibration.
+Suppose that $\U\colon\D\to\C$ has a left adjoint right inverse $L$. If $\D$ and $\C$ have (chosen) pushouts such that $\U$ strictly preserves them, $\U$ is an opfibration.
 \end{prop}
 
 \begin{proof}
