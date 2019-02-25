@@ -223,15 +223,18 @@ and that for composable morphism in the base category, $g^*\circ f^*\cong(g\circ
 The following relates the existence of (co)limits in the total category of an (op)fibration to their existence in the fibres; for more details, see \cite{hermidaphd}.
 
 \begin{lem}\label{lem:fibrewiselimits}
-Suppose $\ca{J}$ is a small category and $\P\colon\A\to\B$ is an (op)fibration. If $\B$ has $\ca{J}$-(co)limits,
+Suppose $\ca{J}$ is a small category and $\P\colon\X\to\A$ is an (op)fibration. If $\A$ has $\ca{J}$-(co)limits,
 the following are equivalent:
 \begin{enumerate}
  \item all fibres have $\ca{J}$-(co)limits, and the reindexing functors preserve them;
- \item $\A$ has $\ca{J}$-(co)limits, and $\P$ strictly preserves them.\label{it:2}
+ \item $\X$ has $\ca{J}$-(co)limits, and $\P$ strictly preserves them.\label{it:2}
 \end{enumerate}
 \end{lem}
 This formulation relates fibrations with limits and opfibrations with colimits.
 In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not necessarily having a $\ca{J}$-(co)complete base) has \emph{(op)fibred $\ca{J}$-(co)limits}.
+
+{\chris some comments about fibrations strictly preserving limits, based on the local aspect of Fib as a 2-Fib}
+\cite{Fib2Fib}
 
 {\chris Street fibrations stuff}
 
@@ -293,7 +296,7 @@ An (op)fibration has a (left) right adjoint right inverse if the base category h
 Next, we examine when a left adjoint (right inverse) has an opfibration structure. The relevant colimits in this case are pushouts, and the following result provides sufficient conditions in terms of them. {\chris{in progress}}
 
 \begin{prop}
-Suppose that $\U\colon\D\to\C$ has a left adjoint right inverse $L$. If $\D$ and $\C$ have (chosen) pushouts such that $\U$ strictly preserves them, $\U$ is an opfibration.
+Suppose that $\U\colon\D\to\C$ has a left adjoint right inverse $\L$. Then $\U$ is an opfibration if $\D$ and $\C$ have (chosen) pushouts such that $\U$ strictly preserves them.
 \end{prop}
 
 \begin{proof}
