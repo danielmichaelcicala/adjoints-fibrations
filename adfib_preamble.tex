@@ -2,17 +2,23 @@
 \usepackage{mathtools}
 \usepackage{graphicx,caption,subcaption}
 \usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd,math,external}
 \usepackage{url}
 \usepackage[inline]{enumitem}
 	\setlist{itemsep=0em, topsep=0em, parsep=0em}
 	\setlist[enumerate]{label=(\alph*)}
-\usepackage[breaklinks=true]{hyperref}
-	\definecolor{hyperrefcolor}{rgb}{0,0,0.7}
-	\hypersetup{colorlinks,linkcolor={hyperrefcolor},citecolor={hyperrefcolor},urlcolor={hyperrefcolor}}
-\usepackage{tikz}
 \usepackage[all,2cell]{xy}\UseAllTwocells\SilentMatrices
-
-\usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd,math,external}
+\usepackage[breaklinks=true]{hyperref}%John's choices, can change; previous choice \definecolor{hyperrefcolor}{rgb}{0,0,0.7}
+\definecolor{darkgreen}{rgb}{0,0.45,0}
+\definecolor{myurlcolor}{rgb}{0.6,0,0}
+\definecolor{mycitecolor}{rgb}{0,0,0.8}
+\definecolor{myrefcolor}{rgb}{0,0,0.8}
+\hypersetup{colorlinks, linkcolor=myrefcolor, citecolor=darkgreen, urlcolor=myurlcolor,
+final,linktoc=page}
+\usepackage[capitalize]{cleveref}
+\crefname{equation}{}{}
+\crefname{item}{}{}
 
 %
 % environments and counters
@@ -49,8 +55,8 @@
 \newcommand{\Rali}{\B{Rali}}%Subject to change!
 
 \newcommand{\op}[1]{\operatorname{#1}}
-\newcommand{\ca}[1]{\mathbf{#1}}%or mathcal?
-\newcommand{\caa}[1]{\mathbb{#1}}
+\newcommand{\ca}[1]{\mathcal{#1}}%or mathcal?
+\newcommand{\caa}[1]{\mathbb{#1}}%better don't use after all.
 \renewcommand{\t}[1]{\text{#1}}
 
 \newcommand{\from}{\colon}
@@ -60,6 +66,7 @@
 \newcommand{\tospan}{\xrightarrow{\mathit{sp}}}
 \newcommand{\tocospan}{\xrightarrow{\mathit{csp}}}
 \newcommand{\diagram}[1]{\raisebox{-0.5\height}{\includegraphics{#1}}}
+\newcommand{\define}{\emph}%consider change to bold? or something else?
 
 %
 % math operators
@@ -74,6 +81,15 @@
 \DeclareMathOperator{\Bij}{Bij}
 \DeclareMathOperator{\Sub}{Sub}
 \DeclareMathOperator{\colim}{colim}
+
+%macros for names, subject to change later
+
+\newcommand{\D}{\ca{D}}
+\newcommand{\C}{\ca{C}}
+\newcommand{\A}{\ca{A}}
+\newcommand{\X}{\ca{X}}
+\newcommand{\U}{U}
+\renewcommand{\L}{L}
 
 
 \definecolor{purple(x11)}{rgb}{0.5, 0.0, 0.5}
