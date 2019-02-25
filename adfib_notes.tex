@@ -236,8 +236,7 @@ In this section, we investigate conditions under which opfibrations and adjuncti
 First of all, the following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 \begin{prop}
- Let $\U\colon\D\to\C$ be an opfibration. Its fibers have initial objects which are preserved by the reindexing functors
- if and only if $\U$ has a lari.
+ Let $\U\colon\D\to\C$ be an opfibration. Then $\U$ has a lari if (and only if) its fibers have initial objects which are preserved by the reindexing functors. 
 \end{prop}
 
 \begin{proof}
@@ -267,6 +266,11 @@ but since $f_!(\bot_x)\cong\bot_{\U a}$ is the initial object in the fibre above
 
 Finally, this left adjoint $L$ is in fact a right inverse of $\U$, namely the unit of the adjunction $\eta\colon1_\C\to\U\L$ is the identity natural transformation: $\U\L x=x$ and moreover $\ca{D}(\L x,\L x)\cong\C(x,\U\L x)$ ensures that the identity $\bot_x$ corresponds to the identity on $x$. %which should be clear from the above described bijection!
 \end{proof}
+
+The other direction of the statement is not of relevance for our purposes. Notice that in particular, since $\U$ has a left adjoint $L$, it preserves all limits that exist in $\D$; this makes the condition for its existence look unintuitive. 
+
+The dual result states that a fibration has a right adjoint right inverse %still counit needs to be id
+if and only if the fibers have terminal objects that are preserved by the reindexing functors. 
 
 {\chris The following lemma might be useful to create a big theorem with everything inside.
 Ref my thesis, which is ref to Hermida; even though I recall his emails being a bit confusing.}
