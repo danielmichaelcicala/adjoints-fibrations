@@ -159,7 +159,7 @@ So, my main point is that this example can probably be generalized to a bunch of
 
 \section*{Things To Do}
 \begin{itemize}
- \item Agree on notation. {\chris Daniel remind me the good choices for names? Total and base, fibration and opfibration, adjunctions? I made macros to save time later.}
+ \item Agree on notation. {\chris Daniel remind me the good choices for names? Total and base, fibration and opfibration, adjunctions? I made macros to save time later. Also, fine by small letters for objects of categories or not?}
 \end{itemize}
 
 
@@ -200,7 +200,7 @@ A \define{bifibration} is a functor which is both a fibration and opfibration.
 
 If $P\colon \A \to\X$ is a fibration, assuming the axiom of choice we may select a cartesian arrow over each $f\colon x\to y$ in $\X$ and $b\in\A _y$, denoted by $\Cart(f,b)\colon f^*(b)\to b$. Such a choice of cartesian liftings is called a \define{cleavage} for $P$, which is then called a \define{cloven fibration}; any fibration is henceforth assumed to be cloven. Dually, if $U$ is an opfibration, for any $c\in\C _x$ and $h \colon x \to y$ in $\X$ we can choose a cocartesian lifting of $c$ along $h$, $\Cocart(h,c)\colon c\longrightarrow h_!(c)$. 
 Any arrow in the total category of an (op)fibration factorizes uniquely into
-a vertical morphism followed by a (co)cartesian one:
+a vertical morphism followed by a (co)cartesian one: {\chris make small letters}
 \begin{equation}\label{factor}
 \xymatrix @C=.4in @R=.2in
 {A\ar[rr]^\theta\ar @{-->}[d]_-{\psi} && B \ar @{.>}[dd] &\\
@@ -219,6 +219,10 @@ respectively, for each morphism $f\colon x\to y$ and $h\colon x\to y$ in the bas
 It can be verified by the (co)cartesian universal property that $1_{\A _x}\cong(1_x)^*$ 
 and that for composable morphism in the base category, $g^*\circ f^*\cong(g\circ f)^* $, as well as $(1_x)_!\cong1_{\C_x}$ and $(k\circ h)_!\cong k_!\circ h_!$. If these isomorphisms are equalities, we have the notion of a \define{split} (op)fibration.
 
+{\chris Street fibrations stuff}
+
+...
+
 {\chris adjunctions stuff}
 
 Recall that \emph{lari} is an acronym for `left adjoint, right inverse', the latter meaning that the unit of
@@ -227,40 +231,41 @@ $\eta\colon1_\ca{C}=GL$. Notice that if a functor has a \emph{rari} analogously,
 
 \section{Grothendieck fibrations and ralis}
 
-In this section, we investigate conditions under which opfibrations and adjunctions with identity unit relate to one another. The main result, \cref{thm:mainthm}, essentially exhibits their bijective correspondence under the intersection of the respective conditions. {\chris say something about duality, and also in theorems below.} 
+In this section, we investigate conditions under which opfibrations and adjunctions with identity unit relate to one another. The main result, \cref{thm:mainthm}, essentially exhibits their bijective correspondence under the intersection of the respective conditions. {\chris say something about duality, and also in theorems below.} {\chris choice is everywhere, clarify earlier though, don't get into details here!}
 
 First of all, the following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 \begin{prop}
- Let $\U\colon\D\to\C$ be an opfibration. Its fibres have initial objects which are preserved by the reindexing functors
+ Let $\U\colon\D\to\C$ be an opfibration. Its fibers have initial objects which are preserved by the reindexing functors
  if and only if $\U$ has a lari.
 \end{prop}
 
 \begin{proof}
-Denote by $\bot_x$ the initial object in each fiber $\ca{D}_x$ above an object $x\in\caa{C}$. Define the left adjoint
-of $U$ as follows:
+Denote by $\bot_x$ the initial object in each fiber $\D_x$ above an object $x\in\C$ in the base category. Define a left adjoint $\L$
+of $\U$ as follows:
 \begin{displaymath}
-\begin{tikzcd}[row sep=.1in]
-L\colon\caa{C}\ar[rr] && \ca{D} &\\
-x\ar[rr,mapsto]\ar[dd,"f"'] && \bot_x\ar[dd,dashed,"Lf"']\ar[ddr,"{\ca{C}ocart(f,\bot_x)}"] & \\
+\begin{tikzcd}[row sep=.05in,cells={anchor=east}]
+\L\colon\C\ar[rr] && \D\;\; &\\
+x\ar[rr,mapsto]\ar[dd,"f"'] && \bot_x\ar[dd,dashed,"\L f"']\ar[ddr,"{\Cocart(f,\bot_x)}"] & \\
 \hole \\
-y\ar[rr,mapsto] && \bot_y\ar[r,"\cong"] & f_!(\bot_x)
+y\ar[rr,mapsto] && \bot_y & f_!(\bot_x)\ar[l,"\sim"']
 \end{tikzcd}
 \end{displaymath}
-This mapping is well-defined and functorial due to the universal properties of cocartesian liftings.
-To show it is a left adjoint of $U$, it suffices to establish a natural bijection
-$\ca{D}(Lx,a)\cong\caa{C}(x,Ua)$ for any $x\in\caa{C}$, $a\in\ca{D}$. Indeed, each morphism
-$k\colon Lx\to a$ above $f=Uk$ factorizes uniquely as
+where the bottom isomorphism is the unique one induced by the fact that each $f_!$ preserves initial objects between the respective fibers. %looks like the first time we define a morphism in the total category via its unique factorization! alright.
+This assignment is strictly functorial due to the universal properties of cocartesian liftings. Notice that by definition, $Lx=\bot_x$ is in the fibre $\D_x$, which means $ULx=x$ for any object $x\in\C$.
+
+To show this determines  a left adjoint of $U$, it suffices to establish a natural bijection
+$\D(\L x,a)\cong\C(x,\U a)$ for any $x\in\C$, $a\in\D$. Indeed, each morphism in he total category
+$k\colon \L x\to a$ above $f=\U k$, factorizes uniquely \cref{factor} as
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
-{\bot_x \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\ca{C}ocart(f,\bot_x)} && a &\\
-&& f_!(\bot_x) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\ca{D} \\
-x\ar[rr]_-{f} && Ua & \textrm{in }\caa{C}}
+{\bot_x \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\Cocart(f,\bot_x)} && a &\\
+&& f_!(\bot_x) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\D \\
+x\ar[rr]_-{f} && Ua & \textrm{in }\C}
 \end{displaymath}
-but since $f_!(\bot_x)\cong\bot_{Ua}$ is the initial object, the morphism $s$ is unique
-and thus $k$ uniquely corresponds to $f$. Finally, this left adjoint is right inverse,
-namely the unit $\eta\colon1_\caa{C}\to UL$ is the identity: $ULx=U(\bot_ x)=x$, and from $\ca{D}(Lx,Lx)\cong\caa{C}(x,ULx)$,
-the identity morphism on $\bot_x$ necessarily corresponds to the identity on $x$.
+but since $f_!(\bot_x)\cong\bot_{\U a}$ is the initial object in the fibre above $\U a$, the morphism $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
+
+Finally, this left adjoint $L$ is in fact a right inverse of $\U$, namely the unit of the adjunction $\eta\colon1_\C\to\U\L$ is the identity natural transformation: $\U\L x=x$ and moreover $\ca{D}(\L x,\L x)\cong\C(x,\U\L x)$ ensures that the identity $\bot_x$ corresponds to the identity on $x$. %which should be clear from the above described bijection!
 \end{proof}
 
 {\chris The following lemma might be useful to create a big theorem with everything inside.
