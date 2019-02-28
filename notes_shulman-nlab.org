@@ -1,0 +1,87 @@
+
+* Start with an arbitrary isofibration U : SPACE --> POINT
+
+** An [[https://ncatlab.org/nlab/show/isofibration][_isofibration_]] is a functor p: E --> B such that for any E-object e and iso f: pe --> b, then there's an iso f': e --> e' such that pf'=f.  (This violates evilness because it requires pe'=b)
+
+* We say that SPACE has discrete objects if U has a full and faithful left adjoint and codiscrete objects if U has a full and faithful right adjoint.
+
+* MIKE-THM1. Suppose SPACE has a terminal object preserved by U. U fibration => U has f.f. right adjoint
+
+* MIKE-THM2. Suppose SPACE has pullbacks preserved by U.  U has full-faithful right adjoint =>  U is a fibration
+
+* REMARK. pullbacks are an integral part of the bridge between adjoints and fibrations
+
+* XTINA-DANL-THM. Suppose U: SPACE --> POINT has a lari (left adjoint L such that UL=1). If SPACE & POINT have pushouts strictly preserved by U, then U is an opfibration.
+
+* COMPARISON BETWEEN MIKE & XTINA-DANL
+
+| XTINA-DANL                | MIKE (DUAL)             |
+|---------------------------+-------------------------|
+| U has lari                | U isofibration          |
+| SPACE/POINT have po's     | SPACE has po's          |
+| U strictly preserves po's | U preserves po's        |
+|                           | U has f.f. left adjoint |
+
+** comparisons to make 
+
+*** having lari vs. having ff left adjoint & being an isofibration
+
+*** POINT having po's vs only enough so U preserves those from SPACE
+
+* Compare the charaterizations
+
+** MIKE-THM. Suppose SPACE has finite colimits preserved by U. Then U has a f.f. left right adjoint <=> U is opfibration
+
+** XTINA-DANL. Suppose U strictly preserves all finite colimits. Then U has a lari <=> U is opfibration.
+
+*** We aren't asking that SPACE has finite colimits are we.  Just that U preserves those that SPACE does have?
+
+* MIKE. How to we improve SPACE in case it doesn't have these left/right adjoints?
+
+** Replace it with POINT/U.  The objects (p,s,p-->Us) consist of a space s so that each element of p corresponds to a point of s.  If p-->Us is not injective, then s has points that can't be separated by the "topology".
+
+* MIKE-THM. Let SPACE have a terminal object preserved by U. The forgetful functor POINT/U --> POINT has a full and faithful right adjoint defined by p |--> (p,1,p-->U1).
+
+** (p,1,p-->U1) are the codiscrete objects of POINT/U
+
+** can we dualize this to get discrete objects?
+
+** This defines a [[https://ncatlab.org/nlab/show/lax-idempotent%2B2-monad][colax-idempotent 2-monad]]
+
+*** T:X-->X is a colax-idemp 2-monad if for any algebras Tx-->x, Ty-->y, and an X-arrow f:x-->y induces a unique colax T morphism: i.e. 2-cell ~f: (Tx-->x-->y) => (Tx-->Ty--y).
+
+*** conceipt: lax-idempotence is like cocompletion activities. colax-idempotences is like completion activities.
+
+*** important example of colax-idem is on CAT/B taking pi:E-->B the projection B/pi-->pi. The algebras are Groth fibrations over B.
+
+*** THM: A 2-monad T is lax-idempotent <=> for any T-algebra a: TA-->A, there's a 2cell 1 ==> a ; \eta A that is the unit of an adjunction a -| \eta_A
+
+*** What is the colax-idempotent 2-monad above precisely?
+
+**** CAT/POINT --> CAT/POINT , (U:X-->POINT) |--> (U': POINT/U-->POINT) with unit X --> POINT by x |--> (Ux,x, Ux-->Ux) all over POINT
+
+*** because U is colax-idempotent, U is fibration <=> x |--> (Ux,x,id_Ux) has a right adjoint when sliced over POINTS
+
+* Combine MIKEs THM1/2 with colax-idempotent theory
+
+** THM1'. If SPACE has terminal object preserved by U and for any object x:SPACE, x |--> (Ux,x,id_Ux) sliced over POINT has right adjoint, the U has f.f. right adjoint.
+
+** THM2'. If SPACE has pullbacks preserved by U and a ff right adjoint, then there is a right adjoint to x |--> (Ux,x,id_Ux) while sliced over POINTS
+
+** Can dualize these for obfibrations
+
+* MIKE-THM4. If U has ff left adjoint, so does U'.
+
+* So we have the 2-monad for fibrations and another for opfibrations.  There is a distributive law, so that we have a monad for "fibrations & opfibrations"
+
+* MIKE-EX1: SPACE & POINT are topoi and U:SPACE-->POINT is direct image arrow. Then U': POINT/U-->POINT is direct image arrow too.  Moreover, x |--> (Ux,x,id_Ux) over POINT always has left exact left adjoint so there is always an arrow SPACE --> POINT/U in TOPOS/POINT.  See [[https://ncatlab.org/nlab/show/local%2Bgeometric%2Bmorphism][local topos]]
+
+* Combine this example with MIKE-THM2 to get the fact that U := Hom(1,-) is always a fibration and opfibration!
+
+* MIKE-EX2: Let SPACE := Locales, POINT := Set, and U the "set of points" functor.  Then POINT/U is the category of topological systems, which are objects with a frame of opens and set of points that don't neccesarily talk to each other .
+
+* MIKE-DEFS: Let U have a f.f. right adjoint.  Then a space x is *concrete* if the unit on x is a mono.  Dualize to get co-concrete.
+
+** QUESTION: what are the concrete and coconcrete things in our examples
+
+** example: a co-concrete topological system is a topological space
