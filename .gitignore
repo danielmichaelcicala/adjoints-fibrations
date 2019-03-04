@@ -9,4 +9,5 @@ adfib_notes.pdf
 *.tex~
 *.backup
 *.blg
+*.kate-swp
 *.toc

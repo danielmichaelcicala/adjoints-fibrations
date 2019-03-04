@@ -69,6 +69,28 @@ Regarding your question about fibrations, there is a question as to
 what your ``categories of fibrations'' are.
 But perhaps more natural would be to consider 2-categories, and then look for a biequivalence between these. This can be done.
 
+{\chris More of Steve's correspondence:}
+>
+> How should I formally treat the statement `F:C->D strictly preserves (co)limits' in practice? How can I check whether a certain functor satisfies that?
+
+I?ll just talk about limits, but analogous things hold for colimits; also for limits or colimits of some given class.
+
+Well the first thing I would say is that it only makes sense if C and D have chosen limits.  And pretty much the only way that you can hope for F to preserve them is if the chosen limits and C
+and D have both been constructed via chosen limits from some other given categories (which might include C or D or might be something else).
+
+For example, if K has chosen limits, then we might choose limits in functor categories [A,K] and [B,K] to be the pointwise ones, and then restriction along any B->A will give a functor [A,K]->[B,K]
+which strictly preserves these. This includes the case of the source and target functors Gph -> Set.
+
+Or if K and L have chosen limits, and f:K->L is an arbitrary functor, then we can equip the comma category f/L with chosen limits in such a way that the projections f/L->L and f/L->K strictly preserve
+limits; and furthermore, a functor into f/L will strictly preserve limits if and only if its composite with each of the projections does so.
+
+These sort of things are the only real cases I know where I specific functor will strictly preserve limits. 
+
+On the other hand if K and L have chosen limits and those in K are free, in a suitable sense, then any continuous K->L is isomorphic to one which strictly preserves limits. 
+
+There are various subtle things about strict preservation. For example, we know that a category has all finite limits iff it has finite products and equalizers, and similarly for preservation; but if 
+you move to strict preservation, then you need to be careful about the specific way that you are making the choices.
+
 {\chris John's questions and ideas:}
 
 "a right adjoint [left inverse] is an opfibration if both categories have pushouts and the functor (strictly) preserves them. But it's not an iff!"
