@@ -1,6 +1,7 @@
 \usepackage{amsfonts, amsthm, amssymb, amsmath}
 \usepackage{mathtools}
 \usepackage{graphicx,caption,subcaption}
+\usepackage{comment}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd,math,external}
@@ -42,11 +43,12 @@ final,linktoc=page}
 %
 
 \newcommand{\B}{\mathbf}
-\newcommand{\Set}{\ca{Set}}
-\newcommand{\Top}{\ca{Top}}
-\newcommand{\Graph}{\ca{Graph}}
-\newcommand{\Cat}{\ca{Cat}}
-\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\ca}{\mathcal}
+\newcommand{\Set}{\B{Set}}
+\newcommand{\Grph}{\B{Grph}}
+\newcommand{\Cat}{\B{Cat}}
+\newcommand{\one}{\B{1}}
+\newcommand{\two}{\B{2}}
 
 \newcommand{\Cocart}{\mathrm{Cocart}}
 \newcommand{\Cart}{\mathrm{Cart}}
@@ -55,7 +57,6 @@ final,linktoc=page}
 \newcommand{\Rali}{\B{Rali}}%Subject to change!
 
 \newcommand{\op}[1]{\operatorname{#1}}
-\newcommand{\ca}[1]{\mathcal{#1}}%or mathcal?
 \newcommand{\caa}[1]{\mathbb{#1}}%better don't use after all.
 \renewcommand{\t}[1]{\text{#1}}
 

@@ -1,8 +1,6 @@
 \documentclass{amsart}
 \input{adfib_preamble.tex}
 
-\newcommand{\nice}{\emph{nice}}
-
 \begin{document}
 \title{A note on Fibrations and Adjunctions}
 
@@ -18,7 +16,10 @@ Fibrations and Adjunctions rock.
 
 \tableofcontents
 
+
 \section{Introduction}
+
+\begin{comment}
 {\chris Christina's questions to Steve:}
 
 I had a question regarding choice of (co)limits in categories. Please excuse my naivety, I haven't really gone into depths of such
@@ -90,7 +91,9 @@ On the other hand if K and L have chosen limits and those in K are free, in a su
 
 There are various subtle things about strict preservation. For example, we know that a category has all finite limits iff it has finite products and equalizers, and similarly for preservation; but if 
 you move to strict preservation, then you need to be careful about the specific way that you are making the choices.
+\end{comment}
 
+\begin{comment}
 {\chris John's questions and ideas:}
 
 "a right adjoint [left inverse] is an opfibration if both categories have pushouts and the functor (strictly) preserves them. But it's not an iff!"
@@ -179,17 +182,63 @@ And then our functor Gph -> Set will strictly preserve pushouts.
 I think it's also easy in this example to see how to make Gph -> Set into a "right adjoint left inverse".
 
 So, my main point is that this example can probably be generalized to a bunch of examples involving presheaf categories.
+\end{comment}
 
 \section*{Things To Do}
 \begin{itemize}
  \item Agree on notation. {\chris Daniel remind me the good choices for names? Total and base, fibration and opfibration, adjunctions? I made macros to save time later. Also, fine by small letters for objects of categories or not?}
 \end{itemize}
 
+\section*{Acknowledgements} We would like to thank John Baez, Claudio Hermida, Steve Lack, ... for invaluable advice and discussions.
 
 \section{Preliminaries}
 
 {\chris Mainly basics of fibrations and adjunctions, to fix terminology. Also Street stuff. Fill out as we go and organize better at the very end.
 }
+
+{\chris Strict choice of (co)limits}
+
+In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Whereas such an uncommon condition sounds `evil' at first, we remark that it is the necessary such in order to match to the inherent `evilness' of Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration.
+
+In more detail, assuming the axiom of choice we can regard any category with (co)limits as having \emph{chosen} ones, in the sense of choosing a specific adjoint (out of all isomorphic ones) to the diagonal. Some categories, like $\Set$, even have a canonical choice corresponding to well-known constructions of (co)limits of sets. The following two lemmas (due to Steve Lack) present two natural cases where functors between categories with chosen (co)limits strictly preserve them; evidently, such a thing is to be expected only when the limits in the categories have been both previously constructed from chosen limits in some fixed category.
+\begin{lem}\label{lem:Lack1}
+ Suppose $\ca{C}$ is a category with chosen (co)limits (of any class). Then for any two categories $\ca{A}$ and $\ca{B}$ and any functor $F\colon\ca{A}\to\ca{B}$ between them, the pre-composition functor
+ \begin{displaymath}
+  \begin{tikzcd}[row sep=.05in]
+  F^*\colon[\ca{B},\ca{C}]\ar[r] & \;[\ca{A},\ca{C}] \\
+  \;\;\;\;\ca{B}\xrightarrow{H}\ca{C}\ar[r,mapsto] & \ca{A}\xrightarrow{F}\ca{B}\xrightarrow{H}\ca{C}
+  \end{tikzcd}
+ \end{displaymath}
+strictly preserves all (co)limits.
+\end{lem}
+\begin{proof}
+ This follows from the poinwise construction of colimits in functor categories.
+\end{proof}
+
+The following corresponds to one of our main examples.
+\begin{cor}
+ The domain and codomain functors $\Grph\to\Set$ strictly preserve all limits and colimits.
+\end{cor}
+\begin{proof}
+ Consider the two functors $1,2\colon\one{=}\{\bullet\}\longrightarrow\{1\rightrightarrows2\}{=}\two$. Choosing the canonical (co)limits in $\Set$, by \cref{lem:Lack1} we obtain two functors
+\begin{displaymath}
+\begin{tikzcd}
+ \Grph=[\two,\Set]\ar[r,shift left,"\mathrm{dom}"]\ar[r,shift right,"\mathrm{cod}"'] & \;[\one,\Set]=\Set
+ \end{tikzcd}
+\end{displaymath}
+that strictly preserve them.
+\end{proof}
+
+The following case again follows a construction of chosen limits in common ground; colimits adhere to a dual result.
+\begin{lem}
+Suppose $\ca{C}$ and $\ca{D}$ have chosen limits and $F\colon\ca{C}\to\ca{D}$ is an arbitrary functor. Then the comma category $F\downarrow\ca{D}$ can be equipped with chosen limits in such a way that the projections $\ca{C}\leftarrow F\downarrow\ca{D}\to\ca{D}$ strictly preserve limits.
+\end{lem}
+
+\begin{proof}
+ This follows from the canonical construction of limits in comma categories, as found e.g.\ in~\cite[\S 2.16]{Handbook1}.
+\end{proof}
+
+
 
 {\chris Copied from Monoidal Groth, edit for sure}
 We recall some basic facts and constructions from the theory of fibrations and indexed categories, as well as the equivalence between them via the Grothendieck construction.
@@ -355,10 +404,10 @@ is an opfibration.
 doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.}
 
 
-\section{Street fibrations and coreflections}
+\section{Street fibrations and coreflections}\label{Streetfibs}
 
 
-{\chris I haven't messed with anything in this section!}
+{\chris I haven't messed with anything in this section! Ideally should be very similar in context and order to the previous section.}
 \begin{thm}
 	Let $ \ca{D} $ have pushouts. Given a coreflection $ L \dashv R \from \ca{C} \to \ca{D} $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
 \end{thm}
@@ -416,10 +465,10 @@ doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.
 
 
 \begin{thm}
-	Given a Street opfibration $ R \from \ca{D} \to \ca{C} $, it is a right adjoint when it is \nice.
+	Given a Street opfibration $ R \from \ca{D} \to \ca{C} $, it is a right adjoint when it is nice.
 \end{thm}
  
-Let's try to figure out what \nice could be. Here are some helpful theorems.
+Let's try to figure out what nice could be. Here are some helpful theorems.
 
 \begin{thm}[Freyd's general adjoint functor theorem]
 \label{thm:GAFT}
@@ -471,7 +520,7 @@ Thoughts about these assumptions. Here are the desired examples I can think of n
 Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $ where $ L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ L $ is conservative, but is $ R $?
 
 \begin{ex}
-	No, $ R $ is not in general conservative.  Consider the underlying node functor $ \Graph \to \Set $.  All $ \Graph $-endomorphisms on
+	No, $ R $ is not in general conservative.  Consider the underlying node functor $ \Grph \to \Set $.  All $ \Grph $-endomorphisms on
 	\[
 	\begin{tikzpicture}
 		\node (a) at (0,0) {$ \bullet $};
