@@ -314,17 +314,17 @@ In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not neces
 
 {\chris adjunctions stuff}
 
-Recall that \emph{lari} is an acronym for `left adjoint, right inverse', the latter meaning that the unit of
-the adjunction is the identity. For example, if $G\colon\ca{D}\to\ca{C}$ has a lari $L$, then $L\dashv G$ and
-$\eta\colon1_\ca{C}=GL$. Notice that if a functor has a \emph{rari} analogously, then the counit is the identity instead.
+We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $U\colon\ca{D}\to\ca{C}$ has a lari $L$, then $L\dashv G$ and $\eta\colon1_\ca{C}=GL$. Equivalently, in this case we can say that $U$ is a \emph{rali}, namely it is itself a right adjoint, left inverse of some $L$ --- still the unit is an identity, with $U$ now being a left inverse. Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity.
+
+Both these notions are special cases of the well-known notions of \emph{(co)reflections}, i.e. ...
 
 \section{Grothendieck fibrations and ralis}
 
-In this section, we investigate conditions under which opfibrations and adjunctions with identity unit relate to one another. The main result, \cref{thm:mainthm}, essentially exhibits their bijective correspondence under the intersection of the respective conditions. {\chris say something about duality, and also in theorems below.} {\chris choice is everywhere, clarify earlier though, don't get into details here!}
+In this section, we investigate conditions under which opfibrations and adjunctions with identity unit relate to one another. The main result, \cref{thm:mainthm}, exhibits their bijective correspondence under the intersection of the respective conditions.
 
 Initially we establish when an opfibration has a left adjoint; the following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
-\begin{prop}
+\begin{prop}\label{prop:opfibtolari}
  Let $\U\colon\D\to\C$ be an opfibration. Then $\U$ has a lari if (and only if) its fibers have initial objects which are preserved by the reindexing functors. 
 \end{prop}
 
@@ -362,12 +362,12 @@ The dual result states that a fibration has a right adjoint right inverse %still
 if and only if the fibers have terminal objects that are preserved by the reindexing functors. Due to \cref{lem:fibrewiselimits}, we can express both these results as follows.
 
 \begin{cor}
-An (op)fibration has a (left) right adjoint right inverse if the base category has and the functor strictly preserves the initial object.
+An (op)fibration has a (left) right adjoint right inverse if the base category has and the functor strictly preserves the (initial) terminal object.
 \end{cor}
 
-Next, we examine when a left adjoint (right inverse) has an opfibration structure. The relevant colimits in this case are pushouts, and the following result provides sufficient conditions in terms of them. {\chris{in progress}}
+Next, we examine when a left adjoint right inverse has an opfibration structure. The relevant colimits in this case are pushouts, and the following result provides sufficient conditions in terms of those.
 
-\begin{prop}
+\begin{prop}\label{prop:laritoopfib}
 Suppose that $\U\colon\D\to\C$ has a left adjoint right inverse $\L$. Then $\U$ is an opfibration if $\D$ and $\C$ have (chosen) pushouts such that $\U$ strictly preserves them.
 \end{prop}
 
@@ -407,7 +407,18 @@ doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.
 \section{Street fibrations and coreflections}\label{Streetfibs}
 
 
-{\chris I haven't messed with anything in this section! Ideally should be very similar in context and order to the previous section.}
+{\chris I haven't messed with anything in this section! Ideally should be very similar in context and order to the previous section. E.g.
+
+Generalising \cref{prop:opfibtolari}, we obtain the following.
+\begin{prop}
+ Let blah be a Street opfibration. Then U is a coreflector (?) if its fibers have initial objects which are preserved by the reindexing functors.
+\end{prop}
+
+Generalising \cref{prop:laritoopfib}, we obtain the following result.
+
+\begin{prop}
+ Suppose that blah is a coreflector (?). Then U is a Street opfibration if blah and blah have pushouts and U preserves them 
+\end{prop}}
 \begin{thm}
 	Let $ \ca{D} $ have pushouts. Given a coreflection $ L \dashv R \from \ca{C} \to \ca{D} $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
 \end{thm}
