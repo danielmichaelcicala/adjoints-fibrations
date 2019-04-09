@@ -258,7 +258,7 @@ Consider a functor $P \colon\A \to \X$. A morphism $\phi \colon a \to b$ in $\A 
 For $x \in \ob\X$, the \define{fibre of $P$ over $x$} written $\A_x$, is the subcategory of $\A$ which consists of objects $a$ such that $P(a) = x$ and morphisms $\phi$ with $P(\phi) = 1_x$, called \define{vertical} morphisms. The functor $P \colon \A \to \X$ is called a \define{fibration} if and only if, for all $f \colon x \to y$ in $\X$ and $b\in\A_Y$, there is a cartesian morphism $\phi$ with codomain $b$ above $f$; it is called a \define{cartesian lifting} of $b$ along $f$. The category $\X$ is then called the \define{base} of the fibration, and $\A $ its \define{total category}.
 
 Dually, the functor $U \colon \C \to \X$ is an \define{opfibration} if $U^\mathrm{op}$ is a fibration, i.e.\ for every $c \in \C _x$ and $h \colon x \to y$ in $\X$, there is a cocartesian morphism with domain $c$ above $h$, the \define{cocartesian lifting} of $c$ along $h$ with the dual universal property:
-\begin{displaymath}
+\begin{equation}\label{eq:opfibration}
 \xymatrix @R=.1in @C=.6in
 {&& d'\ar @{.>}@/_/[dd] &&\\
 c\ar[r]_-{\beta} \ar @{.>}@/_/[dd]
@@ -268,7 +268,7 @@ d \ar @{.>}@/_/[dd] \ar @{-->}[ur]_-{\exists! \delta}
 && y' &&\\
 x\ar[r]_-{h=U\beta} \ar[urr]^-{k\circ h=U\gamma}
  & y \ar[ur]_-k && \textrm{in }\X}
-\end{displaymath}
+\end{equation}
 A \define{bifibration} is a functor which is both a fibration and opfibration.
 
 If $P\colon \A \to\X$ is a fibration, assuming the axiom of choice we may select a cartesian arrow over each $f\colon x\to y$ in $\X$ and $b\in\A _y$, denoted by $\Cart(f,b)\colon f^*(b)\to b$. Such a choice of cartesian liftings is called a \define{cleavage} for $P$, which is then called a \define{cloven fibration}; any fibration is henceforth assumed to be cloven. Dually, if $U$ is an opfibration, for any $c\in\C _x$ and $h \colon x \to y$ in $\X$ we can choose a cocartesian lifting of $c$ along $h$, $\Cocart(h,c)\colon c\longrightarrow h_!(c)$. 
@@ -318,6 +318,16 @@ In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not neces
 We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $U\colon\ca{D}\to\ca{C}$ has a lari $L$, then $L\dashv U$ and $\eta\colon1_\ca{C}=UL$. Equivalently, in this case we can say that $U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $L$ --- still the unit of the adjunction is the identity, with $U$ now being a left inverse. Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity.
 
 Both these notions are special cases of the well-known notions of \emph{(co)reflections}, i.e. ...
+{\chris Position here the well-known equivalences clauses for coreflections, also their strict versions for laris.}
+\begin{prop}\label{prop:coreflection}
+ The following are equivalent for an adjunction blah blah:
+ \begin{enumerate}
+  \item the unit is an identity (resp. isomorphism);
+  \item $\U\epsilon$ is an identity (resp. isomorphism);
+ \end{enumerate}
+
+\end{prop}
+
 
 \section{Grothendieck fibrations and ralis}
 
@@ -370,40 +380,43 @@ Next, we examine when a right adjoint left inverse has an opfibration structure.
 
 \begin{prop}\label{prop:laritoopfib}
 Suppose that $\U\colon\D\to\C$ is a rali, with left adjoint right inverse $\L$. Then $\U$ is an opfibration if $\D$ and $\C$ have chosen pushouts such that $\U$ strictly preserves them.
-\end{prop}{\chris in progress}
+\end{prop}
 
 \begin{proof}
-Take a morphism $f\colon x\to y$ in $\caa{C}$, and an object $a\in\ca{D}$ above $x$:
+First of all, suppose that the rali $\U\colon\ca{D}\to\ca{C}$ preserves pushouts, which are chosen such that pushouts  of a morphism along an identity is the morphism itself. We will show it has the structure of a cloven Grothendieck opfibration. Indeed, take a morphism $f\colon x\to y$ in $\ca{C}$ and an object $a\in\ca{D}$ above $x$, as in
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
-{a \ar @{.>}[d]_-U &&& \textrm{in }\ca{D} \\
-x\ar[rr]_-{f} && y & \textrm{in }\caa{C}}
+{a \ar @{.>}[d]_-{\U} &&& \textrm{in }\ca{D} \\
+x\ar[rr]_-{f} && y & \textrm{in }\ca{C}.}
 \end{displaymath}
-We will construct a cocartesian lifting of $a$ along $f$, using pushouts along the counit $\varepsilon\colon LU\Rightarrow1_\ca{D}$
-of the adjunction $L\dashv U$. Indeed, consider the pushout of the following diagram in $\ca{D}$
+Define the cocartesian lifting of $a$ along $f$ to be the horizontal dashed arrow to the (chosen) pushout of the following diagram in $\ca{D}$ 
 \begin{displaymath}
  \begin{tikzcd}
   LUa\ar[r,"Lf"]\ar[d,"\varepsilon_a"'] & Ly\ar[d,dashed] \\
 a\ar[r,dashed] & a+_{LUa}Ly
  \end{tikzcd}
 \end{displaymath}
-and define $\ca{C}ocart(f,a)$ to be precisely the horizontal dashed arrow. For this definition to make sense,
-we first of all need to check that this morphism is mapped to $f$ via $U$. Indeed, if we apply $U$
-to the above square and use the facts that $U\varepsilon_a=1_{x}$, $ULf=f$ and
-$$U(a+_{LUa}Ly)=Ua+_{ULUa}ULy=x+_{x}y$$ since $L$ is a lari and $U$ strictly preserves pushouts, the
-resulting colimit diagram is in fact `the' pushout of $f$ along the identity, namely $f$.
-
-{\chris Universal property is missing, pushout universality should take care of everything and we have checked it in the past}
+where $\varepsilon\colon LU\Rightarrow1_\ca{D}$ is the counit
+of the adjunction $L\dashv U$. To verify this is a cocartesian lifting, first of all it must be mapped to
+$f$ via $\U$: if we apply $\U$ to the above square, using the facts that $U\varepsilon_a=1_{x}$, $ULf=f$ (by \cref{prop:coreflection}) and
+$$U(a+_{LUa}Ly)=Ua+_{ULUa}ULy=x+_{x}y$$ since $U$ strictly preserves pushouts, the
+resulting colimit diagram 
+\begin{displaymath}
+ \begin{tikzcd}
+  x\ar[r,"f"]\ar[d,"1_x"'] & y\ar[d,dashed] \\
+x\ar[r,dashed] & x+_{x}y=y
+ \end{tikzcd}
+\end{displaymath}
+is \emph{the} pushout of $f$ along the identity, namely $f$ due to our choice. Moreover, the universal property \cref{eq:opfibration} of the proposed cocartesian lifting follows from universality of pushouts thus the one direction of the proof is complete.
 \end{proof}
+%Christina: tried to see whether the converse is true, didn't go far. Remember that from previous prop we got it preserves initial for sure!
 
-{\chris Make sure the theorem below follows 'logically'. Irrelatedly to that, recall that initial+pushout=all.finite.colimits}
+Combining \cref{prop:opfibtolari,prop:laritoopfib}, we obtain the following result that establishes certain conditions under which a Grothendieck opfibration structure on a functor corresponds to a rali structure and vice versa. %Christina: no more finite colimits: Steve said that for the strict case, this is more subtle than the ordinary case. Pretty sure that we don't wanna go into details there?
+%Understand whether other such conditions could exist? More philosophically.
+
 \begin{thm}\label{thm:mainthm}
- Suppose a functor $U\colon\ca{D}\to\caa{C}$ strictly preserves all finite colimits. Then $U$ is a rali if and only if $U$
-is an opfibration.
+Suppose that $\ca{D}$ and $\ca{C}$ have chosen pushouts and initial objects, and a functor $\U\colon\ca{D}\to\ca{C}$ strictly preserves them. Then $\U$ is a right adjoint left inverse if and only if $\U$ is an opfibration.
 \end{thm}
-{\chris Perhaps move the theorem on top, and use propositions to exhibit how each part works. I do not oppose into
-doing the relaxed Street version below. But Kenny needs Grothendieck fibrations.}
-
 
 \section{Street fibrations and coreflections}\label{Streetfibs}
 
