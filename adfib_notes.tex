@@ -432,21 +432,21 @@ Consider a functor $P \colon\A \to \X$. A morphism $\phi \colon a \to b$ in $\A 
 \end{equation}
 For $x \in \ob\X$, the \define{fibre of $P$ over $x$} written $\A_x$, is the subcategory of $\A$ which consists of objects $a$ such that $P(a) = x$ and morphisms $\phi$ with $P(\phi) = 1_x$, called \define{vertical} morphisms. The functor $P \colon \A \to \X$ is called a \define{fibration} if and only if, for all $f \colon x \to y$ in $\X$ and $b\in\A_Y$, there is a cartesian morphism $\phi$ with codomain $b$ above $f$; it is called a \define{cartesian lifting} of $b$ along $f$. The category $\X$ is then called the \define{base} of the fibration, and $\A $ its \define{total category}.
 
-Dually, the functor $U \colon \C \to \X$ is an \define{opfibration} if $U^\mathrm{op}$ is a fibration, i.e.\ for every $c \in \C _x$ and $h \colon x \to y$ in $\X$, there is a cocartesian morphism with domain $c$ above $h$, the \define{cocartesian lifting} of $c$ along $h$ with the dual universal property:
+Dually, the functor $\U \colon \A \to \X$ is an \define{opfibration} if $\U^\mathrm{op}$ is a fibration, i.e.\ for every $c \in \A _x$ and $h \colon x \to y$ in $\X$, there is a cocartesian morphism with domain $c$ above $h$, the \define{cocartesian lifting} of $c$ along $h$ with the dual universal property:
 \begin{equation}\label{eq:opfibration}
 \xymatrix @R=.1in @C=.6in
 {&& d'\ar @{.>}@/_/[dd] &&\\
 c\ar[r]_-{\beta} \ar @{.>}@/_/[dd]
 \ar[urr]^-{\gamma} & 
 d \ar @{.>}@/_/[dd] \ar @{-->}[ur]_-{\exists! \delta}
-&& \textrm{in }\C\\
+&& \textrm{in }\A\\
 && y' &&\\
-x\ar[r]_-{h=U\beta} \ar[urr]^-{k\circ h=U\gamma}
+x\ar[r]_-{h=\U\beta} \ar[urr]^-{k\circ h=\U\gamma}
  & y \ar[ur]_-k && \textrm{in }\X}
 \end{equation}
 A \define{bifibration} is a functor which is both a fibration and opfibration.
 
-If $P\colon \A \to\X$ is a fibration, assuming the axiom of choice we may select a cartesian arrow over each $f\colon x\to y$ in $\X$ and $b\in\A _y$, denoted by $\Cart(f,b)\colon f^*(b)\to b$. Such a choice of cartesian liftings is called a \define{cleavage} for $P$, which is then called a \define{cloven fibration}; any fibration is henceforth assumed to be cloven. Dually, if $U$ is an opfibration, for any $c\in\C _x$ and $h \colon x \to y$ in $\X$ we can choose a cocartesian lifting of $c$ along $h$, $\Cocart(h,c)\colon c\longrightarrow h_!(c)$. 
+If $P\colon \A \to\X$ is a fibration, assuming the axiom of choice we may select a cartesian arrow over each $f\colon x\to y$ in $\X$ and $b\in\A _y$, denoted by $\Cart(f,b)\colon f^*(b)\to b$. Such a choice of cartesian liftings is called a \define{cleavage} for $P$, which is then called a \define{cloven fibration}; any fibration is henceforth assumed to be cloven. Dually, if $\U$ is an opfibration, for any $c\in\A _x$ and $h \colon x \to y$ in $\X$ we can choose a cocartesian lifting of $c$ along $h$, $\Cocart(h,c)\colon c\longrightarrow h_!(c)$. 
 Any arrow in the total category of an (op)fibration factorizes uniquely into
 a vertical morphism followed by a (co)cartesian one: {\chris make small letters}
 \begin{equation}\label{factor}
@@ -456,16 +456,16 @@ f^*B\ar[urr]_-{\;\Cart(f,B)} \ar @{.>}[d] &&& \textrm{in }\A  \\
 X\ar[rr]_-{f} && Y & \textrm{in }\X,}\qquad
 \xymatrix @C=.4in @R=.2in
 {C \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(g,C)} && D &\\
-&& f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\C  \\
+&& f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\A  \\
 X\ar[rr]_-{g} && Y & \textrm{in }\X.}
 \end{equation}
 The choice of (co)cartesian liftings in an (op)fibration induces a so-called \define{reindexing functor} between the fibre categories
 \begin{equation}\label{reindexing}
-    f^*\colon \A _y\to\A _x\quad\textrm{ and }\quad h_!\colon\C _x\to\C _y
+    f^*\colon \A _y\to\A _x\quad\textrm{ and }\quad h_!\colon\A _x\to\A _y
 \end{equation}
 respectively, for each morphism $f\colon x\to y$ and $h\colon x\to y$ in the base category.
 It can be verified by the (co)cartesian universal property that $1_{\A _x}\cong(1_x)^*$ 
-and that for composable morphism in the base category, $g^*\circ f^*\cong(g\circ f)^* $, as well as $(1_x)_!\cong1_{\C_x}$ and $(k\circ h)_!\cong k_!\circ h_!$. If these isomorphisms are equalities, we have the notion of a \define{split} (op)fibration.
+and that for composable morphism in the base category, $g^*\circ f^*\cong(g\circ f)^* $, as well as $(1_x)_!\cong1_{\A_x}$ and $(k\circ h)_!\cong k_!\circ h_!$. If these isomorphisms are equalities, we have the notion of a \define{split} (op)fibration.
 
 {\chris fibrations and limits, as briefly as possible?}
 The following relates the existence of (co)limits in the total category of an (op)fibration to their existence in the fibres; for more details, see \cite{hermidaphd}.
@@ -490,7 +490,7 @@ In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not neces
 
 {\chris adjunctions stuff}
 
-We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $U\colon\ca{D}\to\ca{C}$ has a lari $L$, then $L\dashv U$ and $\eta\colon1_\ca{C}=UL$. Equivalently, in this case we can say that $U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $L$ --- still the unit of the adjunction is the identity, with $U$ now being a left inverse. Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity.
+We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\ca{D}\to\ca{C}$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\ca{C}=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity.
 
 Both these notions are special cases of the well-known notions of \emph{(co)reflections}, i.e. ...
 {\chris Position here the well-known equivalences clauses for coreflections, also their strict versions for laris.}
@@ -498,7 +498,7 @@ Both these notions are special cases of the well-known notions of \emph{(co)refl
  The following are equivalent for an adjunction blah blah:
  \begin{enumerate}
   \item the unit is an identity (resp. isomorphism);
-  \item $\U\epsilon$ is an identity (resp. isomorphism);
+  \item $\\U\epsilon$ is an identity (resp. isomorphism);
  \end{enumerate}
 
 \end{prop}
@@ -512,39 +512,58 @@ In this section, we investigate conditions under which opfibrations and adjuncti
 Initially we establish when an opfibration has a left adjoint; the following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 %changed from has a lari to is a rali to make descriptions of categories easier later - hopefully! Otherwise change back.
-\begin{prop}\label{prop:opfibtolari}
- Let $\U\colon\D\to\C$ be an opfibration. Then $\U$ is a rali if (and only if) its fibers have initial objects which are preserved by the reindexing functors. 
+\begin{prop} \label{prop:opfibtolari}
+  Let $\U \from \X \to \A$ be an opfibration. Then
+  $\U$ is a rali if (and only if) its fibers have
+  initial objects which are preserved by the
+  reindexing functors.
 \end{prop}
 
 \begin{proof}
-Denote by $\bot_x$ the initial object in each fiber $\D_x$ above an object $x\in\C$ in the base category. Define a left adjoint $\L$
+Denote by $\bot_a$ the initial object in each fiber $\X_a$ above an object $a\in\A$ in the base category. Define a left adjoint $\L$
 of $\U$ as follows:
 \begin{displaymath}
 \begin{tikzcd}[row sep=.05in,cells={anchor=east}]
-\L\colon\C\ar[rr] && \D\;\; &\\
-x\ar[rr,mapsto]\ar[dd,"f"'] && \bot_x\ar[dd,dashed,"\L f"']\ar[ddr,"{\Cocart(f,\bot_x)}"] & \\
+  \L\colon\A\ar[rr] && \X\;\; &\\
+  a\ar[rr,mapsto]\ar[dd,"f"'] && \bot_a\ar[dd,dashed,"\L f"']\ar[ddr,"{\Cocart(f,\bot_a)}"] & \\
 \hole \\
-y\ar[rr,mapsto] && \bot_y & f_!(\bot_x)\ar[l,"\sim"']
+b\ar[rr,mapsto] && \bot_b & f_!(\bot_a)\ar[l,"\sim"']
 \end{tikzcd}
 \end{displaymath}
-where the bottom isomorphism is the unique one induced by the fact that each $f_!$ preserves initial objects between the respective fibers. %looks like the first time we define a morphism in the total category via its unique factorization! alright.
-This assignment is strictly functorial due to the universal properties of cocartesian liftings. Notice that by definition, $Lx=\bot_x$ is in the fibre $\D_x$, which means $ULx=x$ for any object $x\in\C$.
+where the bottom isomorphism is the unique one
+induced by the fact that each $f_!$ preserves
+initial objects between the respective
+fibers.
+% looks like the first time we define a
+% morphism in the total category via its
+% unique factorization! alright.
+This assignment is strictly functorial due to the
+universal properties of cocartesian
+liftings. Notice that by definition,
+$\L a =\bot_a$ is in the fibre $\X_a$, which means
+$\U\L a =a$ for any object $a\in\A$.
 
-To show this determines  a left adjoint of $U$, it suffices to establish a natural bijection
-$\D(\L x,a)\cong\C(x,\U a)$ for any $x\in\C$, $a\in\D$. Indeed, each morphism in he total category
-$k\colon \L x\to a$ above $f=\U k$, factorizes uniquely \cref{factor} as
+To show this determines a left adjoint of $\U$, it
+suffices to establish a natural bijection
+$\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$,
+$x\in\X$. Indeed, each morphism in he total
+category $k\colon \L a\to x$ above $f=\U k$,
+factorizes uniquely \cref{factor} as
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
-{\bot_x \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\Cocart(f,\bot_x)} && a &\\
-&& f_!(\bot_x) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\D \\
-x\ar[rr]_-{f} && Ua & \textrm{in }\C}
+{\bot_a \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\Cocart(f,\bot_a)} && x &\\
+&& f_!(\bot_a) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\X \\
+a\ar[rr]_-{f} && \U x & \textrm{in }\A}
 \end{displaymath}
-but since $f_!(\bot_x)\cong\bot_{\U a}$ is the initial object in the fibre above $\U a$, the morphism $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
+but since $f_!(\bot_a)\cong\bot_{\U x}$ is the initial object in the fibre above $\U x$, the morphism $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
 
-Finally, the right adjoint $U$ is indeed a left inverse of $L$, namely the unit of the adjunction $\eta\colon1_\C\to\U\L$ is the identity natural transformation: $\U\L x=x$ and moreover $\ca{D}(\L x,\L x)\cong\C(x,\U\L x)$ ensures that the identity $\bot_x$ corresponds to the identity on $x$. %which should be clear from the above described bijection!
+Finally, the right adjoint $\U$ is indeed a left
+inverse of $\L$, namely the unit of the adjunction
+$\eta\colon 1_\A \to \U\L$ is the identity natural
+transformation: $\U\L a=a$ and moreover $\X (\L a,\L a)\cong\A(a,\U\L a)$ ensures that the identity $\bot_a$ corresponds to the identity on $a$. %which should be clear from the above described bijection!
 \end{proof}
 
-The `only if' direction of the statement is not needed for our purposes. Notice that in particular, since $\U$ is a right adjoint, it ends up preserving all limits that exist in $\D$; this makes the above condition for its existence look slightly unintuitive. 
+The `only if' direction of the statement is not needed for our purposes. Notice that in particular, since $\U$ is a right adjoint, it ends up preserving all limits that exist in $\X$; this makes the above condition for its existence look slightly unintuitive. 
 
 The dual result states that a fibration is a lali, or equivalently has a rari namely the counit of the adjunction is the identity, if and only if the fibers have terminal objects that are preserved by the reindexing functors. Due to \cref{lem:fibrewiselimits}, we can express both these results as follows.
 
@@ -555,32 +574,35 @@ An (op)fibration is a (right) left adjoint left inverse if the base category has
 Next, we examine when a right adjoint left inverse has an opfibration structure. The relevant colimits in this case are pushouts, and the following result provides sufficient conditions in terms of those. Recall the discussion regarding strict preservation of colimits in \cref{sec:preliminaries}.
 
 \begin{prop}\label{prop:laritoopfib}
-Suppose that $\U\colon\D\to\C$ is a rali, with left adjoint right inverse $\L$. Then $\U$ is an opfibration if $\D$ and $\C$ have chosen pushouts such that $\U$ strictly preserves them.
+Suppose that $\U\colon\X\to\A$ is a rali, with left adjoint right inverse $\L$. Then $\U$ is an opfibration if $\X$ and $\A$ have chosen pushouts such that $\U$ strictly preserves them.
 \end{prop}
 
 \begin{proof}
-First of all, suppose that the rali $\U\colon\ca{D}\to\ca{C}$ preserves pushouts, which are chosen such that pushouts  of a morphism along an identity is the morphism itself. We will show it has the structure of a cloven Grothendieck opfibration. Indeed, take a morphism $f\colon x\to y$ in $\ca{C}$ and an object $a\in\ca{D}$ above $x$, as in
+First of all, suppose that the rali $\U\colon\X\to\A$ preserves pushouts, which are chosen such that pushouts  of a morphism along an identity is the morphism itself. We will show it has the structure of a cloven Grothendieck opfibration. Indeed, take a morphism $f\colon a\to b$ in $\A$ and an object $x\in\X$ above $a$, as in
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
-{a \ar @{.>}[d]_-{\U} &&& \textrm{in }\ca{D} \\
-x\ar[rr]_-{f} && y & \textrm{in }\ca{C}.}
+{x \ar @{.>}[d]_-{\U} &&& \textrm{in }\X \\
+a\ar[rr]_-{f} && b & \textrm{in }\A .}
 \end{displaymath}
-Define the cocartesian lifting of $a$ along $f$ to be the horizontal dashed arrow to the (chosen) pushout of the following diagram in $\ca{D}$ 
+Define the cocartesian lifting of $x$ along $f$ to be the horizontal dashed arrow to the (chosen) pushout of the following diagram in $\X$ 
 \begin{displaymath}
  \begin{tikzcd}
-  LUa\ar[r,"Lf"]\ar[d,"\varepsilon_a"'] & Ly\ar[d,dashed] \\
-a\ar[r,dashed] & a+_{LUa}Ly
+   \L\U x\ar[r,"\L f"]\ar[d,"\varepsilon_a"'] & \L b\ar[d,dashed] \\
+   x\ar[r,dashed] & x+_{\L\U x} \L b
  \end{tikzcd}
 \end{displaymath}
-where $\varepsilon\colon LU\Rightarrow1_\ca{D}$ is the counit
-of the adjunction $L\dashv U$. To verify this is a cocartesian lifting, first of all it must be mapped to
-$f$ via $\U$: if we apply $\U$ to the above square, using the facts that $U\varepsilon_a=1_{x}$, $ULf=f$ (by \cref{prop:coreflection}) and
-$$U(a+_{LUa}Ly)=Ua+_{ULUa}ULy=x+_{x}y$$ since $U$ strictly preserves pushouts, the
+where $\varepsilon\colon \L\U\Rightarrow1_\X$ is the counit
+of the adjunction $\L\dashv \U$. To verify this is a cocartesian lifting, first of all it must be mapped to
+$f$ via $\U$: if we apply $\U$ to the above
+square, using the facts that
+$\U\varepsilon_x=1_{a}$, $\U\L f=f$ (by \cref{prop:coreflection}) and
+$$\U (x+_{\L\U x}\L b)=\U x+_{\U\L\U x}\U\L b =
+a+_{a} b $$ since $\U$ strictly preserves pushouts, the
 resulting colimit diagram 
 \begin{displaymath}
  \begin{tikzcd}
-  x\ar[r,"f"]\ar[d,"1_x"'] & y\ar[d,dashed] \\
-x\ar[r,dashed] & x+_{x}y=y
+  a\ar[r,"f"]\ar[d,"1_a"'] & b\ar[d,dashed] \\
+a\ar[r,dashed] & a+_{a}b=b
  \end{tikzcd}
 \end{displaymath}
 is \emph{the} pushout of $f$ along the identity, namely $f$ due to our choice. Moreover, the universal property \cref{eq:opfibration} of the proposed cocartesian lifting follows from universality of pushouts thus the one direction of the proof is complete.
@@ -591,7 +613,7 @@ Combining \cref{prop:opfibtolari,prop:laritoopfib}, we obtain the following resu
 %Understand whether other such conditions could exist? More philosophically.
 
 \begin{thm}\label{thm:mainthm}
-Suppose that $\ca{D}$ and $\ca{C}$ have chosen pushouts and initial objects, and a functor $\U\colon\ca{D}\to\ca{C}$ strictly preserves them. Then $\U$ is a right adjoint left inverse if and only if $\U$ is an opfibration.
+Suppose that $\X$ and $\A$ have chosen pushouts and initial objects, and a functor $\U\colon\X\to\A$ strictly preserves them. Then $\U$ is a right adjoint left inverse if and only if $\U$ is an opfibration.
 \end{thm}
 
 \section{Street fibrations and coreflections}\label{Streetfibs}
@@ -610,34 +632,38 @@ the following.
 
 \begin{prop}
   \label{thm:street-opfib-to-corefl}
-  Let $ \U \from \D \to \C $ be a Street
-  opfibration. Then $ U $ is a coreflector if its
+  Let $ \U \from \X \to \A $ be a Street
+  opfibration. Then $ \U $ is a coreflector if its
   fibers have initial objects which are preserved
   by the reindexing functors.
 \end{prop}
 
 \begin{proof}
-  We define $ L $ exactly as in Proposition
+  We define $ \L $ exactly as in Proposition
   \ref{prop:opfibtolari}. 
 
-  The unit of the adjunction $ L \dashv U $ is the
-  identity $ c \to ULc = U\bot_c = c $.  The
-  counit is the initial map $ \bot_{Ud} = LUd \to
-  d $.  The triangle identities are satisfied as
+  The unit of the adjunction $ \L \dashv \U $ is the
+  identity $ a\to \U\L a = \U\bot_a = a $.  The
+  counit is the initial map $ \bot_{\U x} = \L\U x \to
+  x $.  The triangle identities are satisfied as
   well. The first is the composite
   \[
-    Lc \xto{L\eta_c} LULc \xto{\epsilon_{Lc}} Lc
+    \L a
+    \xto{\L\eta_a}        \L\U\L a
+    \xto{\epsilon_{\L a}} \L a
   \]
-  which is given by $ \bot_c \to \bot_c \to \bot_c
+  which is given by $ \bot_a \to \bot_a \to \bot_a
   $.  The second is the composite
   \[
-    Ud \xto{\eta_{Ud}} ULUd \xto{U\eta_d} Ud
+    \U x
+    \xto{\eta_{\U x}} \U\L\U x
+    \xto{\U\eta_x}    \U x
   \]
-  which is given by $ Ud \to Ud \to Ud $.
+  which is given by $ \U x \to \U x \to \U x $.
 
   Because the unit of the adjunction is an
-  isomorphism, $ L $ is full and faithful
-  \cite[{Prop.~1.3}]{gabrielzisman} making $ C $ a
+  isomorphism, $ \L $ is full and faithful
+  \cite[{Prop.~1.3}]{gabrielzisman} making $ \U $ a
   coreflector.
 \end{proof}
 
@@ -645,24 +671,25 @@ Generalising \cref{prop:laritoopfib}, we obtain the following result.
 
 \begin{prop}
   \label{thm:corefl-to-street-obfib}
-  Suppose that $ \U \from \D \to \C $ is a
-  coreflector. Then $ U $ is a Street obfibration
-  if $ D $ has pushouts and $ U $ preserves them.
+  Suppose that $ \U \from \X \to \A $ is a
+  coreflector. Then $ \U $ is a Street obfibration
+  if $ \X $ has pushouts and $ \U $ preserves them.
 \end{prop}
 
 \begin{proof}
-  Fix an arrow $ f \from a \to b $ in $ \C $
+  Fix an arrow $ f \from a \to b $ in $ \A $
   and an object $ x $ in the fibre of $ a $. We
-  claim that $ \hat{f} $, defined as the pushout of $ Lf $
+  claim that $ \hat{f} $, defined as the pushout
+  of $ \L f $
   along the counit $ \epsilon_x $
   \[
     \begin{tikzpicture}
-      \node (ul) at (0,2) {$ LRx $};
+      \node (ul) at (0,2) {$ \L \U x $};
       \node (ll) at (0,0) {$ x $};
-      \node (ur) at (2,2) {$ Lb $};
-      \node (lr) at (2,0) {$ x +_{LRx} Lb$};
+      \node (ur) at (2,2) {$ \L b $};
+      \node (lr) at (2,0) {$ x +_{\L\U x} \L b$};
       \draw [->] (ul) to node [left] {$ \epsilon $} (ll);
-      \draw [->] (ul) to node [above] {$ Lf $} (ur);
+      \draw [->] (ul) to node [above] {$ \L f $} (ur);
       \draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
       \draw [->] (ur) to (lr);
     \end{tikzpicture}
@@ -670,9 +697,9 @@ Generalising \cref{prop:laritoopfib}, we obtain the following result.
   is the cocartesian lift. There is a string of
   isomorphisms
   \[
-    U ( x +_{LUx} Lb ) \cong
-    Ux +_{ULUx} Lb \cong
-    Ux +_{Ux} b \cong
+    \U ( x +_{\L\U x} \L b ) \cong
+    \U x +_{\U\L\U x} \L b \cong
+    \U x +_{\U x} b \cong
     b
   \]
   whose composite we call $ h $.  Then
@@ -680,10 +707,10 @@ Generalising \cref{prop:laritoopfib}, we obtain the following result.
     \begin{tikzpicture}
       \node (a) at (0,0) {$ a $};
       \node (b) at (2,0) {$ b $};
-      \node (c) at (2,2) {$ U ( x+_{LUx} Lb ) $};
+      \node (c) at (2,2) {$ \U ( x+_{\L\U x} \L b ) $};
       \path[->,font=\scriptsize]
       (a) edge node[below]{$ f $} (b)
-      (a) edge node[above]{$ U\hat{f} $} (c)
+      (a) edge node[above]{$ \U\hat{f} $} (c)
       (c) edge node[right]{$ h $} (b);
     \end{tikzpicture}
   \]
@@ -691,45 +718,47 @@ Generalising \cref{prop:laritoopfib}, we obtain the following result.
   lift. It remains to show that $ \hat{f} $ is
   cocartesian.
 
-  Consider a $ \D $-arrow $ g \from x \to y $
-  with a $ \C $-arrow
-  $ \theta \from U( x +_{LUx} Lb ) \to Uy $ so
-  that $ \theta U \hat{f} = Ug $.  Can we
+  Consider a $ \X $-arrow $ g \from x \to y $
+  with a $ \A $-arrow
+  $ \theta \from \U( x +_{\L\U x} \L b ) \to \U y $ so
+  that $ \theta \U \hat{f} = \U g $.  Can we
   uniquely lift $ \theta $? Set up the diagram
   \[
     \begin{tikzpicture}
-      \node (ul) at (0,2) {$ LRx $};
+      \node (ul) at (0,2) {$ \L\U x $};
       \node (ll) at (0,0) {$ x $};
-      \node (ur) at (2,2) {$ Lb $};
-      \node (lr) at (2,0) {$ x +_{LRx} Lb$};
+      \node (ur) at (2,2) {$ \L b $};
+      \node (lr) at (2,0) {$ x +_{\L\U x} \L b$};
       \node (comp) at (4,-2) {y};
       \draw [->] (ul) to node [left] {$ \epsilon_x $} (ll);
-      \draw [->] (ul) to node [above] {$ Lf $} (ur);
+      \draw [->] (ul) to node [above] {$ \L f $} (ur);
       \draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
       \draw [->] (ur) to (lr);
       \draw [->] (ll) to [bend right=20] node [above] {$ g $} (comp);
       \draw [->] (ur) to [bend left=20] node [above] {$ g' $} (comp);
     \end{tikzpicture}
   \] 
-  where $ g' \bydef \epsilon_y L\theta Lh^{-1} $.
+  where $ g' \bydef \epsilon_y \L\theta \L h^{-1} $.
   To show the outer square commutes, it suffices
-  to show that $ g' Lf $ and $ g \epsilon_x $
+  to show that $ g' \L f $ and $ g \epsilon_x $
   have the same image under the adjunction homset
   correspondence.  We have
   \[
-    g' Lf = \epsilon_y L\theta Lh Lf
+    g' \circ \L f =
+    \epsilon_y \circ \L\theta \circ \L h \circ \L f
     \mapsto
-    U\epsilon_y UL\theta ULh ULf \eta_{ux}
-    = \theta h f   
-    = \theta U \hat{f} 
-    = Ug
+    \U\epsilon_y \circ \U\L\theta \circ \U\L h
+      \circ \U\L f \circ\eta_{ux}
+    = \theta \circ h \circ f   
+    = \theta \circ \U \circ \hat{f} 
+    = \U g
   \]
   and 
   \[
     g \epsilon_x
     \mapsto
-    Ug \eta_{Ux}
-    = Ug
+    \U g \circ \eta_{\U x}
+    = \U g
   \]
 \end{proof}
 
@@ -744,9 +773,9 @@ main result of this section.
 
 \begin{thm}
   \label{thm:main-theorem-street-version}
-  Suppose that $ \C $ and $ \D $ have chosen
-  initial objects and pushouts. Then $ U $ is a
-  coreflector if and only if $ U $ is a Street
+  Suppose that $ \A $ and $ \X $ have chosen
+  initial objects and pushouts. Then $ \U $ is a
+  coreflector if and only if $ \U $ is a Street
   opfibration.  
 \end{thm}
 
@@ -763,11 +792,11 @@ main result of this section.
 
 % \begin{thm}[Gabriel-Zisman]
 % \label{thm:GabZis}
-% 	An adjunction $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $. TFAE:
+% 	An adjunction $ \L \dashv R \from \ca{C} \leftrightarrow \ca{D} $. TFAE:
 % 	\begin{enumerate}
-% 		\item $ L $ is full and faithful;
+% 		\item $ \L $ is full and faithful;
 % 		\item the unit is an isomorphism;
-% 		\item the induced comonad on $ \ca{D} $ is idempotent, $ L $ is conservative, and $ R $ is essentially surjective.
+% 		\item the induced comonad on $ \ca{D} $ is idempotent, $ \L $ is conservative, and $ R $ is essentially surjective.
 % 	\end{enumerate}
 % \end{thm}
 
@@ -804,7 +833,7 @@ main result of this section.
 
 Thoughts about these assumptions. Here are the desired examples I can think of now: $ \ca{Set} $ together with $ \ca{Graph} $ or $ \ca{Top} $. The enriched over sets and completeness are both there. So is essential surjectivity. And reflection of isomorphisms.  The continuity is definitely needed, since it's necessary if $ R $ is a right adjoint. 
 
-Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $ where $ L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ L $ is conservative, but is $ R $?
+Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ \L \dashv R \from \ca{C} \leftrightarrow \ca{D} $ where $ \L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ \L $ is conservative, but is $ R $?
 
 \begin{ex}
   No, $ R $ is not in general conservative.
@@ -827,8 +856,11 @@ Go back to the right adjoint we had in the ``converse'' to the above theorem.  T
 The key players here are subcategories of $\OpFib$ of those opfibrations that are fibred cocomplete, and of something like
 $\Rali$ of ralis that strictly preserve all colimits.
 
-{\chris Also, not sure if separate section for that, but we should try and include as many reasonable examples as possible. The quality rather
-than the quantity is important I think! Grph Set the first such.}
+{\chris Also, not sure if separate section for
+  that, but we should try and include as many
+  reasonable examples as possible. The quality
+  rather than the quantity is important I think!
+  Grph Set the first such.}
 
 \bibliographystyle{alpha}
 \bibliography{references}
