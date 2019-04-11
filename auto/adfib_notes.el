@@ -6,9 +6,21 @@
     "adfib_preamble"
     "amsart"
     "amsart10")
-   (TeX-add-symbols
-    "nice")
    (LaTeX-add-labels
+    "sec:preliminaries"
+    "lem:Lack1"
+    "eq:13"
+    "eq:opfibration"
+    "factor"
+    "reindexing"
+    "lem:fibrewiselimits"
+    "it:2"
+    "prop:coreflection"
+    "sec:groth-fibs-ralis"
+    "prop:opfibtolari"
+    "prop:laritoopfib"
+    "thm:mainthm"
+    "Streetfibs"
     "thm:GAFT"
     "thm:GabZis")
    (LaTeX-add-bibliographies
