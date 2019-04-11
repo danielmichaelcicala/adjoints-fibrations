@@ -21,6 +21,9 @@
     "prop:laritoopfib"
     "thm:mainthm"
     "Streetfibs"
+    "thm:street-opfib-to-corefl"
+    "thm:corefl-to-street-obfib"
+    "thm:main-theorem-street-version"
     "thm:GAFT"
     "thm:GabZis")
    (LaTeX-add-bibliographies

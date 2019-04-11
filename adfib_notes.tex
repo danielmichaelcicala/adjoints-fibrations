@@ -434,6 +434,7 @@ Generalising \cref{prop:opfibtolari}, we obtain
 the following. 
 
 \begin{prop}
+  \label{thm:street-opfib-to-corefl}
   Let $ \U \from \D \to \C $ be a Street
   opfibration. Then $ U $ is a coreflector if its
   fibers have initial objects which are preserved
@@ -468,6 +469,7 @@ the following.
 Generalising \cref{prop:laritoopfib}, we obtain the following result.
 
 \begin{prop}
+  \label{thm:corefl-to-street-obfib}
   Suppose that $ \U \from \D \to \C $ is a
   coreflector. Then $ U $ is a Street obfibration
   if $ D $ has pushouts and $ U $ preserves them.
@@ -555,6 +557,23 @@ Generalising \cref{prop:laritoopfib}, we obtain the following result.
     = Ug
   \]
 \end{proof}
+
+We now intersect the hypothesis of Propositions
+\ref{thm:street-opfib-to-corefl} and
+\ref{thm:corefl-to-street-obfib} to provide the
+main result of this section.
+
+{\daniel The statement depends on Lemma
+  \ref{lem:fibrewiselimits} holding for Street
+  obfibrations too.}
+
+\begin{thm}
+  \label{thm:main-theorem-street-version}
+  Suppose that $ \C $ and $ \D $ have chosen
+  initial objects and pushouts. Then $ U $ is a
+  coreflector if and only if $ U $ is a Street
+  opfibration.  
+\end{thm}
 
 
 
