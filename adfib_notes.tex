@@ -470,85 +470,96 @@ the following.
 Generalising \cref{prop:laritoopfib}, we obtain the following result.
 
 \begin{prop}
- Suppose that blah is a coreflector (?). Then U is a Street opfibration if blah and blah have pushouts and U preserves them 
+  Suppose that $ \U \from \D \to \C $ is a
+  coreflector. Then $ U $ is a Street obfibration
+  if $ D $ has pushouts and $ U $ preserves them.
 \end{prop}}
-\begin{thm}
-	Let $ \ca{D} $ have pushouts. Given a coreflection $ L \dashv R \from \ca{C} \to \ca{D} $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
-\end{thm}
 
 \begin{proof}
-  Fix an arrow $ f \from a \to b $ in $ \ca{C} $
-  and an object $ x $ such that $ Rx \bydef a $.
-  Define $ \hat{f} $ as the pushout of $ Lf $
+  Fix an arrow $ f \from a \to b $ in $ \C $
+  and an object $ x $ in the fibre of $ a $. We
+  claim that $ \hat{f} $, defined as the pushout of $ Lf $
   along the counit $ \epsilon_x $
-	\[
-	\begin{tikzpicture}
-		\node (ul) at (0,2) {$ LRx $};
-		\node (ll) at (0,0) {$ x $};
-		\node (ur) at (2,2) {$ Lb $};
-		\node (lr) at (2,0) {$ x +_{LRx} Lb$};
-		\draw [->] (ul) to node [left] {$ \epsilon $} (ll);
-		\draw [->] (ul) to node [above] {$ Lf $} (ur);
-		\draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
-		\draw [->] (ur) to (lr);
-	\end{tikzpicture}
-	\] 
-	Observe that
-        $ R \hat{f} \from Rx \to R( x +_{LRx} Lb )
-        $. Also there is a string of isomorphisms
-	\[
-          R( x +_{LRx} Lb ) \to Rx +_{RLRx} RLb
-          \to Rx +_{Rx} b \to b
-	\]
-	whose composite we call $ h $. Then
-        $ R \hat{f} = f . h^{-1} $ as desired.
-        \emph{(notes: (1) as desired meaning f is
-          lifted up to iso (2) some details are
-          needed here)}
-	
-	Now show that $ \hat{f} $ is cocartesian.
-        Consider a $ \ca{D} $-arrow
-        $ g \from x \to y $ with a $ C $-arrow
-        $ \theta \from R( x +_{LRx} Lb ) \to Ry $
-        so that $ R \hat{f} . \theta = Rg $.  Can
-        we uniquely lift $ \theta $? Set up the
-        diagram
-	\[
-	\begin{tikzpicture}
-		\node (ul) at (0,2) {$ LRx $};
-		\node (ll) at (0,0) {$ x $};
-		\node (ur) at (2,2) {$ Lb $};
-		\node (lr) at (2,0) {$ x +_{LRx} Lb$};
-		\node (comp) at (4,-2) {y};
-		\draw [->] (ul) to node [left] {$ \epsilon_x $} (ll);
-		\draw [->] (ul) to node [above] {$ Lf $} (ur);
-		\draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
-		\draw [->] (ur) to (lr);
-		\draw [->] (ll) to [bend right=20] node [above] {$ g $} (comp);
-		\draw [->] (ur) to [bend left=20] node [above] {$ g' $} (comp);
-	\end{tikzpicture}
-	\] 
-	where $ g' \bydef Lh^{-1} . L\theta.\epsilon_y $.  To show the outer square commutes, it suffices to show that $ Lf . g' $ and $ \epsilon_x . g $ have the same image under the adjunction homset correspondence.  We have
-	\[
-		Lf . g' = Lf . Lh^{-1} . L\theta.\epsilon_y 
-			\mapsto \eta_{Rx} . RLf . RLh^{-1} . RL\theta.R\epsilon_y 
-			= f . h^{-1} . \theta  
-			= R \hat{f} . \theta 
-			= Rg
-	\]
-	and 
-	\[
-	\epsilon_x . g \mapsto \eta_{Rx} . Rg = Rg.	
-	\]
+  \[
+    \begin{tikzpicture}
+      \node (ul) at (0,2) {$ LRx $};
+      \node (ll) at (0,0) {$ x $};
+      \node (ur) at (2,2) {$ Lb $};
+      \node (lr) at (2,0) {$ x +_{LRx} Lb$};
+      \draw [->] (ul) to node [left] {$ \epsilon $} (ll);
+      \draw [->] (ul) to node [above] {$ Lf $} (ur);
+      \draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
+      \draw [->] (ur) to (lr);
+    \end{tikzpicture}
+  \]
+  is the cocartesian lift. There is a string of
+  isomorphisms
+  \[
+    U ( x +_{LUx} Lb ) \cong
+    Ux +_{ULUx} Lb \cong
+    Ux +_{Ux} b \cong
+    b
+  \]
+  whose composite we call $ h $.  Then
+  \[
+    \begin{tikzpicture}
+      \node (a) at (0,0) {$ a $};
+      \node (b) at (2,0) {$ b $};
+      \node (c) at (2,2) {$ U ( x+_{LUx} Lb ) $};
+      \path[->,font=\scriptsize,>=angle 90]
+      (a) edge node[below]{$ f $} (b)
+      (a) edge node[above]{$ U\hat{f} $} (c)
+      (c) edge node[right]{$ h $} (b);
+    \end{tikzpicture}
+  \]
+  commutes, and so $ \hat{f} $ is an appropriate
+  lift. It remains to show that $ \hat{f} $ is
+  cocartesian.
+
+  Consider a $ \D $-arrow $ g \from x \to y $
+  with a $ \C $-arrow
+  $ \theta \from U( x +_{LUx} Lb ) \to Uy $ so
+  that $ \theta U \hat{f} = Ug $.  Can we
+  uniquely lift $ \theta $? Set up the diagram
+  \[
+    \begin{tikzpicture}
+      \node (ul) at (0,2) {$ LRx $};
+      \node (ll) at (0,0) {$ x $};
+      \node (ur) at (2,2) {$ Lb $};
+      \node (lr) at (2,0) {$ x +_{LRx} Lb$};
+      \node (comp) at (4,-2) {y};
+      \draw [->] (ul) to node [left] {$ \epsilon_x $} (ll);
+      \draw [->] (ul) to node [above] {$ Lf $} (ur);
+      \draw [->] (ll) to node [above] {$ \hat{f} $} (lr);
+      \draw [->] (ur) to (lr);
+      \draw [->] (ll) to [bend right=20] node [above] {$ g $} (comp);
+      \draw [->] (ur) to [bend left=20] node [above] {$ g' $} (comp);
+    \end{tikzpicture}
+  \] 
+  where $ g' \bydef \epsilon_y L\theta Lh^{-1} $.
+  To show the outer square commutes, it suffices
+  to show that $ g' Lf $ and $ g \epsilon_x $
+  have the same image under the adjunction homset
+  correspondence.  We have
+  \[
+    g' Lf = \epsilon_y L\theta Lh Lf
+    \mapsto
+    U\epsilon_y UL\theta ULh ULf \eta_{ux}
+    = \theta h f   
+    = \theta U \hat{f} 
+    = Ug
+  \]
+  and 
+  \[
+    g \epsilon_x
+    \mapsto
+    Ug \eta_{Ux}
+    = Ug
+  \]
 \end{proof}
 
 
 
-\begin{thm}
-	Given a Street opfibration $ R \from \ca{D} \to \ca{C} $, it is a right adjoint when it is nice.
-\end{thm}
- 
-Let's try to figure out what nice could be. Here are some helpful theorems.
 
 \begin{thm}[Freyd's general adjoint functor theorem]
 \label{thm:GAFT}
