@@ -22,134 +22,293 @@ Fibrations and Adjunctions rock.
 \begin{comment}
 {\chris Christina's questions to Steve:}
 
-I had a question regarding choice of (co)limits in categories. Please excuse my naivety, I haven't really gone into depths of such
-questions before because I guess if one can avoid them, they tend to! But any insight or 'big picture' idea from you would be really,
-really appreciated to help me understand better a situation I find myself in. In particular, feel free to correct me in the following
-statements.
+I had a question regarding choice of (co)limits in
+categories. Please excuse my naivety, I haven't
+really gone into depths of such questions before
+because I guess if one can avoid them, they tend
+to! But any insight or 'big picture' idea from you
+would be really, really appreciated to help me
+understand better a situation I find myself in. In
+particular, feel free to correct me in the
+following statements.
 
-(1) 'Choosing limits' in a complete category amounts to choosing a specific (of the many isomorphic ones) adjoint to the
-constant diagram functor. Therefore if a category has limits, we can assume it has chosen ones. Does this already require the axiom of
-choice?
+(1) 'Choosing limits' in a complete category
+amounts to choosing a specific (of the many
+isomorphic ones) adjoint to the constant diagram
+functor. Therefore if a category has limits, we
+can assume it has chosen ones. Does this already
+require the axiom of choice?
 
-(2) Therefore this choice is already 'functorial'. However, can we 'choose the choice'? In particular, is it reasonable
-to say that if C has pushouts for example, there is such a specific choice such that the pushout of f along the identity 'is'
-exactly f (and the identity)?
+(2) Therefore this choice is already
+'functorial'. However, can we 'choose the choice'?
+In particular, is it reasonable to say that if C
+has pushouts for example, there is such a specific
+choice such that the pushout of f along the
+identity 'is' exactly f (and the identity)?
 
-(3) If a functor $F:C\to D$ between categories with pushouts preserves them in the ordinary sense, can we actually make a
-choice of them in C and in D, such that F strictly preserves them? What assumptions should I make to be able to do that?
-Or this is somehow extra, i.e. needs to be checked or required?
+(3) If a functor $F:C\to D$ between categories
+with pushouts preserves them in the ordinary
+sense, can we actually make a choice of them in C
+and in D, such that F strictly preserves them?
+What assumptions should I make to be able to do
+that?  Or this is somehow extra, i.e. needs to be
+checked or required?
 
-Thanks so much in advance for any intuition that would help wrap my head around these!
+Thanks so much in advance for any intuition that
+would help wrap my head around these!
 
-A quick question to end: it is a fact that every Grothendieck fibration is a particular case of Street fibration,
-and I also read that every Street fibration factors as an equivalence of categories followed by a Grothendieck one.
-(I am in the process of reading Street's paper, but) does this by any chance induce an equivalence of categories? Fib with StreetFib?
+A quick question to end: it is a fact that every
+Grothendieck fibration is a particular case of
+Street fibration, and I also read that every
+Street fibration factors as an equivalence of
+categories followed by a Grothendieck one.  (I am
+in the process of reading Street's paper, but)
+does this by any chance induce an equivalence of
+categories? Fib with StreetFib?
 
 {\chris Steve's response:}
 
-1. As you say, choosing limits amounts to choosing a specific adjoint to the diagonal functor (with corresponding
-statements holding if you are using weighted limits). I certainly allow myself to regard a category with limits as having
-chosen ones if I wish. I suppose from a formal point of view that does require the axiom of choice, but I also use this as necessary.
-The category of sets does have a canonical choice, which means that many of the most commonly occurring complete categories
-also have a canonical choice.
+1. As you say, choosing limits amounts to choosing
+a specific adjoint to the diagonal functor (with
+corresponding statements holding if you are using
+weighted limits). I certainly allow myself to
+regard a category with limits as having chosen
+ones if I wish. I suppose from a formal point of
+view that does require the axiom of choice, but I
+also use this as necessary.  The category of sets
+does have a canonical choice, which means that
+many of the most commonly occurring complete
+categories also have a canonical choice.
 
-2. Functoriality is automatic, irrespective of choice issues. There is also no problem with first using the canonical
-choice where it exists (for example with pushouts along identities) and then extending this arbitrarily to deal with other cases.
-I guess that once again you need the axiom of choice for this, but are you actually worried about that?
+2. Functoriality is automatic, irrespective of
+choice issues. There is also no problem with first
+using the canonical choice where it exists (for
+example with pushouts along identities) and then
+extending this arbitrarily to deal with other
+cases.  I guess that once again you need the axiom
+of choice for this, but are you actually worried
+about that?
 
-3. I have never thought about this - at first sight it seems a bit unnatural. In any case, I think that this
-is not automatic. Let $2={0->1}$ be the arrrow category, and let $C=2\times 2\times 2$ be the free-living commutative cube.
-Each face of the cube is in fact a pushout; in fact C has a unique choice of pushouts. Let D be the category obtained from the
-square $2\times 2$ by adding an extra object c isomorphic to (1,1). Then D contains two commutative squares:
-the original 2x2, and one using the new object. This category once again has pushouts, but now there are choices to make.
-There is an evident (unique) functor f:C->D sending the top face of the cube to the first square and the bottom
-face the second square. Whatever choice of pushouts you make in D, either the pushout in the top face of
-C or that in the bottom face will fail to be preserved strictly.
+3. I have never thought about this - at first
+sight it seems a bit unnatural. In any case, I
+think that this is not automatic. Let $2={0->1}$
+be the arrrow category, and let
+$C=2\times 2\times 2$ be the free-living
+commutative cube.  Each face of the cube is in
+fact a pushout; in fact C has a unique choice of
+pushouts. Let D be the category obtained from the
+square $2\times 2$ by adding an extra object c
+isomorphic to (1,1). Then D contains two
+commutative squares: the original 2x2, and one
+using the new object. This category once again has
+pushouts, but now there are choices to make.
+There is an evident (unique) functor f:C->D
+sending the top face of the cube to the first
+square and the bottom face the second
+square. Whatever choice of pushouts you make in D,
+either the pushout in the top face of C or that in
+the bottom face will fail to be preserved
+strictly.
 
-Regarding your question about fibrations, there is a question as to
-what your ``categories of fibrations'' are.
-But perhaps more natural would be to consider 2-categories, and then look for a biequivalence between these. This can be done.
+Regarding your question about fibrations, there is
+a question as to what your ``categories of
+fibrations'' are.  But perhaps more natural would
+be to consider 2-categories, and then look for a
+biequivalence between these. This can be done.
 
 {\chris More of Steve's correspondence:}
->
-> How should I formally treat the statement `F:C->D strictly preserves (co)limits' in practice? How can I check whether a certain functor satisfies that?
 
-I?ll just talk about limits, but analogous things hold for colimits; also for limits or colimits of some given class.
+How should I formally treat the statement `F:C->D
+strictly preserves (co)limits' in practice? How
+can I check whether a certain functor satisfies
+that?
 
-Well the first thing I would say is that it only makes sense if C and D have chosen limits.  And pretty much the only way that you can hope for F to preserve them is if the chosen limits and C
-and D have both been constructed via chosen limits from some other given categories (which might include C or D or might be something else).
+I'll just talk about limits, but analogous things
+hold for colimits; also for limits or colimits of
+some given class.
 
-For example, if K has chosen limits, then we might choose limits in functor categories [A,K] and [B,K] to be the pointwise ones, and then restriction along any B->A will give a functor [A,K]->[B,K]
-which strictly preserves these. This includes the case of the source and target functors Gph -> Set.
+Well the first thing I would say is that it only
+makes sense if C and D have chosen limits.  And
+pretty much the only way that you can hope for F
+to preserve them is if the chosen limits and C and
+D have both been constructed via chosen limits
+from some other given categories (which might
+include C or D or might be something else).
 
-Or if K and L have chosen limits, and f:K->L is an arbitrary functor, then we can equip the comma category f/L with chosen limits in such a way that the projections f/L->L and f/L->K strictly preserve
-limits; and furthermore, a functor into f/L will strictly preserve limits if and only if its composite with each of the projections does so.
+For example, if K has chosen limits, then we might
+choose limits in functor categories [A,K] and
+[B,K] to be the pointwise ones, and then
+restriction along any B->A will give a functor
+[A,K]->[B,K] which strictly preserves these. This
+includes the case of the source and target
+functors Gph -> Set.
 
-These sort of things are the only real cases I know where I specific functor will strictly preserve limits. 
+Or if K and L have chosen limits, and f:K->L is an
+arbitrary functor, then we can equip the comma
+category f/L with chosen limits in such a way that
+the projections f/L->L and f/L->K strictly
+preserve limits; and furthermore, a functor into
+f/L will strictly preserve limits if and only if
+its composite with each of the projections does
+so.
 
-On the other hand if K and L have chosen limits and those in K are free, in a suitable sense, then any continuous K->L is isomorphic to one which strictly preserves limits. 
+These sort of things are the only real cases I
+know where I specific functor will strictly
+preserve limits.
 
-There are various subtle things about strict preservation. For example, we know that a category has all finite limits iff it has finite products and equalizers, and similarly for preservation; but if 
-you move to strict preservation, then you need to be careful about the specific way that you are making the choices.
+On the other hand if K and L have chosen limits
+and those in K are free, in a suitable sense, then
+any continuous K->L is isomorphic to one which
+strictly preserves limits.
+
+There are various subtle things about strict
+preservation. For example, we know that a category
+has all finite limits iff it has finite products
+and equalizers, and similarly for preservation;
+but if you move to strict preservation, then you
+need to be careful about the specific way that you
+are making the choices.
 \end{comment}
 
 \begin{comment}
 {\chris John's questions and ideas:}
 
-"a right adjoint [left inverse] is an opfibration if both categories have pushouts and the functor (strictly) preserves them. But it's not an iff!"
-Nice result - except for the "strictly preserves pushouts".   I don't mind that it's not an iff.
+"a right adjoint [left inverse] is an opfibration
+if both categories have pushouts and the functor
+(strictly) preserves them. But it's not an iff!"
+Nice result - except for the "strictly preserves
+pushouts".  I don't mind that it's not an iff.
 
-One almost never considers categories with chosen pushouts, and you need chosen pushouts to talk about strict preservation of pushouts.
-Let me see; maybe it's not so evil if we do things right.
+One almost never considers categories with chosen
+pushouts, and you need chosen pushouts to talk
+about strict preservation of pushouts.  Let me
+see; maybe it's not so evil if we do things right.
 
-If we take the usual forgetful functor Graph -> Set, its left adjoint lets us see Set as a full subcategory of Gph - is that always true when we have a right adjoint left inverse functor?
-We can pick chosen pushouts for all pushout diagrams in Graph (if we have a lot of time on our hands ) and for diagrams which happen to live in the subcategory Set these give chosen pushouts in Set.
-Does it work that way whenever both categories have pushouts and our functor is a right adjoint left inverse?
+If we take the usual forgetful functor Graph ->
+Set, its left adjoint lets us see Set as a full
+subcategory of Gph - is that always true when we
+have a right adjoint left inverse functor?  We can
+pick chosen pushouts for all pushout diagrams in
+Graph (if we have a lot of time on our hands ) and
+for diagrams which happen to live in the
+subcategory Set these give chosen pushouts in Set.
+Does it work that way whenever both categories
+have pushouts and our functor is a right adjoint
+left inverse?
 
-Next, does making this choice of pushouts (which is the best possible way I can imagine to choose pushout for both Graph and Set in a compatible way) make the forgetful functor Gph -> Set preserve those pushouts strictly???
-(I'm using Gph and Graph interchangeably here, sorry.)
+Next, does making this choice of pushouts (which
+is the best possible way I can imagine to choose
+pushout for both Graph and Set in a compatible
+way) make the forgetful functor Gph -> Set
+preserve those pushouts strictly???  (I'm using
+Gph and Graph interchangeably here, sorry.)
 
-Summary: if in examples we can figure out an easy procedure to choose pushouts to make our right adjoint left inverse strictly preserve those chosen pushouts, it's not too terrible to assume strict preservation for a theorem.
-However, it's still evil in the technical sense.
+Summary: if in examples we can figure out an easy
+procedure to choose pushouts to make our right
+adjoint left inverse strictly preserve those
+chosen pushouts, it's not too terrible to assume
+strict preservation for a theorem.  However, it's
+still evil in the technical sense.
 
-And if we can figure out general conditions under which we can get this strict preservation we should state them, because otherwise this result looks bizarre and useless.
+And if we can figure out general conditions under
+which we can get this strict preservation we
+should state them, because otherwise this result
+looks bizarre and useless.
 
-Indeed, I'd be happier to state a theorem that didn't mention strict preservation of pushouts, and use some clever trick to get strict preservation of pushouts as part of the proof.
+Indeed, I'd be happier to state a theorem that
+didn't mention strict preservation of pushouts,
+and use some clever trick to get strict
+preservation of pushouts as part of the proof.
 
 That black-boxes the evil.
 
 December 6, 2018
 Christina12/06/2018
 
-I am sorry, I am really not as good as everyone else in understanding and writing math in a chat :smiley: 
+I am sorry, I am really not as good as everyone
+else in understanding and writing math in a chat
+:smiley:
 
-As far as I understand this, choosing limits or colimits is really not that bad to begin with (or that's what I thought after some emails with Steve Lack), it's really just saying "the" adjoint to the constant diagram functor as opposes to "an" adjoint to the constant diagram functor. So it is natural to for example choose pushouts in Set in a way such that the pushout of a function along the identity IS the same function.(edited)
-Now strict preservation is used to induce a Grothendieck opfibration structure rather than a Street opfibration structure. (the plan is to have both versions of the theorem in the paper). So given that, working so much with fibrations, I feel very comfortable around that particular evilness :smiley: , I don't mind that strict clause there.
+As far as I understand this, choosing limits or
+colimits is really not that bad to begin with (or
+that's what I thought after some emails with Steve
+Lack), it's really just saying "the" adjoint to
+the constant diagram functor as opposes to "an"
+adjoint to the constant diagram functor. So it is
+natural to for example choose pushouts in Set in a
+way such that the pushout of a function along the
+identity IS the same function.(edited) Now strict
+preservation is used to induce a Grothendieck
+opfibration structure rather than a Street
+opfibration structure. (the plan is to have both
+versions of the theorem in the paper). So given
+that, working so much with fibrations, I feel very
+comfortable around that particular evilness
+:smiley: , I don't mind that strict clause there.
 
-Finally, and I still want/need to understand this better, it seems like for functors that are fibrations/opfibrations, preserving some limit ends up being equivalent to strictly preserving it!!!!! For some choice. Of course that's not true for arbitrary functors.
+Finally, and I still want/need to understand this
+better, it seems like for functors that are
+fibrations/opfibrations, preserving some limit
+ends up being equivalent to strictly preserving
+it!!!!! For some choice. Of course that's not true
+for arbitrary functors.
 
 I am sorry if I am out of topic John, I hope I'm not
 
-John Baez12/06/2018
-Hi Christina!  I was hoping you'd tell me how to choose pushouts in Set and Gph in such a way that the right adjoint Gph -> Set strictly preserves the chosen pushouts.
-Maybe this is too easy and obvious for you; if so, maybe you can tell me a general theorem that says when a functor that preserves pushouts (in the usual up-to-canonical-isomorphism sense) can be "improved" to a naturally isomorphic functor that strictly preserves pushouts.
+John Baez12/06/2018 Hi Christina!  I was hoping
+you'd tell me how to choose pushouts in Set and
+Gph in such a way that the right adjoint Gph ->
+Set strictly preserves the chosen pushouts.  Maybe
+this is too easy and obvious for you; if so, maybe
+you can tell me a general theorem that says when a
+functor that preserves pushouts (in the usual
+up-to-canonical-isomorphism sense) can be
+"improved" to a naturally isomorphic functor that
+strictly preserves pushouts.
 
-Of course I'll let you choose the pushouts in any you want as well as replacing the functor by a naturally isomorphic functor.
+Of course I'll let you choose the pushouts in any
+you want as well as replacing the functor by a
+naturally isomorphic functor.
 
-If I had a general theorem like this, I'd agree that "strictly preserving pushouts" is not so bad - I could just use this theorem.
-I have similar questions about the "right adjoint left inverse" idea.
+If I had a general theorem like this, I'd agree
+that "strictly preserving pushouts" is not so bad
+- I could just use this theorem.  I have similar
+questions about the "right adjoint left inverse"
+idea.
 
-For one functor to strictly be the left inverse of another is an evil concept, i.e. not invariant under natural isomorphism.   But maybe you know a theorem that says "if you have a functor that's left inverse of another functor up to natural isomorphism, under some conditions we can replace it with one that's left inverse on the nose, i.e. strictly."
+For one functor to strictly be the left inverse of
+another is an evil concept, i.e. not invariant
+under natural isomorphism.  But maybe you know a
+theorem that says "if you have a functor that's
+left inverse of another functor up to natural
+isomorphism, under some conditions we can replace
+it with one that's left inverse on the nose,
+i.e. strictly."
 
-And then, of course, if I'm trying to get a right adjoint left inverse to also strictly preserve pushouts, I need these two theorems I'm hoping for to not conflict with each other!
+And then, of course, if I'm trying to get a right
+adjoint left inverse to also strictly preserve
+pushouts, I need these two theorems I'm hoping for
+to not conflict with each other!
 
-That is, it would be bad if making the functor be a strict left inverse required changing it in a way that would destroy its strict preservation of chosen pushouts.
+That is, it would be bad if making the functor be
+a strict left inverse required changing it in a
+way that would destroy its strict preservation of
+chosen pushouts.
 
-Maybe we should first change the functor so that it's a left inverse, and then choose pushouts so they're strictly preserved.
+Maybe we should first change the functor so that
+it's a left inverse, and then choose pushouts so
+they're strictly preserved.
 
 Christina12/06/2018
 
-No definitely choosing the pushouts in a way that they are strictly preserved is not easy or obvious to me. That has been a worry of mine within the connecting ladder between decorated cospans and structured cospans since before last summer. So I definitely think the things you mentioned above should be clarified, and it would be great if they did.
+No definitely choosing the pushouts in a way that
+they are strictly preserved is not easy or obvious
+to me. That has been a worry of mine within the
+connecting ladder between decorated cospans and
+structured cospans since before last summer. So I
+definitely think the things you mentioned above
+should be clarified, and it would be great if they
+did.
 
 1) Hermida seemed to imply that whenever an opfibration preserves colimits, there is a way to replace the functor by a naturally isomorphic one that strictly preserves them. I want to better understand this.
 
@@ -186,7 +345,23 @@ So, my main point is that this example can probably be generalized to a bunch of
 
 \section*{Things To Do}
 \begin{itemize}
- \item Agree on notation. {\chris Daniel remind me the good choices for names? Total and base, fibration and opfibration, adjunctions? I made macros to save time later. Also, fine by small letters for objects of categories or not?}
+ \item Agree on notation. {\chris Daniel remind me
+     the good choices for names? Total and base,
+     fibration and opfibration, adjunctions? I
+     made macros to save time later. Also, fine by
+     small letters for objects of categories or
+     not?}
+ \item {\daniel For names, we've been using
+     categories A and X so that for objects we
+     have a,b,c and x,y,z that don't bump into
+     each other. I think X for total and A for
+     base.  For adjunctions, we've been using L
+     and R. But that's only when we are fixing an
+     adjunction.  Here we're proving things are
+     adjunctions, so maybe F and G?  I like Joe's
+     mathsf font for categories.  I'll macro that
+     up. Yes, I'm happy to use small letters for objects.}
+   
 \end{itemize}
 
 \section*{Acknowledgements} We would like to thank John Baez, Claudio Hermida, Steve Lack, ... for invaluable advice and discussions.
@@ -473,7 +648,7 @@ Generalising \cref{prop:laritoopfib}, we obtain the following result.
   Suppose that $ \U \from \D \to \C $ is a
   coreflector. Then $ U $ is a Street obfibration
   if $ D $ has pushouts and $ U $ preserves them.
-\end{prop}}
+\end{prop}
 
 \begin{proof}
   Fix an arrow $ f \from a \to b $ in $ \C $
@@ -506,7 +681,7 @@ Generalising \cref{prop:laritoopfib}, we obtain the following result.
       \node (a) at (0,0) {$ a $};
       \node (b) at (2,0) {$ b $};
       \node (c) at (2,2) {$ U ( x+_{LUx} Lb ) $};
-      \path[->,font=\scriptsize,>=angle 90]
+      \path[->,font=\scriptsize]
       (a) edge node[below]{$ f $} (b)
       (a) edge node[above]{$ U\hat{f} $} (c)
       (c) edge node[right]{$ h $} (b);
@@ -575,30 +750,33 @@ main result of this section.
   opfibration.  
 \end{thm}
 
-
-
 \section{Miscellaneous Theorems}
 
-\begin{thm}[Freyd's general adjoint functor theorem]
-\label{thm:GAFT}
-	A functor $ F \from X \to Y $ is a right adjoint if  $ x $ is complete, locally small, and $ F $ satisfies the \emph{solution set condition}. The latter says, for any $ Y $-object $ y $, there exists a small set $ I $ indexing a collection of $ X $-objects $ {x_i}_I $ and $ Y $-arrows $ {f_i \from y \to F ( x_i ) } $ such that every $ F $-valued $ Y $-arrow $ y \to R x $ factors as $ Fg . f_k $ for $ k \in I $ and $ g \from x_k \to x $.
-\end{thm}
+% \begin{thm}[Freyd's general adjoint functor theorem]
+% \label{thm:GAFT}
+% 	A functor $ F \from X \to Y $ is a right adjoint if  $ x $ is complete, locally small, and $ F $ satisfies the \emph{solution set condition}. The latter says, for any $ Y $-object $ y $, there exists a small set $ I $ indexing a collection of $ X $-objects $ {x_i}_I $ and $ Y $-arrows $ {f_i \from y \to F ( x_i ) } $ such that every $ F $-valued $ Y $-arrow $ y \to R x $ factors as $ Fg . f_k $ for $ k \in I $ and $ g \from x_k \to x $.
+% \end{thm}
 
-\begin{proof}
-	The proof is V.6.2 in CWM.  Define the left adjoint $ G \from Y \to X $ by $ G (y) \coloneqq x $ where $ y \to F x $ is initial in the comma category $ y \downarrow F $.  
-\end{proof}
+% \begin{proof}
+% 	The proof is V.6.2 in CWM.  Define the left adjoint $ G \from Y \to X $ by $ G (y) \coloneqq x $ where $ y \to F x $ is initial in the comma category $ y \downarrow F $.  
+% \end{proof}
 
-\begin{thm}[Gabriel-Zisman]
-\label{thm:GabZis}
-	An adjunction $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $. TFAE:
-	\begin{enumerate}
-		\item $ L $ is full and faithful;
-		\item the unit is an isomorphism;
-		\item the induced comonad on $ \ca{D} $ is idempotent, $ L $ is conservative, and $ R $ is essentially surjective.
-	\end{enumerate}
-\end{thm}
+% \begin{thm}[Gabriel-Zisman]
+% \label{thm:GabZis}
+% 	An adjunction $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $. TFAE:
+% 	\begin{enumerate}
+% 		\item $ L $ is full and faithful;
+% 		\item the unit is an isomorphism;
+% 		\item the induced comonad on $ \ca{D} $ is idempotent, $ L $ is conservative, and $ R $ is essentially surjective.
+% 	\end{enumerate}
+% \end{thm}
 
-Now, let's prove a strong theorem then try to weaken it
+{\daniel The following theorems were attempts at
+  getting at an inverse of the RALI gives a
+  St. opfibration.  But now with Theorem
+  \ref{thm:street-opfib-to-corefl}, we probably
+  don't need them.  Should we throw them away or
+  keep them as nifty things?}
 
 \begin{thm}
 	Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, surjective-on-objects Grothendiek opfibration.  Then $ R $ is a right adjoint.
@@ -629,31 +807,20 @@ Thoughts about these assumptions. Here are the desired examples I can think of n
 Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ L \dashv R \from \ca{C} \leftrightarrow \ca{D} $ where $ L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ L $ is conservative, but is $ R $?
 
 \begin{ex}
-	No, $ R $ is not in general conservative.  Consider the underlying node functor $ \Grph \to \Set $.  All $ \Grph $-endomorphisms on
-	\[
-	\begin{tikzpicture}
-		\node (a) at (0,0) {$ \bullet $};
-		\node (b) at (2,0) {$ \bullet $};
-		\draw [->] (a.30) to (b.150);
-		\draw [->] (a.-30) to (b.-150);
-	\end{tikzpicture}
-	\]
-	are sent to the identity on $ 2 $.
+  No, $ R $ is not in general conservative.
+  Consider the underlying node functor
+  $ \Grph \to \Set $.  All $ \Grph $-endomorphisms
+  on
+  \[
+    \begin{tikzpicture}
+      \node (a) at (0,0) {$ \bullet $};
+      \node (b) at (2,0) {$ \bullet $};
+      \draw [->] (a.30) to (b.150);
+      \draw [->] (a.-30) to (b.-150);
+    \end{tikzpicture}
+  \]
+  are sent to the identity on $ 2 $.
 \end{ex}
-
-At this point, we have partial converses:
-
-\fbox{
-\begin{minipage}{0.4\textwidth}
-		Let $ \ca{D} $ have pushouts. Given a coreflection $ L \dashv R \from \ca{C} \to \ca{D} $ where $ R $ preserves pushouts, $ R $ is a Street opfibration.
-\end{minipage}
-}
-\hfill
-\fbox{
-\begin{minipage}{0.4\textwidth}
-		Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
-\end{minipage}
-}
 
 \section{Categories of fibrations and adjunctions}
 
