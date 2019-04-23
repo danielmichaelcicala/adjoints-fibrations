@@ -359,31 +359,12 @@ So, my main point is that this example can probably be generalized to a bunch of
     maybe I'm wrong. Are they using C,D?  I agree we should
     match his/Kenny's notation.} 
      
-\item {\daniel For adjunctions, we've been using L and
-    R. But that's only when we are fixing an adjunction.
-    Here we're proving things are adjunctions, so maybe F
-    and G?} {\chris again, I think U was kind of suggested
-    for our central opfibration. I don't mind that
-    tbh.}{\daniel I thought John likes L,R as
-    adjoints. I'm happy to use U instead. }
-     
-\item {\daniel I like Joe's mathsf font for categories.
-    I'll macro that up.}{\chris I think you mean Joe has
-    been using mathsf for named categories? I don't remember
-    anyone arguing about mathcal for general categories as
-    is the norm, but again if you don't like it no prob. I'm
-    pretty used to it I admit!}{\daniel Here's another
-    misundertanding by me.  I though ALL categories were
-    mathsf, not just the named ones.  You're right mathcal
-    is super common and I'm happy to use that
-    too. }
 \item {\daniel Basically, for all of these notation questions, I
     now feel like I'm completely confused about the
     conversations our group had about it and, in general,
     I'm more than happy to follow your lead. I can make all
     of the changes, but before I do that, I'll wait until we
-  talk in person just so I don't confuse anything further.}
-%     {\daniel Yes, I'm happy to use small letters for objects.} {\chris Great!}
+  talk in person just so I don't confuse anything further.}{\chris OK I will try and discuss that on Wednesday. For the time being, I eliminated A and X for categories just by changing the macros. I attempted to change small letters too but that would be long so I postponed!}
 \end{itemize}
 
 \section*{Acknowledgements} We would like to thank John Baez, Claudio Hermida, Steve Lack, ... for invaluable advice and discussions.
@@ -454,21 +435,21 @@ Consider a functor $P \colon\A \to \X$. A morphism $\phi \colon a \to b$ in $\A 
 \end{equation}
 For $x \in \ob\X$, the \define{fibre of $P$ over $x$} written $\A_x$, is the subcategory of $\A$ which consists of objects $a$ such that $P(a) = x$ and morphisms $\phi$ with $P(\phi) = 1_x$, called \define{vertical} morphisms. The functor $P \colon \A \to \X$ is called a \define{fibration} if and only if, for all $f \colon x \to y$ in $\X$ and $b\in\A_Y$, there is a cartesian morphism $\phi$ with codomain $b$ above $f$; it is called a \define{cartesian lifting} of $b$ along $f$. The category $\X$ is then called the \define{base} of the fibration, and $\A $ its \define{total category}.
 
-Dually, the functor $\U \colon \A \to \X$ is an \define{opfibration} if $\U^\mathrm{op}$ is a fibration, i.e.\ for every $c \in \A _x$ and $h \colon x \to y$ in $\X$, there is a cocartesian morphism with domain $c$ above $h$, the \define{cocartesian lifting} of $c$ along $h$ with the dual universal property:
+Dually, the functor $\U \colon \D \to \C$ is an \define{opfibration} if $\U^\mathrm{op}$ is a fibration, i.e.\ for every $a \in \D _x$ and $h \colon x \to y$ in $\C$, there is a cocartesian morphism with domain $a$ above $h$, the \define{cocartesian lifting} of $a$ along $h$ with the dual universal property:
 \begin{equation}\label{eq:opfibration}
 \xymatrix @R=.1in @C=.6in
-{&& d'\ar @{.>}@/_/[dd] &&\\
-c\ar[r]_-{\beta} \ar @{.>}@/_/[dd]
+{&& b'\ar @{.>}@/_/[dd] &&\\
+a\ar[r]_-{\beta} \ar @{.>}@/_/[dd]
 \ar[urr]^-{\gamma} & 
-d \ar @{.>}@/_/[dd] \ar @{-->}[ur]_-{\exists! \delta}
-&& \textrm{in }\A\\
+b \ar @{.>}@/_/[dd] \ar @{-->}[ur]_-{\exists! \delta}
+&& \textrm{in }\D\\
 && y' &&\\
 x\ar[r]_-{h=\U\beta} \ar[urr]^-{k\circ h=\U\gamma}
- & y \ar[ur]_-k && \textrm{in }\X}
+ & y \ar[ur]_-k && \textrm{in }\C}
 \end{equation}
 A \define{bifibration} is a functor which is both a fibration and opfibration.
 
-If $P\colon \A \to\X$ is a fibration, assuming the axiom of choice we may select a cartesian arrow over each $f\colon x\to y$ in $\X$ and $b\in\A _y$, denoted by $\Cart(f,b)\colon f^*(b)\to b$. Such a choice of cartesian liftings is called a \define{cleavage} for $P$, which is then called a \define{cloven fibration}; any fibration is henceforth assumed to be cloven. Dually, if $\U$ is an opfibration, for any $c\in\A _x$ and $h \colon x \to y$ in $\X$ we can choose a cocartesian lifting of $c$ along $h$, $\Cocart(h,c)\colon c\longrightarrow h_!(c)$. 
+If $P\colon \A \to\X$ is a fibration, assuming the axiom of choice we may select a cartesian arrow over each $f\colon x\to y$ in $\X$ and $b\in\A _y$, denoted by $\Cart(f,b)\colon f^*(b)\to b$. Such a choice of cartesian liftings is called a \define{cleavage} for $P$, which is then called a \define{cloven fibration}; any fibration is henceforth assumed to be cloven. Dually, if $\U$ is an opfibration, for any $a\in\D _x$ and $h \colon x \to y$ in $\C$ we can choose a cocartesian lifting of $a$ along $h$, $\Cocart(h,a)\colon a\longrightarrow h_!(a)$. 
 Any arrow in the total category of an (op)fibration factorizes uniquely into
 a vertical morphism followed by a (co)cartesian one: {\chris make small letters}
 \begin{equation}\label{factor}
@@ -477,13 +458,13 @@ a vertical morphism followed by a (co)cartesian one: {\chris make small letters}
 f^*B\ar[urr]_-{\;\Cart(f,B)} \ar @{.>}[d] &&& \textrm{in }\A  \\
 X\ar[rr]_-{f} && Y & \textrm{in }\X,}\qquad
 \xymatrix @C=.4in @R=.2in
-{C \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(g,C)} && D &\\
-&& f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\A  \\
-X\ar[rr]_-{g} && Y & \textrm{in }\X.}
+{a \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(g,a)} && b &\\
+&& f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\D  \\
+a\ar[rr]_-{g} && y & \textrm{in }C.}
 \end{equation}
 The choice of (co)cartesian liftings in an (op)fibration induces a so-called \define{reindexing functor} between the fibre categories
 \begin{equation}\label{reindexing}
-    f^*\colon \A _y\to\A _x\quad\textrm{ and }\quad h_!\colon\A _x\to\A _y
+    f^*\colon \A _y\to\A _x\quad\textrm{ and }\quad h_!\colon\D _x\to\C _y
 \end{equation}
 respectively, for each morphism $f\colon x\to y$ and $h\colon x\to y$ in the base category.
 It can be verified by the (co)cartesian universal property that $1_{\A _x}\cong(1_x)^*$ 
@@ -517,13 +498,12 @@ We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredan
 Both these notions are special cases of the well-known notions of \emph{(co)reflections}, i.e. ...
 {\chris Position here the well-known equivalences clauses for coreflections, also their strict versions for laris.}
 \begin{prop}\label{prop:coreflection}
- The following are equivalent for an adjunction blah blah:
+ The following are equivalent for an adjunction $\L\dashv\U\colon\D\to\C$:
  \begin{enumerate}
-  \item $\U$ is strictly (?) fully faithful (resp. fully faithful);
-  \item the unit is an identity (resp. isomorphism);
-  \item $\\U\epsilon$ is an identity (resp. isomorphism);
+  \item $\L$ is strictly fully faithful (resp. fully faithful);
+  \item the unit $\eta\colon1_\C\Rightarrow \U\L$ is the identity (resp. isomorphism).
  \end{enumerate}
-
+Under these conditions, $\U\epsilon$ and $\epsilon_\L$ are identities (resp. isomorphisms).
 \end{prop}
 
 
@@ -536,14 +516,14 @@ Initially we establish when an opfibration has a left adjoint; the following res
 
 %changed from has a lari to is a rali to make descriptions of categories easier later - hopefully! Otherwise change back.
 \begin{prop} \label{prop:opfibtolari}
-  Let $\U \from \X \to \A$ be an opfibration. Then
+  Let $\U \from \D \to \C$ be an opfibration. Then
   $\U$ is a rali if (and only if) its fibers have
   initial objects which are preserved by the
   reindexing functors.
 \end{prop}
 
 \begin{proof}
-Denote by $\bot_a$ the initial object in each fiber $\X_a$ above an object $a\in\A$ in the base category. Define a left adjoint $\L$
+Denote by $\bot_a$ the initial object in each fiber $\D_x$ above an object $a\in\C$ in the base category. Define a left adjoint $\L$
 of $\U$ as follows:
 \begin{displaymath}
 \begin{tikzcd}[row sep=.05in,cells={anchor=east}]
