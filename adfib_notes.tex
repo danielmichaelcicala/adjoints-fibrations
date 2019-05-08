@@ -437,7 +437,7 @@ Finally, another class of functors which is particular with respect to strict pr
 Then $\phi$ factors as a commutative square composed by an isomorphism $\hat{\phi}$
  \begin{displaymath}
   \begin{tikzcd}[row sep=.15in]
-\X\ar[rr,bend left,"H"]\ar[rr,bend right,"\hat{H}"']\ar[rr,phantom,"\hat{\phi}"desription]\ar[dd,"P"'] && \Y\ar[dd,"Q"] \\
+\X\ar[rr,bend left,"H"]\ar[rr,bend right,"\hat{H}"']\ar[rr,phantom,"\hat{\phi}"description]\ar[dd,"P"'] && \Y\ar[dd,"Q"] \\
 \hole \\
 \A\ar[rr,"F"'] && \B
   \end{tikzcd}
@@ -516,6 +516,67 @@ In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not neces
 \cite{Fib2Fib}
 
 {\chris Street fibrations stuff}
+
+While fibrations are well-studied and frequently used
+without hesitation, there is an ``evilness'' about them. The
+term ``evil'' is a tongue-in-cheek expression applied to any
+categorical concept that fails to transport across an
+equivalence of categories.  The aspect of a fibration
+$ \U \from \X \to \A $ that fails occurs when, given any arrow
+$ f \from a \to b $ and cartesian lift
+$ \theta \from x \to y $ where $ y $ is in the fiber of
+$ b $, we require that $ Ux $ \emph{equals} $ a $.  After
+rebasing $ U $ with an equivalent category, it is entirely
+possible that the equality weakens to an isomorphism meaning
+that the rebased version of $ U $ is no longer a
+fibration. In general, evil practices in category theory are
+morally dubious. Fibrations, however, frequently get a pass
+because for concrete categories, fibrations do satisfy this
+strict equality.  However, there is a non-evil version of a
+fibration.
+
+\begin{defn}[Street fibration]
+
+  A functor $ U \from \X \to \A $ is a \define{Street
+    fibration} if, for any arrow $ f \from a \to b $ in $ \A
+  $ and $ y $ in the fiber of $ b $, there exists a
+  cartesian lifing $ \theta \from x \to y $ and an
+  isomorphism $ h \from Ux \iso a $ such that $ fh = U\theta $
+  
+\end{defn}
+
+In the Street fibration, the evil equality is replaced by an
+isomorphism $ h $.  One can readily check that rebasing a
+\emph{Street fibration} $ U $ with an equivalent category
+does, in fact, give another Street fibration.
+
+Because we generalize our results in Section
+\ref{sec:groth-fibs-ralis} from Grothendieck fibrations to
+Street fibrations, we need a generalized version of Lemma
+\ref{lem:fibrewiselimits}.
+
+\begin{lem} \label{lem:street-fibrewise-limits}
+  Suppose $ \ca{J} $ is a small category and $ U \from \X
+  \to \A $ is a Street (op)fibration. If $ \A $ has $ \ca{J}
+  $-(co)limits, the following are equivalent:
+  \begin{enumerate}
+  \item
+    all fibres have $ \ca{J} $-colimits and the
+    reindexing functors preserve them;
+  \item
+    $ \X $ has $ \ca{J} $-(co)limits and $ U $ preserves
+    them.
+  \end{enumerate}
+\end{lem}
+
+\begin{proof}
+  Every Street fibration can be factored as a Grothendieck
+  fibration followed by an equivalence of categories.  This
+  lemma holds for Grothendieck fibrations plus categories having
+  (co)limits and functors preserving them are both properties
+  that satisfy the principle of equivalence.  
+\end{proof}
+
 
 ...
 
@@ -649,14 +710,10 @@ Suppose that $\X$ and $\A$ have chosen pushouts and initial objects, and a funct
 
 \section{Street fibrations and coreflections}\label{Streetfibs}
 
-In this section, we trod the same path as in
-Section \ref{sec:groth-fibs-ralis} yet shed all
-strictness of the preservation of colimits.  One
-effect of this is that we work with Street
-opfibrations instead of Grothendeick
-opfibrations.
-
-{\daniel Define Street opfibrations here or in prelimiaries?}{\chris I think better on preliminaries!}
+In this section, we trod the same path as in Section
+\ref{sec:groth-fibs-ralis} yet shed all strictness of the
+preservation of colimits and work with Street opfibrations
+instead of Grothendeick opfibrations.
 
 Generalising \cref{prop:opfibtolari}, we obtain
 the following. 
@@ -698,12 +755,22 @@ the following.
   coreflector.
 \end{proof}
 
+Applying Lemma \ref{lem:street-fibrewise-limits}, we can
+transport the assumptions on the fibers to the base category
+of our Street fibration.
+
+\begin{cor}
+  A Street (op)fibration is a coreflector if the base
+  category has and the functor preserves the (initial)
+  terminal object.
+\end{cor}
+
 Generalising \cref{prop:laritoopfib}, we obtain the following result.
 
 \begin{prop}
-  \label{thm:corefl-to-street-obfib}
+  \label{thm:corefl-to-street-opfib}
   Suppose that $ \U \from \X \to \A $ is a
-  coreflector. Then $ \U $ is a Street obfibration
+  coreflector. Then $ \U $ is a Street opfibration
   if $ \X $ has pushouts and $ \U $ preserves them.
 \end{prop}
 
@@ -797,10 +864,6 @@ We now intersect the hypothesis of Propositions
 \ref{thm:street-opfib-to-corefl} and
 \ref{thm:corefl-to-street-obfib} to provide the
 main result of this section.
-
-{\daniel The statement depends on Lemma
-  \ref{lem:fibrewiselimits} holding for Street
-  obfibrations too.}
 
 \begin{thm}
   \label{thm:main-theorem-street-version}

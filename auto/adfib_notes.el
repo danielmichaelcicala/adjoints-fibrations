@@ -8,6 +8,7 @@
     "amsart10")
    (LaTeX-add-labels
     "sec:preliminaries"
+    "eq:preservelimits"
     "lem:Lack1"
     "eq:13"
     "eq:opfibration"
@@ -15,6 +16,7 @@
     "reindexing"
     "lem:fibrewiselimits"
     "it:2"
+    "lem:street-fibrewise-limits"
     "prop:coreflection"
     "sec:groth-fibs-ralis"
     "prop:opfibtolari"
@@ -22,7 +24,7 @@
     "thm:mainthm"
     "Streetfibs"
     "thm:street-opfib-to-corefl"
-    "thm:corefl-to-street-obfib"
+    "thm:corefl-to-street-opfib"
     "thm:main-theorem-street-version")
    (LaTeX-add-bibliographies
     "references"))
