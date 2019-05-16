@@ -31,146 +31,50 @@ Fibrations and Adjunctions rock.
 
 \section{Preliminaries}\label{sec:preliminaries}
 
-{\chris Mainly basics of fibrations and adjunctions, to fix terminology. Also Street stuff. Fill out as we go and organize better at the very end.
-}
+We recall some basic material from the theory of fibrations; standard references include  \cite{Grayfibredandcofibred,FibredAdjunctions,Handbook2}. 
+For our purposes, we center our presentation mostly around opfibrations.
 
-{\chris Strict choice of (co)limits}
-
-In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Whereas such an uncommon condition sounds `evil' at first, we remark that it is the necessary such in order to match to the inherent `evilness' of Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration.
-
-In more detail, assuming the axiom of choice we can regard any category with (co)limits as having \emph{chosen} ones, in the sense of choosing a specific adjoint (out of all isomorphic ones) to the diagonal functor. Some categories, like $\Set$, even have a canonical choice corresponding to well-known constructions of (co)limits of sets. In general, a functor $F\colon\ca{A}\to\ca{B}$ between categories with (chosen) limits preserves them when the following diagram
-\begin{equation}\label{eq:preservelimits}
-  \begin{tikzcd}
-\phantom{A}[\ca{J},\ca{C}]\ar[r,"\lim"]\ar[d,"{[\ca{J},F]}"']\ar[dr,phantom,"\cong"] & \ca{C}\ar[d,"F"] \\
-\phantom{A}[\ca{J},\ca{D}]\ar[r,"\lim"'] & \ca{D}
-  \end{tikzcd}
- \end{equation}
-commutes up to natural isomorphism.
-The following two lemmas (due to Steve Lack) present two natural settings where functors between categories with chosen (co)limits \emph{strictly} preserve them; evidently, such a thing is to be expected only when the limits in the categories have been both previously constructed from chosen limits in some fixed category.
-\begin{lem}\label{lem:Lack1}
- Suppose $\ca{C}$ is a category with chosen (co)limits (of any class). Then for any two categories $\ca{A}$ and $\ca{B}$ and any functor $F\colon\ca{A}\to\ca{B}$ between them, the pre-composition functor
- \begin{displaymath}
-  \begin{tikzcd}[row sep=.05in]
-  F^*\colon[\ca{B},\ca{C}]\ar[r] & \;[\ca{A},\ca{C}] \\
-  \;\;\;\;\ca{B}\xrightarrow{H}\ca{C}\ar[r,mapsto] & \ca{A}\xrightarrow{F}\ca{B}\xrightarrow{H}\ca{C}
-  \end{tikzcd}
- \end{displaymath}
-strictly preserves the chosen (co)limits.
-\end{lem}
-\begin{proof}
- This follows from the poinwise construction of colimits in functor categories.
-\end{proof}
-
-As a particular case, the following result gives rise to one of our main examples.
-\begin{cor}
-There is a canonical choice of (co)limits in $\Grph$ inherited from those in $\Set$ so that the domain and codomain functors $\Grph\to\Set$ strictly preserve all limits and colimits.
-\end{cor}
-
-\begin{proof}
- Consider the two functors $1,2\colon\one{=}\{\bullet\}\longrightarrow\{1\rightrightarrows2\}{=}\two$. Choosing the canonical (co)limits in $\Set$, by \cref{lem:Lack1} we obtain two functors
-\begin{displaymath}
-\begin{tikzcd}
- \Grph=[\two,\Set]\ar[r,shift left,"\mathrm{dom}"]\ar[r,shift right,"\mathrm{cod}"'] & \;[\one,\Set]=\Set
- \end{tikzcd}
-\end{displaymath}
-that strictly preserve them.
-\end{proof}
-
-The following case again follows a from construction of chosen limits in common ground; colimits adhere to a dual result.
-\begin{lem}
-Suppose $\ca{C}$ and $\ca{D}$ have chosen limits and $F\colon\ca{C}\to\ca{D}$ is an arbitrary functor. Then the comma category $F\downarrow\ca{D}$ can be equipped with chosen limits in such a way that the projections $\ca{C}\leftarrow F\downarrow\ca{D}\to\ca{D}$ strictly preserve limits.
-\end{lem}
-
-\begin{proof}
- This follows from the canonical construction of limits in comma categories, as found e.g.\ in~\cite[\S 2.16]{Handbook1}.
-\end{proof}
-
-Finally, another class of functors which is particular with respect to strict preservation of (co)limits are (op)fibrations. In more detail, there is no loss of generality for a limit-preserving fibration if we assume that limits are in fact preserved on-the-nose; such a statement does definitely not apply to arbitrary functors. This is due to the following lemma, which is a special case of the more general fact: the embedding of $\Fib$ in the 2-category $\Fib_{\sim}$ where 2-cells are squares filled with isomorphisms, is locally fully faithful and essentially surjective, a.k.a. a local biequivalence (references...). We thank Claudio Hermida for these observations.
-\begin{lem}
- Suppose $P$ and $Q$ are fibrations, and there is a natural isomorphism
- \begin{displaymath}
-  \begin{tikzcd}
-\X\ar[r,"H"]\ar[d,"P"']\ar[dr,phantom,"\stackrel{\phi}{\cong}"] & \Y\ar[d,"Q"] \\
-\A\ar[r,"F"'] & \B
-  \end{tikzcd}
- \end{displaymath}
-Then $\phi$ factors as a commutative square composed by an isomorphism $\hat{\phi}$
- \begin{displaymath}
-  \begin{tikzcd}[row sep=.15in]
-\X\ar[rr,bend left,"H"]\ar[rr,bend right,"\hat{H}"']\ar[rr,phantom,"{\stackrel{\hat{\phi}}{\cong}}"description]\ar[dd,"P"'] && \Y\ar[dd,"Q"] \\
-\hole \\
-\A\ar[rr,"F"'] && \B
-  \end{tikzcd}
- \end{displaymath}
-\end{lem}
-As a result, if $Q$ is a fibration that preserves $\ca{J}$-limits for some small $\ca{J}$, we can factor the natural isomorphism \cref{eq:preservelimits} where the left leg is also a fibration, essentially changing the choice of limits in the total category but establishing that $Q$ now strictly preserves limits. In a dual way, we may assume that any opfibration strictly preserves chosen colimits, if it preserves colimits in the ordinary sense.
-
-
-
-{\chris Copied from Monoidal Groth, edit for sure}
-We recall some basic facts and constructions from the theory of fibrations and indexed categories, as well as the equivalence between them via the Grothendieck construction.
-A few indicative references for the general theory are \cite{Grayfibredandcofibred,FibredAdjunctions,Handbook2,Jacobs,Elephant1}.
-
-Consider a functor $P \colon\A \to \X$. A morphism $\phi \colon a \to b$ in $\A $ over a morphism $f = P(\phi) \colon x \to y$ in $\X$ is called \define{cartesian} if and only if, for all $g \colon x' \to x$ in $\X$ and $\theta \colon a'\to a$ in $\A $ with $P \theta = f \circ g$, there exists a unique arrow $\psi \colon a'\to a$ such that $P \psi = g$ and $\theta = \phi \circ \psi$:
-\begin{equation}
-    \xymatrix @R=.1in @C=.6in
-    {a'\ar [drr]^-{\theta}\ar @{-->}[dr]_-{\exists!\psi} 
-    \ar @{.>}@/_/[dd] &&& \\
-    & a\ar[r]_-{\phi} \ar @{.>}@/_/[dd] & 
-    b \ar @{.>}@/_/[dd] & \textrm{in }\A \\
-    x'\ar [drr]^-{f\circ g=P\theta}\ar[dr]_-g &&&\\
-    & x\ar[r]_-{f=P\phi} & y & \textrm{in }\X}\label{eq:13}
-\end{equation}
-For $x \in \ob\X$, the \define{fibre of $P$ over $x$} written $\A_x$, is the subcategory of $\A$ which consists of objects $a$ such that $P(a) = x$ and morphisms $\phi$ with $P(\phi) = 1_x$, called \define{vertical} morphisms. The functor $P \colon \A \to \X$ is called a \define{fibration} if and only if, for all $f \colon x \to y$ in $\X$ and $b\in\A_Y$, there is a cartesian morphism $\phi$ with codomain $b$ above $f$; it is called a \define{cartesian lifting} of $b$ along $f$. The category $\X$ is then called the \define{base} of the fibration, and $\A $ its \define{total category}.
-
-Dually, the functor $\U \colon \D \to \C$ is an \define{opfibration} if $\U^\mathrm{op}$ is a fibration, i.e.\ for every $a \in \D _x$ and $h \colon x \to y$ in $\C$, there is a cocartesian morphism with domain $a$ above $h$, the \define{cocartesian lifting} of $a$ along $h$ with the dual universal property:
+Consider a functor $\U \colon\X \to \A$. A morphism $\beta \colon x \to y$ in $\X $ over a morphism $f = \U(\beta) \colon a \to b$ in $\A$ is called \define{cocartesian} if and only if, for all $g \colon b \to b'$ in $\A$ and $\gamma \colon x\to y'$ in $\X $ with $\U(\gamma) = g\circ f$, there exists a unique $\delta \colon y\to y'$ in $\X$ such that $\U(\delta) = g$ and $\gamma = \delta \circ \beta$:
 \begin{equation}\label{eq:opfibration}
 \xymatrix @R=.1in @C=.6in
-{&& b'\ar @{.>}@/_/[dd] &&\\
-a\ar[r]_-{\beta} \ar @{.>}@/_/[dd]
+{&& y'\ar @{.>}@/_/[dd] &&\\
+x\ar[r]_-{\beta} \ar @{.>}@/_/[dd]
 \ar[urr]^-{\gamma} & 
-b \ar @{.>}@/_/[dd] \ar @{-->}[ur]_-{\exists! \delta}
-&& \textrm{in }\D\\
-&& y' &&\\
-x\ar[r]_-{h=\U\beta} \ar[urr]^-{k\circ h=\U\gamma}
- & y \ar[ur]_-k && \textrm{in }\C}
+y \ar @{.>}@/_/[dd] \ar @{-->}[ur]_-{\exists! \delta}
+&& \textrm{in }\X\\
+&& b' &&\\
+a\ar[r]_-{f=\U\beta} \ar[urr]^-{g\circ f=\U\gamma}
+ & b \ar[ur]_-g && \textrm{in }\A}
 \end{equation}
-A \define{bifibration} is a functor which is both a fibration and opfibration.
+For any object $a\in\A$, we denote by $\X_a$ the \define{fibre} of $U$ over $a$, i.e. the subcategory of $\X$ which consists of objects $x$ above $a$, namely $\U(x) = a$, and vertical morphisms $\beta$, namely $\U(\beta) = 1_a$. The functor $\U \colon \X \to \A$ is an \define{opfibration} if and only if, for all $f \colon a \to b$ in $\A$ and $x\in\X_a$, there is a cocartesian morphism $\beta$ with domain $x$ above $f$; it is called a \define{cocartesian lifting} of $b$ along $f$. The category $\A$ is called the \define{base} of the opfibration, and $\X $ its \define{total category}.
+Of course, this is a dual notion to that of a \define{fibration}.
 
-If $P\colon \A \to\X$ is a fibration, assuming the axiom of choice we may select a cartesian arrow over each $f\colon x\to y$ in $\X$ and $b\in\A _y$, denoted by $\Cart(f,b)\colon f^*(b)\to b$. Such a choice of cartesian liftings is called a \define{cleavage} for $P$, which is then called a \define{cloven fibration}; any fibration is henceforth assumed to be cloven. Dually, if $\U$ is an opfibration, for any $a\in\D _x$ and $h \colon x \to y$ in $\C$ we can choose a cocartesian lifting of $a$ along $h$, $\Cocart(h,a)\colon a\longrightarrow h_!(a)$. 
-Any arrow in the total category of an (op)fibration factorizes uniquely into
-a vertical morphism followed by a (co)cartesian one: {\chris make small letters}
+For any opfibration $\U\colon \X \to\A$, assuming the axiom of choice we may select a cocartesian arrow over each $f\colon a\to b$ in $\A$ and $x\in\X_a$, denoted by $\Cocart(f,x)\colon x\to f_!(x)$. Such a choice of cocartesian liftings is called a \define{cleavage} for $\U$, which is then called a \define{cloven opfibration}; in this way, any opfibration can be assumed to be cloven. As a special case of the universal property, any arrow in the total category of an opfibration factorizes uniquely into a cocartesian morphism followed by a vertical one:
 \begin{equation}\label{factor}
-\xymatrix @C=.4in @R=.2in
-{A\ar[rr]^\theta\ar @{-->}[d]_-{\psi} && B \ar @{.>}[dd] &\\
-f^*B\ar[urr]_-{\;\Cart(f,B)} \ar @{.>}[d] &&& \textrm{in }\A  \\
-X\ar[rr]_-{f} && Y & \textrm{in }\X,}\qquad
-\xymatrix @C=.4in @R=.2in
-{a \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(g,a)} && b &\\
-&& f_!C \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\D  \\
-a\ar[rr]_-{g} && y & \textrm{in }C.}
+\xymatrix @C=.6in @R=.3in
+{x \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(f,x)} && y &\\
+&& f_!x \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\X  \\
+a\ar[rr]_-{f} && b & \textrm{in }\A.}
 \end{equation}
-The choice of (co)cartesian liftings in an (op)fibration induces a so-called \define{reindexing functor} between the fibre categories
+The choice of cocartesian liftings in a cloven opfibration induces a so-called \define{reindexing functor} between the fibre categories
 \begin{equation}\label{reindexing}
-    f^*\colon \A _y\to\A _x\quad\textrm{ and }\quad h_!\colon\D _x\to\C _y
+ f_!\colon\X a\to\X_b
 \end{equation}
-respectively, for each morphism $f\colon x\to y$ and $h\colon x\to y$ in the base category.
-It can be verified by the (co)cartesian universal property that $1_{\A _x}\cong(1_x)^*$ 
-and that for composable morphism in the base category, $g^*\circ f^*\cong(g\circ f)^* $, as well as $(1_x)_!\cong1_{\A_x}$ and $(k\circ h)_!\cong k_!\circ h_!$. If these isomorphisms are equalities, we have the notion of a \define{split} (op)fibration.
+for any $f\colon a\to b$ in the base category. It can be verified by the cocartesian lifting property that $(1_a)_!\cong1_{\X_a}$ and $(f\circ g)_!\cong f_!\circ g_!$. If these isomorphisms are equalities, we have the notion of a \define{split} (op)fibration.
 
-{\chris fibrations and limits, as briefly as possible?}
+{\chris in progress}
 The following relates the existence of (co)limits in the total category of an (op)fibration to their existence in the fibres; for more details, see \cite{hermidaphd}.
 
 \begin{lem}\label{lem:fibrewiselimits}
-Suppose $\ca{J}$ is a small category and $\P\colon\X\to\A$ is an (op)fibration. If $\A$ has $\ca{J}$-(co)limits,
+Suppose $\cat{J}$ is a small category and $\P\colon\X\to\A$ is an (op)fibration. If $\A$ has $\cat{J}$-(co)limits,
 the following are equivalent:
 \begin{enumerate}
- \item all fibres have $\ca{J}$-(co)limits, and the reindexing functors preserve them;
- \item $\X$ has $\ca{J}$-(co)limits, and $\P$ strictly preserves them.\label{it:2}
+ \item all fibres have $\cat{J}$-(co)limits, and the reindexing functors preserve them;
+ \item $\X$ has $\cat{J}$-(co)limits, and $\P$ strictly preserves them.\label{it:2}
 \end{enumerate}
 \end{lem}
 This formulation relates fibrations with limits and opfibrations with colimits.
-In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not necessarily having a $\ca{J}$-(co)complete base) has \emph{(op)fibred $\ca{J}$-(co)limits}.
+In fact, condition \ref{it:2} defines when an arbitrary (op)fibration (not necessarily having a $\cat{J}$-(co)complete base) has \emph{(op)fibred $\cat{J}$-(co)limits}.
 
 {\chris some comments about fibrations strictly preserving limits, based on the local aspect of Fib as a 2-Fib}
 \cite{Fib2Fib}
@@ -216,15 +120,15 @@ Street fibrations, we need a generalized version of Lemma
 \ref{lem:fibrewiselimits}.
 
 \begin{lem} \label{lem:street-fibrewise-limits}
-  Suppose $ \ca{J} $ is a small category and $ U \from \X
-  \to \A $ is a Street (op)fibration. If $ \A $ has $ \ca{J}
+  Suppose $ \cat{J} $ is a small category and $ U \from \X
+  \to \A $ is a Street (op)fibration. If $ \A $ has $ \cat{J}
   $-(co)limits, the following are equivalent:
   \begin{enumerate}
   \item
-    all fibres have $ \ca{J} $-colimits and the
+    all fibres have $ \cat{J} $-colimits and the
     reindexing functors preserve them;
   \item
-    $ \X $ has $ \ca{J} $-(co)limits and $ U $ preserves
+    $ \X $ has $ \cat{J} $-(co)limits and $ U $ preserves
     them.
   \end{enumerate}
 \end{lem}
@@ -238,11 +142,86 @@ Street fibrations, we need a generalized version of Lemma
 \end{proof}
 
 
+{\chris Strict choice of (co)limits}
+
+In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Whereas such an uncommon condition sounds `evil' at first, we remark that it is the necessary such in order to match to the inherent `evilness' of Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration.
+
+In more detail, assuming the axiom of choice we can regard any category with (co)limits as having \emph{chosen} ones, in the sense of choosing a specific adjoint (out of all isomorphic ones) to the diagonal functor. Some categories, like $\Set$, even have a canonical choice corresponding to well-known constructions of (co)limits of sets. In general, a functor $F\colon\cat{A}\to\cat{B}$ between categories with (chosen) limits preserves them when the following diagram
+\begin{equation}\label{eq:preservelimits}
+  \begin{tikzcd}
+\phantom{A}[\cat{J},\cat{C}]\ar[r,"\lim"]\ar[d,"{[\cat{J},F]}"']\ar[dr,phantom,"\cong"] & \cat{C}\ar[d,"F"] \\
+\phantom{A}[\cat{J},\cat{D}]\ar[r,"\lim"'] & \cat{D}
+  \end{tikzcd}
+ \end{equation}
+commutes up to natural isomorphism.
+The following two lemmas (due to Steve Lack) present two natural settings where functors between categories with chosen (co)limits \emph{strictly} preserve them; evidently, such a thing is to be expected only when the limits in the categories have been both previously constructed from chosen limits in some fixed category.
+\begin{lem}\label{lem:Lack1}
+ Suppose $\cat{C}$ is a category with chosen (co)limits (of any class). Then for any two categories $\cat{A}$ and $\cat{B}$ and any functor $F\colon\cat{A}\to\cat{B}$ between them, the pre-composition functor
+ \begin{displaymath}
+  \begin{tikzcd}[row sep=.05in]
+  F^*\colon[\cat{B},\cat{C}]\ar[r] & \;[\cat{A},\cat{C}] \\
+  \;\;\;\;\cat{B}\xrightarrow{H}\cat{C}\ar[r,mapsto] & \cat{A}\xrightarrow{F}\cat{B}\xrightarrow{H}\cat{C}
+  \end{tikzcd}
+ \end{displaymath}
+strictly preserves the chosen (co)limits.
+\end{lem}
+\begin{proof}
+ This follows from the poinwise construction of colimits in functor categories.
+\end{proof}
+
+As a particular case, the following result gives rise to one of our main examples.
+\begin{cor}
+There is a canonical choice of (co)limits in $\Grph$ inherited from those in $\Set$ so that the domain and codomain functors $\Grph\to\Set$ strictly preserve all limits and colimits.
+\end{cor}
+
+\begin{proof}
+ Consider the two functors $1,2\colon\one{=}\{\bullet\}\longrightarrow\{1\rightrightarrows2\}{=}\two$. Choosing the canonical (co)limits in $\Set$, by \cref{lem:Lack1} we obtain two functors
+\begin{displaymath}
+\begin{tikzcd}
+ \Grph=[\two,\Set]\ar[r,shift left,"\mathrm{dom}"]\ar[r,shift right,"\mathrm{cod}"'] & \;[\one,\Set]=\Set
+ \end{tikzcd}
+\end{displaymath}
+that strictly preserve them.
+\end{proof}
+
+The following case again follows a from construction of chosen limits in common ground; colimits adhere to a dual result.
+\begin{lem}
+Suppose $\cat{C}$ and $\cat{D}$ have chosen limits and $F\colon\cat{C}\to\cat{D}$ is an arbitrary functor. Then the comma category $F\downarrow\cat{D}$ can be equipped with chosen limits in such a way that the projections $\cat{C}\leftarrow F\downarrow\cat{D}\to\cat{D}$ strictly preserve limits.
+\end{lem}
+
+\begin{proof}
+ This follows from the canonical construction of limits in comma categories, as found e.g.\ in~\cite[\S 2.16]{Handbook1}.
+\end{proof}
+
+Finally, another class of functors which is particular with respect to strict preservation of (co)limits are (op)fibrations. In more detail, there is no loss of generality for a limit-preserving fibration if we assume that limits are in fact preserved on-the-nose; such a statement does definitely not apply to arbitrary functors. This is due to the following lemma, which is a special case of the more general fact: the embedding of $\Fib$ in the 2-category $\Fib_{\sim}$ where 2-cells are squares filled with isomorphisms, is locally fully faithful and essentially surjective, a.k.a. a local biequivalence (references...). We thank Claudio Hermida for these observations.
+\begin{lem}
+ Suppose $P$ and $Q$ are fibrations, and there is a natural isomorphism
+ \begin{displaymath}
+  \begin{tikzcd}
+\X\ar[r,"H"]\ar[d,"P"']\ar[dr,phantom,"\stackrel{\phi}{\cong}"] & \Y\ar[d,"Q"] \\
+\A\ar[r,"F"'] & \B
+  \end{tikzcd}
+ \end{displaymath}
+Then $\phi$ factors as a commutative square composed by an isomorphism $\hat{\phi}$
+ \begin{displaymath}
+  \begin{tikzcd}[row sep=.15in]
+\X\ar[rr,bend left,"H"]\ar[rr,bend right,"\hat{H}"']\ar[rr,phantom,"{\stackrel{\hat{\phi}}{\cong}}"description]\ar[dd,"P"'] && \Y\ar[dd,"Q"] \\
+\hole \\
+\A\ar[rr,"F"'] && \B
+  \end{tikzcd}
+ \end{displaymath}
+\end{lem}
+As a result, if $Q$ is a fibration that preserves $\cat{J}$-limits for some small $\cat{J}$, we can factor the natural isomorphism \cref{eq:preservelimits} where the left leg is also a fibration, essentially changing the choice of limits in the total category but establishing that $Q$ now strictly preserves limits. In a dual way, we may assume that any opfibration strictly preserves chosen colimits, if it preserves colimits in the ordinary sense.
+
+
+
+
+
 ...
 
 {\chris adjunctions stuff}
 
-We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\ca{D}\to\ca{C}$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\ca{C}=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity.
+We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\cat{D}\to\cat{C}$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\cat{C}=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity.
 
 Both these notions are special cases of the well-known notions of \emph{(co)reflections}, i.e. ...
 {\chris Position here the well-known equivalences clauses for coreflections, also their strict versions for laris.}
@@ -547,11 +526,11 @@ main result of this section.
 
 % \begin{thm}[Gabriel-Zisman]
 % \label{thm:GabZis}
-% 	An adjunction $ \L \dashv R \from \ca{C} \leftrightarrow \ca{D} $. TFAE:
+% 	An adjunction $ \L \dashv R \from \cat{C} \leftrightarrow \cat{D} $. TFAE:
 % 	\begin{enumerate}
 % 		\item $ \L $ is full and faithful;
 % 		\item the unit is an isomorphism;
-% 		\item the induced comonad on $ \ca{D} $ is idempotent, $ \L $ is conservative, and $ R $ is essentially surjective.
+% 		\item the induced comonad on $ \cat{D} $ is idempotent, $ \L $ is conservative, and $ R $ is essentially surjective.
 % 	\end{enumerate}
 % \end{thm}
 
@@ -563,32 +542,32 @@ main result of this section.
   keep them as nifty things?} {\chris Good question! If we are to keep, we should probably do so before our results and say how those would be reasonable things to start with, but instead we had to roam elsewhere for that and that reason!}
 
 \begin{thm}
-	Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, surjective-on-objects Grothendiek opfibration.  Then $ R $ is a right adjoint.
+	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, surjective-on-objects Grothendiek opfibration.  Then $ R $ is a right adjoint.
 \end{thm}
 
 \begin{proof}
-	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \ca{C} $-arrows consists of the identity.  Any map $ f \from c \to Rd $ has a cocartesian lifting $ \hat{f} \from x_c \to x_{Rd} $ and $ f = R \hat{f} . 1_c $.
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \cat{C} $-arrows consists of the identity.  Any map $ f \from c \to Rd $ has a cocartesian lifting $ \hat{f} \from x_c \to x_{Rd} $ and $ f = R \hat{f} . 1_c $.
 \end{proof}
 
 \begin{thm}
-	Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, surjective-on-objects, conservative Street opfibration.  Then $ R $ is a right adjoint.
+	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, surjective-on-objects, conservative Street opfibration.  Then $ R $ is a right adjoint.
 \end{thm}
 
 \begin{proof}
-	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \ca{C} $-arrows consists of the identity.  For any map $ f \from c \to Rd $, there exists an essential cocartesian lifting $ \hat{f} \from x_c \to d' $ together with a $ \ca{C} $-isomorphism $ h \from Rd' \to Rd $ such that $ f = h . R \hat{f} $. But $ f = h . R \hat{f} = R \hat{h} . R \hat{f} . 1_c = R (\hat{h} . \hat{f}) . 1_c $ where $ h = R \hat{h} $ because $ R $ is conservative.
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-objects $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ x_c $ over $ c $ (which exists by surjective-on-objects assumption), and the collection of $ \cat{C} $-arrows consists of the identity.  For any map $ f \from c \to Rd $, there exists an essential cocartesian lifting $ \hat{f} \from x_c \to d' $ together with a $ \cat{C} $-isomorphism $ h \from Rd' \to Rd $ such that $ f = h . R \hat{f} $. But $ f = h . R \hat{f} = R \hat{h} . R \hat{f} . 1_c = R (\hat{h} . \hat{f}) . 1_c $ where $ h = R \hat{h} $ because $ R $ is conservative.
 \end{proof}
 
 \begin{thm}
-	Let $ \ca{D}$ be locally small and complete. Also let $ R \from \ca{D} \to \ca{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
+	Let $ \cat{D}$ be locally small and complete. Also let $ R \from \cat{D} \to \cat{C} $ be a continuous, essentially surjective, conservative Street opfibration.  Then $ R $ is a right adjoint.
 \end{thm}
 
 \begin{proof}
-	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-object $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ d' $ where $ \theta \from c \cong Rd' $ (which exists by essential surjectivity), and the collection of $ \ca{C} $-arrows is $ { \theta } $.  For any $ \ca{C} $-arrow $ f \from c \to Rd $, we have (by Street opfibrationness) $ f . \theta^{-1} \from Rd' \to c \to Rd $, a cocartesian essential lifting $ \hat{ f . \theta^{-1} } \from d' \to d'' $ in $ \ca{D} $, and an isomorphism $ h \from d \to d'' $ (by conservatism) such that $ f . \theta^{-1} = Rh . R \hat{ f . \theta^{-1} } $.  This implies, as required by GAFT, that $ f = R (h\hat{ f . \theta }) . \theta $.
+	We use \ref{thm:GAFT}.  Suffice to show the solution set condition holds.  Fix a $ C $-object $ c $.  Then the indexing set is $ \ast $, the collection of $ D $-objects consists of a single object $ d' $ where $ \theta \from c \cong Rd' $ (which exists by essential surjectivity), and the collection of $ \cat{C} $-arrows is $ { \theta } $.  For any $ \cat{C} $-arrow $ f \from c \to Rd $, we have (by Street opfibrationness) $ f . \theta^{-1} \from Rd' \to c \to Rd $, a cocartesian essential lifting $ \hat{ f . \theta^{-1} } \from d' \to d'' $ in $ \cat{D} $, and an isomorphism $ h \from d \to d'' $ (by conservatism) such that $ f . \theta^{-1} = Rh . R \hat{ f . \theta^{-1} } $.  This implies, as required by GAFT, that $ f = R (h\hat{ f . \theta }) . \theta $.
 \end{proof}
 
-Thoughts about these assumptions. Here are the desired examples I can think of now: $ \ca{Set} $ together with $ \ca{Graph} $ or $ \ca{Top} $. The enriched over sets and completeness are both there. So is essential surjectivity. And reflection of isomorphisms.  The continuity is definitely needed, since it's necessary if $ R $ is a right adjoint. 
+Thoughts about these assumptions. Here are the desired examples I can think of now: $ \cat{Set} $ together with $ \cat{Graph} $ or $ \cat{Top} $. The enriched over sets and completeness are both there. So is essential surjectivity. And reflection of isomorphisms.  The continuity is definitely needed, since it's necessary if $ R $ is a right adjoint. 
 
-Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ \L \dashv R \from \ca{C} \leftrightarrow \ca{D} $ where $ \L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ \L $ is conservative, but is $ R $?
+Go back to the right adjoint we had in the ``converse'' to the above theorem.  That is, we have a coreflection $ \L \dashv R \from \cat{C} \leftrightarrow \cat{D} $ where $ \L $ is left exact.  Of course this gives the continuity of $ R $. Essential surjectivity follows from Gabriel-Zisman. Is it a Street opfibration? $ \L $ is conservative, but is $ R $?
 
 \begin{ex}
   No, $ R $ is not in general conservative.
