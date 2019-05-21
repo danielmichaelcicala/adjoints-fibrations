@@ -73,7 +73,10 @@ the following are equivalent:
  \item the total category $\X$ has $\cat{J}$-colimits, and $\U$ (strictly) preserves them.
 \end{enumerate}
 \end{lem}
-The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-cocomplete base. The strict preservation of colimits is discussed in detail below \cref{lem:isofactid}.
+The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-
+cocomplete base. The strict preservation of colimits is discussed in detail below \cref{lem:isofactid}.
+
+{\chris Categories of opfibrations, depending on section 4}
 
 \subsection*{Street Opfibrations}
 
@@ -137,19 +140,24 @@ Street fibrations, we need a generalized version of Lemma
   that satisfy the principle of equivalence.  
 \end{proof}
 
-{\chris in progress}
 \subsection*{Choice of colimits}
 
-In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Whereas such an uncommon condition sounds `evil' at first, we remark that it is the necessary such in order to match to the inherent `evilness' of Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration.
+In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Whereas such an uncommon condition sounds `evil' at first, we remark that it is the necessary such in order to match to the inherent `evilness' of Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration as discussed above.
 
-In more detail, assuming the axiom of choice we can regard any category with (co)limits as having \emph{chosen} ones, in the sense of choosing a specific adjoint (out of all isomorphic ones) to the diagonal functor. Some categories, like $\Set$, even have a canonical choice corresponding to well-known constructions of (co)limits of sets. In general, a functor $F\colon\cat{A}\to\cat{B}$ between categories with (chosen) limits preserves them when the following diagram
+In more detail, assuming the axiom of choice we can regard any category with (co)limits as having \emph{chosen} ones, in the sense of choosing a specific adjoint (out of all isomorphic ones) to the constant diagram functor:
+\begin{displaymath}
+ \begin{tikzcd}[sep=.7in]
+ \cat{C}\ar[r,pos=.6,"\Delta_\cat{C}"description]\ar[r,phantom,bend left=18,pos=.6,"\bot"]\ar[r,phantom,bend right=18,pos=.6,"\bot"] &  {[}\cat{J},\cat{C}{]}\ar[l,bend right,pos=.4,"\colim_\cat{J}"']\ar[l,bend left,pos=.4,"\lim_\cat{J}"]
+ \end{tikzcd}
+\end{displaymath}
+Some categories, like $\Set$, even have a canonical choice corresponding to well-known constructions of (co)limits of sets. In general, a functor $F\colon\cat{C}\to\cat{D}$ between categories with colimits, for example, preserves them when the following diagram
 \begin{equation}\label{eq:preservelimits}
   \begin{tikzcd}
-\phantom{A}[\cat{J},\cat{C}]\ar[r,"\lim"]\ar[d,"{[\cat{J},F]}"']\ar[dr,phantom,"\cong"] & \cat{C}\ar[d,"F"] \\
-\phantom{A}[\cat{J},\cat{D}]\ar[r,"\lim"'] & \cat{D}
+\phantom{A}[\cat{J},\cat{C}]\ar[r,"\colim"]\ar[d,"{[\cat{J},F]}"']\ar[dr,phantom,"\cong"] & \cat{C}\ar[d,"F"] \\
+\phantom{A}[\cat{J},\cat{D}]\ar[r,"\colim"'] & \cat{D}
   \end{tikzcd}
  \end{equation}
-commutes up to natural isomorphism.
+which is the \emph{mate} of the commutative square with $\Delta$'s, commutes up to natural isomorphism.
 The following two lemmas (due to Steve Lack) present two natural settings where functors between categories with chosen (co)limits \emph{strictly} preserve them; evidently, such a thing is to be expected only when the limits in the categories have been both previously constructed from chosen limits in some fixed category.
 \begin{lem}\label{lem:Lack1}
  Suppose $\cat{C}$ is a category with chosen (co)limits (of any class). Then for any two categories $\cat{A}$ and $\cat{B}$ and any functor $F\colon\cat{A}\to\cat{B}$ between them, the pre-composition functor
@@ -162,10 +170,10 @@ The following two lemmas (due to Steve Lack) present two natural settings where 
 strictly preserves the chosen (co)limits.
 \end{lem}
 \begin{proof}
- This follows from the poinwise construction of colimits in functor categories.
+ This follows from the pointwise construction of colimits in functor categories.
 \end{proof}
 
-As a particular case, the following result gives rise to one of our main examples.
+As a particular case, the following result concerns our motivating example.
 \begin{cor}
 There is a canonical choice of (co)limits in $\Grph$ inherited from those in $\Set$ so that the domain and codomain functors $\Grph\to\Set$ strictly preserve all limits and colimits.
 \end{cor}
@@ -180,34 +188,75 @@ There is a canonical choice of (co)limits in $\Grph$ inherited from those in $\S
 that strictly preserve them.
 \end{proof}
 
-The following case again follows a from construction of chosen limits in common ground; colimits adhere to a dual result.
+The following case again follows from a construction of chosen limits in common ground; colimits adhere to a dual result.
 \begin{lem}
-Suppose $\cat{C}$ and $\cat{D}$ have chosen limits and $F\colon\cat{C}\to\cat{D}$ is an arbitrary functor. Then the comma category $F\downarrow\cat{D}$ can be equipped with chosen limits in such a way that the projections $\cat{C}\leftarrow F\downarrow\cat{D}\to\cat{D}$ strictly preserve limits.
+Suppose $\cat{C}$ and $\cat{D}$ have chosen limits and $F\colon\cat{C}\to\cat{D}$ is an arbitrary functor. Then the comma category $F\downarrow\cat{D}$ can be equipped with limits in such a way that both projections $\cat{C}\leftarrow F\downarrow\cat{D}\to\cat{D}$ strictly preserve them.
 \end{lem}
 
 \begin{proof}
  This follows from the canonical construction of limits in comma categories, as found e.g.\ in~\cite[\S 2.16]{Handbook1}.
 \end{proof}
 
-Finally, another class of functors which is particular with respect to strict preservation of (co)limits are (op)fibrations. In more detail, there is no loss of generality for a limit-preserving fibration if we assume that limits are in fact preserved on-the-nose; such a statement does definitely not apply to arbitrary functors. This is due to the following lemma, which is a special case of the more general fact: the embedding of $\Fib$ in the 2-category $\Fib_{\sim}$ where 2-cells are squares filled with isomorphisms, is locally fully faithful and essentially surjective, a.k.a. a local biequivalence (references...\cite{Fib2Fib}?). We thank Claudio Hermida for these observations.
+Finally, another class of functors which is notable when it comes to strict preservation of (co)limits are (op)fibrations. In more detail, there is no loss of generality for a colimit-preserving opfibration if we assume that colimits are in fact preserved on-the-nose, whereas such a statement does definitely not apply to arbitrary functors. This is due to the following lemma, which is a special case of a more general fact: the embedding of $\OpFib$ in the 2-category $\OpFib_{\sim}$ where 2-cells are squares filled with isomorphisms, is locally fully faithful and essentially surjective (also for fibs...references...\cite{Fib2Fib}?). We thank Claudio Hermida for these observations.
 \begin{lem}\label{lem:isofactid}
- Suppose $P$ and $Q$ are fibrations, and there is a natural isomorphism
+ Suppose $\U$ and $\Q$ are opfibrations, and there is a natural isomorphism
  \begin{displaymath}
   \begin{tikzcd}
-\X\ar[r,"H"]\ar[d,"P"']\ar[dr,phantom,"\stackrel{\phi}{\cong}"] & \Y\ar[d,"Q"] \\
+\X\ar[r,"H"]\ar[d,"\U"']\ar[dr,phantom,"\stackrel{\phi}{\cong}"] & \Y\ar[d,"\Q"] \\
 \A\ar[r,"F"'] & \B
   \end{tikzcd}
  \end{displaymath}
-Then $\phi$ factors as a commutative square composed by an isomorphism $\hat{\phi}$
+Then $\phi$ factors as a commutative square composed by an isomorphism $\hat{\phi}$, as in
  \begin{displaymath}
   \begin{tikzcd}[row sep=.15in]
-\X\ar[rr,bend left,"H"]\ar[rr,bend right,"\hat{H}"']\ar[rr,phantom,"{\stackrel{\hat{\phi}}{\cong}}"description]\ar[dd,"P"'] && \Y\ar[dd,"Q"] \\
+\X\ar[rr,bend left,"H"]\ar[rr,bend right,"\widehat{H}"']\ar[rr,phantom,"{\stackrel{\hat{\phi}}{\cong}}"description]\ar[dd,"\U"'] && \Y\ar[dd,"\Q"] \\
 \hole \\
 \A\ar[rr,"F"'] && \B
   \end{tikzcd}
  \end{displaymath}
 \end{lem}
-As a result, if $Q$ is a fibration that preserves $\cat{J}$-limits for some small $\cat{J}$, we can factor the natural isomorphism \cref{eq:preservelimits} where the left leg is also a fibration, essentially changing the choice of limits in the total category but establishing that $Q$ now strictly preserves limits. In a dual way, we may assume that any opfibration strictly preserves chosen colimits, if it preserves colimits in the ordinary sense.
+As a result, if $\U$ is an opfibration that preserves $\cat{J}$-colimits for some small $\cat{J}$, we can factor the natural isomorphism \cref{eq:preservelimits}, where the left leg is also a fibration, as
+\begin{displaymath}
+  \begin{tikzcd}[row sep=.15in]
+{[\cat{J},\cat{X}]}\ar[rr,bend left,pos=.4,"\colim"]\ar[rr,bend right,pos=.4,"\widehat{\colim}"']\ar[rr,phantom,"\cong"description]\ar[dd,"{[\cat{J},\U]}"'] && \X\ar[dd,"\U"] \\
+\hole \\
+{[\cat{J},\cat{A}]}\ar[rr,"\colim"'] && \A
+  \end{tikzcd}
+ \end{displaymath}
+essentially changing the choice of colimits in the total category and establishing that $Q$ now strictly preserves them. In a dual way, we may assume that any fibration strictly preserves chosen limits, if it preserves limits in the ordinary sense.
+
+\subsection*{Sketch notes for Claudio}
+
+I am trying to reason in a similar way to the above (possibly) to be able to say that the first clause of \cref{lem:fibrewiselimits} could be expressed as `chosen colimits such that the reindexing functors STRICTLY preserve them'. Or understand why it is not possible to say that.
+
+Denote by $PB$ the pullback of bottom $\Delta$ and $[\cat{J},\U]$. 
+\begin{displaymath}
+ \begin{tikzcd}
+  \X\ar[drr,bend left,"\Delta"]\ar[ddr,bend right,"\U"']\ar[dr,dotted,"F"] && \\
+  &PB\ar[r]\ar[d] & {[\cat{J},\cat{X}]}\ar[d,"{[\cat{J},\U]}"] \\
+  &\A\ar[r, bend right, pos=.6, "\Delta"']\ar[r,phantom,"\bot"description] & {[\cat{J},\A]}\ar[l,bend right,pos=.4,"\colim"']
+ \end{tikzcd}
+\end{displaymath}
+The following are equivalent:
+\begin{enumerate}
+ \item there exists a left adjoint $\colim$ to the top $\Delta$ such that the outside square forms an adjunction in $\OpFib$
+ \item there exists a left adjoint $G$ to the middle $F$ such that the triangle forms an adjunction in $\OpFib(\A)$
+\end{enumerate}
+%Above we established that any opfibration may be assumed to strictly preserve colimits, by changing the chosen colimit functor in the total category.
+The adjunction $G\dashv F$ consists of fibrewise adjunctions $G_a\dashv F_a$ which by construction of the pullback, where it can be seen that $PB_a\cong[\cat{J},\X_a]$, precisely give the existence of colimits in the fibres (namely each $G_a$ is a colimit functor $[\cat{J},\X_a]\to\X_a$). So far so good. 
+
+By the fact that left adjoints in $\cat{Cat}^2$ or the slices automatically preserve cocartesian liftings, we get that $f_!(\colim_a H)\cong \colim_b (f_!H)$ for any $f\colon a\to b$ in $\A$, namely a natural isomorphism square
+\begin{displaymath}
+ \begin{tikzcd}
+ \phantom{A}[\cat{J},\cat{X}_a]\ar[r,"\colim_a"]\ar[d,"f_!\circ-"']\ar[dr,phantom,"\cong"] & \cat{X}_a\ar[d,"f_!"] \\
+\phantom{A}[\cat{J},\cat{X}_b]\ar[r,"\colim_b"'] & \cat{X}_b 
+ \end{tikzcd}
+\end{displaymath}
+
+So it is clear that the reindexing functors preserve colimits in the usual sense, up to isomorphism. However, this time I do not see how to use \cref{lem:isofactid} like I did before to show that $\U$ strictly preserves colimits. This isomorphism square is NOT a square of two opfibrations and two functors, like before!
+
+As a result, I do not see how the previous `strictification' result can help now.
+
 
 \subsection*{Coreflections and laris}
 
@@ -584,6 +633,7 @@ $\Rali$ of ralis that strictly preserve all colimits.
 {\chris Also, not sure if separate section for that, but we should try and include as many reasonable examples as possible. The quality rather
 than the quantity is important I think! Grph Set the first such.}
 {\chris Daniel mentioned we may want to do these things inside an arbitrary 2-category, at least for STreet fibration which is more natural and less evil? That would certainly be cool!}
+
 
 \bibliographystyle{alpha}
 \bibliography{references}
