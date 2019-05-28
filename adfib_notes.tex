@@ -286,12 +286,11 @@ Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, th
 {\chris Either here or in section 5}
 
 Recall that a \emph{map of adjunctions} $(F,G)\colon(L\dashv U)\to(L'\dashv U')$ is given by two functors $F$ and $G$ that make both squares below commute 
-{\chris may rotate if we want to make it match opfibred functors}
 %again, for reference for this super standard thing, MacLane.
 \begin{displaymath}
 \begin{tikzcd}[sep=.6in]
-\X\ar[r,bend left,"L"]\ar[d,"F"']\ar[r,phantom,"\bot"description] & \A\ar[l,bend left,"U"]\ar[d,"G"] \\
-\X'\ar[r,bend left,"L'"]\ar[r,phantom,"\bot"description] & \A'\ar[l,bend left,"U'"] \\
+\X\ar[d,bend left,"U"]\ar[r,"F"]\ar[d,phantom,"\dashv"description] & \X'\ar[d,bend left,"U'"]\ar[d,phantom,"\dashv"description] \\
+\A\ar[u,bend left,"L"]\ar[r,"G"'] & \A'\ar[u,bend left,"L'"] \\
 \end{tikzcd}
 \end{displaymath}
 and moreover $G\eta=\eta'_{G}$ (or equivalently $\epsilon'_{F}=F\epsilon$).
