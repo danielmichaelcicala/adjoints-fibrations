@@ -76,7 +76,9 @@ the following are equivalent:
 The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-
 cocomplete base. The strict preservation of colimits is discussed in detail below \cref{lem:isofactid}.
 
-{\chris Categories of opfibrations, depending on section 4. Now or then.}
+{\chris Categories of opfibrations, depending on section 5. Now or then.}
+
+{\chris Well have to decide on the 'right notion' of morphisms needed! Adjunction maps should remain fixed, start from there.}
 
 \subsection*{Street Opfibrations}
 
@@ -281,7 +283,7 @@ We use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofi
 
 Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity; this comes as a special case of the dual notion of a \emph{reflection} of categories.
 
-{\chris Either here or in section 4}
+{\chris Either here or in section 5}
 
 Recall that a \emph{map of adjunctions} $(F,G)\colon(L\dashv U)\to(L'\dashv U')$ is given by two functors $F$ and $G$ that make both squares below commute 
 {\chris may rotate if we want to make it match opfibred functors}
@@ -295,7 +297,7 @@ Recall that a \emph{map of adjunctions} $(F,G)\colon(L\dashv U)\to(L'\dashv U')$
 and moreover $G\eta=\eta'_{G}$ (or equivalently $\epsilon'_{F}=F\epsilon$).
 {\chris Not sure if we should go 2-categorical after all. Haven't ever heard of 2-cells between maps of adjunctions. Leave out for now.}
 
-We obtain a category $\Adj$ 
+We obtain a category $\Adj$ with objects pairs {\chris we need to decide if the adjoint is part of the object, probably yes} of adjoint functors $(L,U)$ and morphisms maps of adjunctions between them. Moreover, there is a full subcategory $\Corefl$ of coreflections, as well as a full subcategory $\Rali$ of adjunctions whose right adjoint is left inverse (equivalently, whose left adjoint is right inverse). Notice that for the morphisms of the latter, the condition $G\eta=\eta'_{G}$ is automatically satisfied since the unit is the identity.
 
 
 
