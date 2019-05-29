@@ -8,15 +8,15 @@
     "amsart10")
    (LaTeX-add-labels
     "sec:preliminaries"
-    "eq:preservelimits"
-    "lem:Lack1"
-    "eq:13"
     "eq:opfibration"
     "factor"
     "reindexing"
     "lem:fibrewiselimits"
     "it:2"
     "lem:street-fibrewise-limits"
+    "eq:preservelimits"
+    "lem:Lack1"
+    "lem:isofactid"
     "prop:coreflection"
     "sec:groth-fibs-ralis"
     "prop:opfibtolari"
