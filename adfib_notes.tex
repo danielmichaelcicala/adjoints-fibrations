@@ -76,7 +76,9 @@ the following are equivalent:
 The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-
 cocomplete base. The strict preservation of colimits is discussed in detail below \cref{lem:isofactid}.
 
-{\chris Categories of opfibrations, depending on section 4}
+{\chris Categories of opfibrations, depending on section 5. Now or then.}
+
+{\chris Well have to decide on the 'right notion' of morphisms needed! Adjunction maps should remain fixed, start from there.}
 
 \subsection*{Street Opfibrations}
 
@@ -84,29 +86,31 @@ While fibrations are well-studied and frequently used
 without hesitation, there is an ``evilness'' about them. The
 term ``evil'' is a tongue-in-cheek expression applied to any
 categorical concept that fails to transport across an
-equivalence of categories.  The aspect of a fibration
+equivalence of categories.  The aspect of an opfibration
 $ \U \from \X \to \A $ that fails occurs when, given any arrow
-$ f \from a \to b $ and cartesian lift
-$ \theta \from x \to y $ where $ y $ is in the fiber of
-$ b $, we require that $ Ux $ \emph{equals} $ a $.  After
-rebasing $ U $ with an equivalent category, it is entirely
-possible that the equality weakens to an isomorphism meaning
-that the rebased version of $ U $ is no longer a
+$ f \from a \to b $ and cartesian lifting
+$ \theta \from x \to y $ where $ x $ is in the fiber of
+$ a $, we require that $ Uy $ \emph{equals} $ a $.  After
+rebasing $ \X $ with an equivalent category, it is entirely
+possible that the equality weakens to an isomorphism, meaning
+that the rebased version of $ U $ is no longer an
 fibration. In general, evil practices in category theory are
 morally dubious. Fibrations, however, frequently get a pass
-because for concrete categories, fibrations do satisfy this
+because in concrete examples, fibrations do satisfy this
 strict equality.  However, there is a non-evil version of a
-fibration.
+fibration. {\chris I love the chatty style but also point of this paragraph. I'm wondering whether it should go to the intro though? No strong opinion}
 
-\begin{defn}[Street fibration]
+{\chris Main references?}
 
+
+\begin{defn}
   A functor $ U \from \X \to \A $ is a \define{Street
-    fibration} if, for any arrow $ f \from a \to b $ in $ \A
-  $ and $ y $ in the fiber of $ b $, there exists a
-  cartesian lifing $ \theta \from x \to y $ and an
+    opfibration} if, for any arrow $ f \from a \to b $ in $ \A
+  $ and $ x $ above $ a $, there exists a
+  morphism  $ \theta \from x \to y $ and an
   isomorphism $ h \from Ux \iso a $ such that $ fh = U\theta $
   
-\end{defn}
+\end{defn}{\chris Daniel, this is the 'easy' version, not the full definition. Please `copy' grothendieck diagram from above and adjust here? the morphism up top can go anywhere not necessarily `above' b}
 
 In the Street fibration, the evil equality is replaced by an
 isomorphism $ h $.  One can readily check that rebasing a
@@ -134,10 +138,10 @@ Street fibrations, we need a generalized version of Lemma
 
 \begin{proof}
   Every Street fibration can be factored as a Grothendieck
-  fibration followed by an equivalence of categories.  This
+  fibration followed by an equivalence of categories. {\chris a reference is necessary here, and a diagram expressing that property could go here or earlier, discussing the relation of this new notion with the old.} This
   lemma holds for Grothendieck fibrations plus categories having
   (co)limits and functors preserving them are both properties
-  that satisfy the principle of equivalence.  
+  that satisfy the principle of equivalence.   
 \end{proof}
 
 \subsection*{Choice of colimits}
@@ -226,6 +230,7 @@ As a result, if $\U$ is an opfibration that preserves $\cat{J}$-colimits for som
 essentially changing the choice of colimits in the total category and establishing that $Q$ now strictly preserves them. In a dual way, we may assume that any fibration strictly preserves chosen limits, if it preserves limits in the ordinary sense.
 
 \subsection*{Sketch notes for Claudio}
+{\chris This section is going to be eventually removed. Keep for now.}
 
 I am trying to reason in a similar way to the above (possibly) to be able to say that the first clause of \cref{lem:fibrewiselimits} could be expressed as `chosen colimits such that the reindexing functors STRICTLY preserve them'. Or understand why it is not possible to say that.
 
@@ -260,18 +265,39 @@ As a result, I do not see how the previous `strictification' result can help now
 
 \subsection*{Coreflections and laris}
 
-We will use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\cat{D}\to\cat{C}$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\cat{C}=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity.
+The main result of this paper is a correspondence between fibrations and adjoints, under certain assumptions. The adjunctions involved are a stricter version of the well-known \emph{coreflections}, whose definition we recall. %if we need ref for this super standard thing, Borceaux 1
 
-Both these notions are special cases of the well-known notions of \emph{(co)reflections}, i.e. ...
-{\chris Position here the well-known equivalences clauses for coreflections, also their strict versions for laris.}
 \begin{prop}\label{prop:coreflection}
- The following are equivalent for an adjunction $\L\dashv\U\colon\D\to\C$:
+The following are equivalent for an adjunction $\L\dashv\U\colon\X\to\A$:
  \begin{enumerate}
-  \item $\L$ is strictly fully faithful (resp. fully faithful);
-  \item the unit $\eta\colon1_\C\Rightarrow \U\L$ is the identity (resp. isomorphism).
+  \item the left adjoint $\L$ is fully faithful;
+  \item the unit $\eta\colon1_\A\Rightarrow \U\L$ is an isomorphism.
  \end{enumerate}
-Under these conditions, $\U\epsilon$ and $\epsilon_\L$ are identities (resp. isomorphisms).
+Under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also isomorphisms.
 \end{prop}
+
+The above clauses also imply that the induced comonad $(LU,L\eta_G,\epsilon)$ on $\X$ is \emph{idempotent}. Such an adjunction is called a \define{coreflection}, $\A$ is a \define{coreflective} subcategory of $\U$ and the right adjoint $U$ is called the \define{coreflector}.
+
+Connected to the issues of `evilness' discussed already is a stricter version of a coreflector that actually appears in the desired correspondence between (Gro\-the\-ndi\-eck) fibrations and adjoints.
+We use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\X\to\A$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\A=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Of course, under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also identities $ULU=U$.
+
+Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity; this comes as a special case of the dual notion of a \emph{reflection} of categories.
+
+{\chris Either here or in section 5}
+
+Recall that a \emph{map of adjunctions} $(F,G)\colon(L\dashv U)\to(L'\dashv U')$ is given by two functors $F$ and $G$ that make both squares below commute 
+%again, for reference for this super standard thing, MacLane.
+\begin{displaymath}
+\begin{tikzcd}[sep=.6in]
+\X\ar[d,bend left,"U"]\ar[r,"F"]\ar[d,phantom,"\dashv"description] & \X'\ar[d,bend left,"U'"]\ar[d,phantom,"\dashv"description] \\
+\A\ar[u,bend left,"L"]\ar[r,"G"'] & \A'\ar[u,bend left,"L'"] \\
+\end{tikzcd}
+\end{displaymath}
+and moreover $G\eta=\eta'_{G}$ (or equivalently $\epsilon'_{F}=F\epsilon$).
+{\chris Not sure if we should go 2-categorical after all. Haven't ever heard of 2-cells between maps of adjunctions. Leave out for now.}
+
+We obtain a category $\Adj$ with objects pairs {\chris we need to decide if the adjoint is part of the object, probably yes} of adjoint functors $(L,U)$ and morphisms maps of adjunctions between them. Moreover, there is a full subcategory $\Corefl$ of coreflections, as well as a full subcategory $\Rali$ of adjunctions whose right adjoint is left inverse (equivalently, whose left adjoint is right inverse). Notice that for the morphisms of the latter, the condition $G\eta=\eta'_{G}$ is automatically satisfied since the unit is the identity.
+
 
 
 \section{Grothendieck fibrations and ralis}
