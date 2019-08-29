@@ -25,7 +25,9 @@
     "Streetfibs"
     "thm:street-opfib-to-corefl"
     "thm:corefl-to-street-opfib"
-    "thm:main-theorem-street-version")
+    "thm:main-theorem-street-version"
+    "sec:category-adjoints"
+    "sec:2-categ-opfibr")
    (LaTeX-add-bibliographies
     "references"))
  :latex)

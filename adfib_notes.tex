@@ -23,9 +23,62 @@ Fibrations and Adjunctions rock.
 -Strictness conditions and evilness conditions. Getting rid of them later due to Street notion.
 
 \section*{Things To Do}
-\begin{itemize}
-\item 
-\end{itemize}
+
+The following is less things to do and more, me talking
+through the relationship between adjoints and opfibrations
+to myself and anyone who'll listen.
+
+We have the following picture that exists on the level of objects:
+\[
+  \begin{tikzpicture}
+    \node (Adj) at (0,5) {Adjunctions};
+    \node (Aa) at (-1,4) {$ \X $};
+    \node (Xa) at (1,4) {$ \A $};
+    \path[->,font=\scriptsize,>=angle 90]
+      (Aa.45) edge[] node[above]{$ r $} (Xa.135)
+      (Xa.-135) edge[] node[below]{$ \ell $} (Aa.-45);
+    \node () at (0,3) {$ \eta \from \id_\X \To r \ell $};
+    \node () at (0,2.5) {$ \epsilon \from \ell r \To \id_\A $};
+      %
+    \node (Opfib) at (5,5) {Opfibrations};
+    \node (Ao) at (4,4) {$ \X $};
+    \node (Xo) at (6,4) {$ \A $};
+    \path[->,font=\scriptsize,>=angle 90]
+      (Ao) edge[] node[above]{$ r $} (Xo);
+      %
+    \path[->,font=\scriptsize,>=angle 90]
+    (Adj) edge[] (Opfib); 
+  \end{tikzpicture}
+\]
+This is clearly just forgetting stuff. Now, opfibrations
+aren't charaterized another functor in opposition, but there
+is information flowing in the opposite direction. It just so
+happens that this information flow is given by a lifting
+property.  So turning an opfibration into an adjunction is
+kind of like recharacterizing the lifting property as a
+functor.  This is especially true if the process of
+recharacterizing the lifting property as a left adjoint is
+functorial in a faithful way.  One obstacle to turning
+lifting properties into a left adjoint is that the left
+adjoint is given by extra structure (the unit and counit) while the
+lifting property is given by properties (there exists a so and so
+such that blah de blah). Even if we can use the liftings of
+an opfibration to construct a functor opposite $ r $, where
+do the unit and counit come from?  Since we have no other
+information from the opfibration, the unit and counit better
+be canonical.  There are two extreme choices to define a
+functor $ \ell' $ opposite the opfibration $ r $, either $ \ell'a=\bot_a $
+or $ \ell'a=\top_a $.  The first choice gives the initial
+map $ \bot_a \to a $ in each fibre (the counit) and since $
+r\ell' $ is identity, the unit is trivial.  The second
+choice just dualizes the situation, meaning that we should
+have maybe two functors from Opfibrations to Adjunctions, a
+left adjoint one and a right adjoint one.  Or maybe one
+functor for Opfibrations to Adjunctions and another for
+Fibrations to Adjunctions. I don't know, but we should check
+it out.  
+
+
 
 \section*{Acknowledgements} We would like to thank John Baez, Claudio Hermida, Steve Lack, ... for invaluable advice and discussions.
 
@@ -653,12 +706,639 @@ Go back to the right adjoint we had in the ``converse'' to the above theorem.  T
 
 \section{Categories of fibrations and adjunctions}
 
-The key players here are subcategories of $\OpFib$ of those opfibrations that are fibred cocomplete, and of something like
-$\Rali$ of ralis that strictly preserve all colimits.
+The key players here are subcategories of $\OpFib$ of those
+opfibrations that are fibred cocomplete, and of something
+like $\Rali$ of ralis that strictly preserve all colimits.
 
 {\chris Also, not sure if separate section for that, but we should try and include as many reasonable examples as possible. The quality rather
 than the quantity is important I think! Grph Set the first such.}
 {\chris Daniel mentioned we may want to do these things inside an arbitrary 2-category, at least for STreet fibration which is more natural and less evil? That would certainly be cool!}
+
+\subsection{A 2-category of adjoints}
+\label{sec:category-adjoints}
+
+In this section, we define a 2-category of adjunctions and a
+2-subcategory of adjunctions whose unit is the
+identity. This 2-category of adjunctions is defined to be
+an internal hom $ [ \Adj, \Cat ] $ inside the category $
+\twoCat $ with respect to the Gray tensor product.  In this
+section, we unpack this sentence to, first, understand the
+categories $ \Adj $ and $ \Cat $ and, second, understand the monoidal
+category $ ( \twoCat , \otimes ) $.
+
+The 2-category $ \Adj $ is called the \emph{walking
+  adjunction}. It is comprised of two objects that we denote
+$ x $ and $ a $, two arrows $ \ell \from a \to x $ and
+$ r \from x \to a $, and two 2-arrows
+$ \eta \from \id_a \Rightarrow r \ell $ and
+$ \epsilon \from \ell r \Rightarrow \id_x $ such that the pastings
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (a-left) at (0,2) {$ a $};
+      \node (a-right) at (2,2) {$ a $};
+      \node (x-left) at (1,0) {$ x $};
+      \node (x-right) at (3,0) {$ x $};
+      \draw [cd]
+        (a-left) edge node[above]{$ \id $} (a-right)
+        (x-left) edge node[below]{$ \id $} (x-right)
+        (a-left) edge node[left]{$ \ell $} (x-left)
+        (a-right) edge node[right]{$ \ell $} (x-right)
+        (x-left) edge node[left]{$ r $} (a-right);
+      \node () at (1,1) {\scriptsize{$ \Downarrow \eta $}};
+      \node () at (2,1) {\scriptsize{$ \Downarrow \epsilon $}};
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+      \node (x-left) at (0,0) {$ x $};
+      \node (x-right) at (2,0) {$ x $};
+      \node (a-left) at (1,2) {$ a $};
+      \node (a-right) at (3,2) {$ a $};
+      \draw [cd]
+        (x-left) edge node[left]{$ r $} (a-left)
+        (x-left) edge node[right]{$ \id $} (x-right)
+        (a-left) edge node[above]{$ \id $} (a-right)
+        (a-left) edge node[above]{$ \ell $} (x-right)
+        (x-right) edge node[right]{$ r $} (a-right);
+      \node () at (1,1) {\scriptsize{$ \Downarrow \epsilon $}};
+      \node () at (2,1) {\scriptsize{$ \Downarrow \eta $}};
+    \end{scope}
+  \end{tikzpicture}
+\]
+are both equal to identity.  By $ \Cat $, we mean the
+2-category of (small) categories, functors, and natural
+transformations.
+
+We are interested in the 2-category $ [\Adj, \Cat] $ of 2-functors from
+$ \Adj $ to $ \Cat $, 2-pseudonatural transformations, and
+modifications.  To realize this, we take the internal hom in
+the monoidal category $( \twoCat, \otimes, 1 ) $ where
+$ \twoCat $ is the 1-category of 2-categories and 2-functors
+and $ \otimes $ is the Gray tensor product.
+
+{\daniel Do we describe the Gray tensor product here?}
+
+Let's upack $ [\Adj , \Cat] $ in several stages working from
+abstract to concrete. The 0-cells are 2-functors $ \Adj \to
+\Cat $. Such a 2-functor is precisely an adjunction in $
+\Cat $. Hence, a 0-cell consists of the following data:
+\begin{enumerate}
+\item a pair of 1-categories $ \A, \X $
+\item a pair of 1-functors $ L \from \A \to \X $ and $ R
+  \from \X \to \A $
+\item a pair of natural transformations $ \eta \from \id_\A
+  \to RL $ and $ \epsilon \from LR \to \id_\X $ satisfying
+  the usual unit-counit equations for an adjunction
+\end{enumerate}
+
+The 1-cells of $ [\Adj, \Cat] $ are pseudonatural
+transformations
+\[
+  \begin{tikzpicture}
+    \node (adj) at (0,0) {$ \Adj $};
+    \node (cat) at (2,0) {$ \Cat $};
+    \node () at (1,0) {\scriptsize{$ \Downarrow \alpha $}};
+    \draw [cd]
+      (adj) edge[bend left=40] node[above]{$ F $} (cat)
+      (adj) edge[bend left=-40] node[below]{$ G $} (cat);
+  \end{tikzpicture}
+\]
+Hence, for each object $ x $ in $ \Adj $, we get an arrow $
+\alpha_x \from Fx \to Gx $ in $ \Cat $ and to each arrow $ f
+\from x \to y $ of $ \Adj $, we get an invertible 2-arrow
+\[
+  \begin{tikzpicture}
+    \node (Fx) at (0,2) {$ Fx $};
+    \node (Fy) at (2,2) {$ Fy $};
+    \node (Gx) at (0,0) {$ Gx $};
+    \node (Gy) at (2,0) {$ Gy $};
+    \draw [cd]
+      (Fx) edge node[above]{$ Ff $} (Fy)
+      (Gx) edge node[below]{$ Gf $} (Gy)
+      (Fx) edge node[left]{$ \alpha_x $} (Gx)
+      (Fy) edge node[right]{$ \alpha_y $} (Gy);
+    \node () at (1,1) {\scriptsize{$ \Downarrow \alpha_f $}};
+  \end{tikzpicture}
+\]
+inside of $ \Cat $ such that the following coherence laws
+are satisfied:
+{\daniel Include coherece laws from
+  https://ncatlab.org/nlab/show/pseudonatural+transformation}
+More concretely, a 1-cell $ \alpha $ of $ [\Adj, \Cat] $ from $
+(L,R,\X,\A,\eta,\epsilon) $ to $ (
+L',R',\X',\A',\eta',\epsilon' ) $ is a pair of functors $
+\alpha_x \from \X \to \X' $ and $ \alpha_a \from \A \to \A' $
+together with invertible psuedonatural transformations
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (A) at (0,2) {$ \A $};
+      \node (X) at (2,2) {$ \X $};
+      \node (A') at (0,0) {$ \A' $};
+      \node (X') at (2,0) {$ \X' $};
+      \draw [cd]
+        (A) edge node[above]{$ L $} (X)
+        (A') edge node[below]{$ L' $} (X')
+        (A) edge node[left]{$ \alpha_a $} (A')
+        (X) edge node[right]{$ \alpha_x $} (X');
+      \node () at (1,1) {\scriptsize{$ \Downarrow \lambda $}};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+      \node (A) at (0,2) {$ \A $};
+      \node (X) at (2,2) {$ \X $};
+      \node (A') at (0,0) {$ \A' $};
+      \node (X') at (2,0) {$ \X' $};
+      \draw [cd]
+        (X) edge node[above]{$ L $} (A)
+        (X') edge node[below]{$ L' $} (A')
+        (A) edge node[left]{$ \alpha_a $} (A')
+        (X) edge node[right]{$ \alpha_x $} (X');
+      \node () at (1,1) {\scriptsize{$ \Downarrow \rho $}};  
+    \end{scope}
+  \end{tikzpicture}
+\]
+satisfying the equality of pasting diagrams
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+    \node (A-left) at (0,2) {$ A $};
+    \node (X) at (2,2) {$ X $};
+    \node (A-right) at (4,2) {$ A $};
+    \node (A'-left) at (0,0) {$ A' $};
+    \node (X') at (2,0) {$ X' $};
+    \node (A'-right) at (4,0) {$ A' $};
+    \draw [cd]
+      (A-left) edge node[below]{$ L $} (X)
+      (X) edge node[below]{$ R $} (A-right)
+      (A'-left) edge node[below]{$ L' $} (X')
+      (X') edge node[below]{$ R' $} (A'-right)
+      (A-left) edge node[left]{$ \alpha_\ell $} (A'-left)
+      (X) edge node[left]{$ \alpha_r $} (X')
+      (A-right) edge node[right]{$ \alpha_\ell $} (A'-right)
+      (A-left.90) to[bend left=90] node[above]{$ \id $} (A-right.90);  
+    \node () at (2,2.5) {\scriptsize{$ \Downarrow \eta $}};
+    \node () at (1,1) {\scriptsize{$ \Downarrow \lambda $}};  
+    \node () at (3,1) {\scriptsize{$ \Downarrow \rho $}};
+    \end{scope}
+    %
+    \node () at (5,1) {$ = $};
+    %    
+    \begin{scope}[shift={(6,0)}]
+    \node (A-left) at (0,2) {$ A $};
+    \node (A-right) at (2,2) {$ A $};
+    \node (A'-left) at (0,0) {$ A' $};
+    \node (A'-right) at (2,0) {$ A' $};
+    \draw [cd]
+      (A-left) edge node[above]{$ \id $} (A-right)
+      (A'-left) edge node[above]{$ \id $} (A'-right)
+      (A'-left.-90) to[bend right=90] node[below]{$ \id $} (A'-right.-90)
+      (A-left) edge node[left]{$ \alpha_r $} (A'-left)
+      (A-right) edge node[right]{$ \alpha_r $} (A'-right);
+    \node () at (1,1) {\scriptsize{$ \Downarrow \id $}};
+    \node () at (1,-0.5) {\scriptsize{$ \Downarrow \eta' $}};  
+    \end{scope}    
+  \end{tikzpicture}
+\]
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+    \node (A-left) at (0,2) {$ X $};
+    \node (A-right) at (2,2) {$ X $};
+    \node (A'-left) at (0,0) {$ X' $};
+    \node (A'-right) at (2,0) {$ X' $};
+    \draw [cd]
+      (A-left.90) to[bend left=90] node[above]{$ LR $} (A-right.90)
+      (A-left) edge node[above]{$ \id $} (A-right)
+      (A'-left) edge node[above]{$ \id $} (A'-right)
+      (A-left) edge node[left]{$ \alpha_r $} (A'-left)
+      (A-right) edge node[right]{$ \alpha_r $} (A'-right);
+    \node () at (1,2.5) {\scriptsize{$ \Downarrow \eta $}};  
+    \node () at (1,1) {\scriptsize{$ \Downarrow \id $}};
+  \end{scope}
+  %
+  \node () at (3,1) {$ = $};
+  %
+  \begin{scope}[shift={(4,0)}]
+    \node (A-left) at (0,2) {$ X $};
+    \node (X) at (2,2) {$ A $};
+    \node (A-right) at (4,2) {$ X $};
+    \node (A'-left) at (0,0) {$ X' $};
+    \node (X') at (2,0) {$ A' $};
+    \node (A'-right) at (4,0) {$ X' $};
+    \draw [cd]
+      (A-left) edge node[below]{$ R $} (X)
+      (X) edge node[below]{$ L $} (A-right)
+      (A'-left) edge node[below]{$ R' $} (X')
+      (X') edge node[below]{$ L' $} (A'-right)
+      (A'-left.-90) to[bend right=90] node[above]{$ \id $} (A'-right.-90)
+      (A-left) edge node[left]{$ \alpha_r $} (A'-left)
+      (X) edge node[left]{$ \alpha_\ell $} (X')
+      (A-right) edge node[right]{$ \alpha_r $} (A'-right);
+    \node () at (2,-0.5) {\scriptsize{$ \Downarrow \eta' $}};
+    \node () at (1,1) {\scriptsize{$ \Downarrow \rho $}};  
+    \node () at (3,1) {\scriptsize{$ \Downarrow \lambda$}};
+    \end{scope}
+  \end{tikzpicture}
+\]
+
+The 2-cells of $ [ \Adj, \Cat] $ are modifications
+\[
+  \begin{tikzpicture}
+    \node (Adj) at (0,0) {$ \Adj $};
+    \node (Cat) at (4,0) {$ \Cat $};
+    \draw [cd] (Adj.90) to[bend left=90] node[above]{$F$} (Cat.90);
+    \draw [cd] (Adj.-90) to[bend left=-90] node[below] {$G$} (Cat.-90);
+    \node () at (1,0) {$ \alpha \Downarrow $};
+    \node () at (3,0) {$ \Downarrow \beta$};
+    \node at (2,0) {$ \Rrightarrow $};
+    \node () at (2,0.25) {$ m $};  
+  \end{tikzpicture}
+\]
+That is, for each object $ x $ of $ \Adj $, a 2-cell
+\[
+  \begin{tikzpicture}
+    \node (Fx) at (0,0) {$ Fx $};
+    \node (Gx) at (2,0) {$ Gx $};
+    \node () at (1,0) {\rotatebox{45}{\scriptsize{$m_x \Rightarrow$}}};
+    \draw [cd]
+      (Fx.90) edge[bend left=90] node[above]{$ \alpha_x $} (Gx.90)
+      (Fx.-90) to[bend left=-90] node[below]{$ \beta_x $} (Gx.-90);
+    \end{tikzpicture}
+\]
+and for each arrow $ f \from x \to y $ of $ \Adj $, an equation of pasting diagrams
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (Fxtop) at (0,4) {$ Fx $};
+      \node (Gxtop) at (2,4) {$ Gx $};
+      \node (Gytop) at (4,4) {$ Gy $};
+      \node (Fxbot) at (0,2) {$ Fx $};
+      \node (Gxbot) at (2,2) {$ Gx $};
+      \node (Gybot) at (4,2) {$ Gy $};
+      \node (Fy) at (2,0) {$ Fy $};
+      \draw [cd]
+        (Fxtop) edge node[above]{$ \alpha_x $} (Gxtop)
+        (Gxtop) edge node[above]{$ Gf $} (Gytop)
+        (Fxbot) edge node[above]{$ \beta_x $} (Gxbot)
+        (Gxbot) edge node[above]{$ Gf $} (Gybot)
+        (Fxtop) edge node[left]{$ \id $} (Fxbot)
+        (Gxtop) edge node[left]{$ \id $} (Gxbot)
+        (Gytop) edge node[right]{$ \id $} (Gybot)
+        (Fxbot) edge node[left]{$ Ff $} (Fy)
+        (Fy) edge node[right]{$ \beta_y $} (Gybot);
+      \node () at (1,3)
+        {\rotatebox{45}{{\scriptsize $ m_x \Rightarrow $}}};
+      \node () at (3,3)
+        {\rotatebox{45}{{\scriptsize $ 1 \Rightarrow $}}};
+      \node () at (2,1)
+        {\rotatebox{45}{{\scriptsize $ \beta_f \Rightarrow $}}};
+      \end{scope}
+      %
+      \node () at (5,2) {$ = $};
+      %
+      \begin{scope}[shift={(6,0)}]
+      \node (Fxtop) at (0,2) {$ Fx $};
+      \node (Gxtop) at (2,2) {$ Fy $};
+      \node (Gytop) at (4,2) {$ Gy $};
+      \node (Fxbot) at (0,0) {$ Fx $};
+      \node (Gxbot) at (2,0) {$ Fy $};
+      \node (Gybot) at (4,0) {$ Gy $};
+      \node (Fy) at (2,4) {$ Gy $};
+      \draw [cd]
+        (Fxtop) edge node[above]{$ Ff $} (Gxtop)
+        (Gxtop) edge node[above]{$ \alpha_y $} (Gytop)
+        (Fxbot) edge node[above]{$ Ff $} (Gxbot)
+        (Gxbot) edge node[above]{$ \beta_y $} (Gybot)
+        (Fxtop) edge node[left]{$ \id $} (Fxbot)
+        (Gxtop) edge node[left]{$ \id $} (Gxbot)
+        (Gytop) edge node[right]{$ \id $} (Gybot)
+        (Fxtop) edge node[left]{$ \alpha_x $} (Fy)
+        (Fy) edge node[right]{$ Gf $} (Gytop);
+      \node () at (1,1)
+        {\rotatebox{45}{{\scriptsize $ 1 \Rightarrow $}}};
+      \node () at (3,1)
+        {\rotatebox{45}{{\scriptsize $m_y \Rightarrow $}}};
+      \node () at (2,3)
+        {\rotatebox{45}{{\scriptsize $ \alpha_f \Rightarrow $}}};
+    \end{scope}
+  \end{tikzpicture}
+\]
+In particular, this information becomes the following data
+given our context. Given a pair of 1-cells (psuedonatural
+transformations) $ \alpha $, $\beta $ between 0-cells
+(adjunctions) $ ( \A,\X,L,R,\eta,\epsilon ) $, $ (
+\A',\X',L',R',\eta',\epsilon' ) $, a 2-cell $ m \from \alpha
+\to \beta$ consists of a pair of natural transformations
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (X) at (0,0) {$ \X $}; 
+      \node (X') at (2,0) {$ \X' $}; 
+      \draw [cd] 
+        (X.90) edge[bend left=90]
+          node[above]{$ \alpha_x $} (X'.90) 
+        (X.-90) to[bend left=-90]
+          node[above]{$ \beta_x $} (X'.-90);
+      \node () at (1,0) {\rotatebox{45}{{\scriptsize $m_x \Rightarrow$}}};  
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \node (X) at (0,0) {$ \A $}; 
+      \node (X') at (2,0) {$ \A' $}; 
+      \draw [cd] 
+        (X.90) edge[bend left=90]
+          node[above]{$ \alpha_a $} (X'.90) 
+        (X.-90) to[bend left=-90]
+          node[above]{$ \beta_a $} (X'.-90);
+      \node () at (1,0) {\rotatebox{45}{{\scriptsize $m_a \Rightarrow$}}};  
+    \end{scope}
+  \end{tikzpicture}
+\]
+and the equations
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (Atop) at (0,4) {$ \A $};
+      \node (A'top) at (2,4) {$ \A' $};
+      \node (Amid) at (0,2) {$ \A $};
+      \node (A'mid) at (2,2) {$ \A' $};
+      \node (Xbot) at (0,0) {$ \X $};
+      \node (X'bot) at (2,0) {$ \X' $};
+      \draw [cd]
+        (Atop) edge node[above]{$ \alpha_a $} (A'top)
+        (Amid) edge node[above]{$ \beta_a $} (A'mid)
+        (Xbot) edge node[below]{$ \beta_x $} (X'bot)
+        (Atop) edge node[left]{$ \id $} (Amid)
+        (A'top) edge node[right]{$ \id $} (A'mid)
+        (Amid) edge node[left]{$ L $} (Xbot)
+        (A'mid) edge node[right]{$ L' $} (X'bot);
+      \node () at (1,3) {\rotatebox{45}{{\scriptsize $ m_a \Rightarrow $}}};
+      \node () at (1,1) {\rotatebox{45}{{\scriptsize $\lambda_\beta \Rightarrow$}}};
+    \end{scope}
+    \node () at (3,2) {$ = $};
+    \begin{scope}[shift={(4,0)}]
+      \node (Atop) at (0,4) {$ \A $};
+      \node (A'top) at (2,4) {$ \A' $};
+      \node (Amid) at (0,2) {$ \X $};
+      \node (A'mid) at (2,2) {$ \X' $};
+      \node (Xbot) at (0,0) {$ \X $};
+      \node (X'bot) at (2,0) {$ \X' $};
+      \draw [cd]
+        (Atop) edge node[above]{$ \alpha_a $} (A'top)
+        (Amid) edge node[above]{$ \alpha_x $} (A'mid)
+        (Xbot) edge node[below]{$ \beta_x $} (X'bot)
+        (Atop) edge node[left]{$ L $} (Amid)
+        (A'top) edge node[right]{$ L' $} (A'mid)
+        (Amid) edge node[left]{$ \alpha_x $} (Xbot)
+        (A'mid) edge node[right]{$ \beta_x $} (X'bot);
+      \node () at (1,3) {\rotatebox{45}{{\scriptsize $
+            \lambda_\alpha \Rightarrow$}}};
+      \node () at (1,1) {\rotatebox{45}{{\scriptsize $ m_x \Rightarrow $}}};
+    \end{scope}
+  \end{tikzpicture}
+\]
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (Atop) at (0,4) {$ \X $};
+      \node (A'top) at (2,4) {$ \X' $};
+      \node (Amid) at (0,2) {$ \X $};
+      \node (A'mid) at (2,2) {$ \X' $};
+      \node (Xbot) at (0,0) {$ \A $};
+      \node (X'bot) at (2,0) {$ \A' $};
+      \draw [cd]
+        (Atop) edge node[above]{$ \alpha_x $} (A'top)
+        (Amid) edge node[above]{$ \beta_x $} (A'mid)
+        (Xbot) edge node[below]{$ \beta_a $} (X'bot)
+        (Atop) edge node[left]{$ \id $} (Amid)
+        (A'top) edge node[right]{$ \id $} (A'mid)
+        (Amid) edge node[left]{$ R $} (Xbot)
+        (A'mid) edge node[right]{$ R' $} (X'bot);
+      \node () at (1,3) {\rotatebox{45}{{\scriptsize $ m_a \Rightarrow $}}};
+      \node () at (1,1) {\rotatebox{45}{{\scriptsize $
+            \rho_\beta \Rightarrow $}}};
+    \end{scope}
+    \node () at (3,2) {$ = $};
+    \begin{scope}[shift={(4,0)}]
+      \node (Atop) at (0,4) {$ \X $};
+      \node (A'top) at (2,4) {$ \X' $};
+      \node (Amid) at (0,2) {$ \A $};
+      \node (A'mid) at (2,2) {$ \A' $};
+      \node (Xbot) at (0,0) {$ \A $};
+      \node (X'bot) at (2,0) {$ \A' $};
+      \draw [cd]
+        (Atop) edge node[above]{$ \alpha_x $} (A'top)
+        (Amid) edge node[above]{$ \alpha_a $} (A'mid)
+        (Xbot) edge node[below]{$ \beta_a $} (X'bot)
+        (Atop) edge node[left]{$ L $} (Amid)
+        (A'top) edge node[right]{$ L' $} (A'mid)
+        (Amid) edge node[left]{$ \alpha_a $} (Xbot)
+        (A'mid) edge node[right]{$ \beta_a $} (X'bot);
+      \node () at (1,3) {\rotatebox{45}{{\scriptsize $
+            \rho_\alpha \Rightarrow$}}};
+      \node () at (1,1) {\rotatebox{45}{{\scriptsize $ m_a \Rightarrow $}}};
+    \end{scope}
+  \end{tikzpicture}
+\]
+between pasting diagrams.
+
+This completes our construction of $ [\Adj, \Cat] $.  We are
+interested in the 2-category $ \Corefl $, the sub 2-category
+of $ [ \Adj , \Cat ] $ that is 1-full and 2-full on the
+2-functors $ F \from \Adj \to \Cat $ such that $ F\eta $ is
+invertible.
+
+\subsection{A 2-category of opfibrations}
+\label{sec:2-categ-opfibr}
+
+Define $ \two $ to be the \emph{walking arrow}
+2-category. That is, $ \two $ consists of two 0-cells
+denoted $ a $ and $ x $, one 1-cell $ u \from a \to x $, and
+no 2-cells, plus the necessary identities.  Consider the hom
+object $ [ \two , \Cat ] $ internal to
+$ ( \twoCat , \otimes ) $ where, again, $ \otimes $ is the
+Gray tensor product. This 2-category can be thought of as a
+2-category of 2-functors much like we consider
+$ [\Adj, \Cat] $ as a 2-category of adjunctions. We are
+interested in a 2-category of certain kinds of functors,
+namely opfibrations, which we realize as a sub
+2-category. But first, let's let's understand
+$ [ \two,\Cat ] $ more concretely by describing its 0-cells,
+1-cells, and 2-cells as we did for $ [\Adj, \Cat] $ in the
+previous section.
+
+The 0-cells of $ [\two,\Cat] $ are 2-functors of type
+$ F \from \two \to \Cat $. Equivalently, such a 2-functor is
+given by a pair of categories $ \A \bydef Fa $ and $ \X
+\bydef Fx $ and a functor $ U \bydef Fr $ of type $ \A \to
+\X $.
+
+The 1-cells of $ [ \two, \Cat] $ are psuedonatural
+transformations between two functors
+$ \alpha \from (\A,U,\X) \To ( \A',U',\X' ) $. The data of
+such a psuedonatural transformation comprises a pair of
+functors $ \alpha_a $ and $ \alpha_x $ together with an
+invertible natural tranformation $ \alpha_u $ of the type
+\begin{center}
+  \begin{tikzpicture}
+      \matrix (m) [
+        matrix of math nodes,
+        row sep=4em,
+        column sep=4em,
+        minimum width=2em]
+      {  
+        \A & \X \\
+        \A' & \X' \\
+      };
+      \draw [cd] 
+        (m-1-1) edge[] node[above]{$ U $} (m-1-2)
+        (m-1-1) edge[] node[left]{$ \alpha_a $} (m-2-1)
+        (m-1-2) edge[] node[right]{$ \alpha_x $} (m-2-2)
+        (m-2-1) edge[] node[below]{$ U' $} (m-2-2);
+      \node () at (0.45em,0.45em)
+        {\rotatebox{45}{\scriptsize{$\alpha_u \To$}}};  
+  \end{tikzpicture}
+\end{center}
+
+The 2-cells of $ [\two, \Cat] $ are modifications between
+psuedonatural transformations.  That is, given $
+\alpha,\beta \from (\A,U,\X) \To (\A',U',\X') $ a
+modifcation $ m \from \alpha \Tto \beta $ consists of two
+natural tranformations
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}
+    \matrix (m) [
+        matrix of math nodes,
+        row sep=2em,
+        column sep=2em]
+      {  
+        \A & m_a \Downarrow & \A' \\
+      };
+    \draw [cd] 
+    (m-1-1.90)
+      edge[bend left=90] node[above]{$ \alpha_a $} (m-1-3.90)
+    (m-1-1.-90)  
+      to[bend left=-90] node[below]{$ \beta_a $} (m-1-3.-90);
+    \end{scope}
+    %
+    \begin{scope}[shift={(16em,0em)}]
+    \matrix (m) [
+        matrix of math nodes,
+        row sep=2em,
+        column sep=2em]
+      {  
+        \X & m_x \Downarrow & \X' \\
+      };
+    \draw [cd] 
+    (m-1-1.90)
+      edge[bend left=90] node[above]{$ \alpha_x $} (m-1-3.90)
+    (m-1-1.-90)  
+      to[bend left=-90] node[below]{$ \beta_x $} (m-1-3.-90);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+together with equations of pasting diagrams
+\begin{center}
+  \begin{tikzpicture}
+  \begin{scope}  
+    \matrix (m)
+    [
+      matrix of math nodes,
+      row sep=2em,
+      column sep=2em
+    ]
+    {  
+      \A & {}                                         & \A' \\
+      {} & \rotatebox{45}{\scriptsize{$ m_a \To $}}   & {}  \\
+      \A & {}                                         & \A' \\
+      {} & \rotatebox{45}{\scriptsize{$\beta_u \To$}} & {}  \\
+      \X & {}                                         & \X' \\
+    };
+    \draw [cd] 
+    (m-1-1) edge[] node[above]{$ \alpha_a $} (m-1-3)
+    (m-3-1) edge[] node[above]{$ \beta_a $} (m-3-3)
+    (m-5-1) edge[] node[below]{$ \beta_x $} (m-5-3)
+    (m-1-1) edge[] node[left]{$ \id $} (m-3-1)
+    (m-1-3) edge[] node[right]{$ \id $} (m-3-3)
+    (m-3-1) edge[] node[left]{$ U $} (m-5-1)
+    (m-3-3) edge[] node[right]{$ U' $} (m-5-3);
+  \end{scope}
+  %
+  \node () at (6em,0em) {$ = $};
+  %   
+  \begin{scope}[shift={(12em,0)}]  
+    \matrix (m)
+    [
+      matrix of math nodes,
+      row sep=2em,
+      column sep=2em
+    ]
+    {  
+      \A & {}                                         & \A' \\
+      {} & \rotatebox{45}{\scriptsize{$ \alpha_u \To $}}   & {}  \\
+      \X & {}                                         & \X' \\
+      {} & \rotatebox{45}{\scriptsize{$m_x \To$}} & {}  \\
+      \X & {}                                         & \X' \\
+    };
+    \draw [cd] 
+    (m-1-1) edge[] node[above]{$ \alpha_a $} (m-1-3)
+    (m-3-1) edge[] node[above]{$ \alpha_x $} (m-3-3)
+    (m-5-1) edge[] node[below]{$ \beta_x $}  (m-5-3)
+    (m-1-1) edge[] node[left]{$ U $}         (m-3-1)
+    (m-1-3) edge[] node[right]{$ U' $}       (m-3-3)
+    (m-3-1) edge[] node[left]{$ \id $}       (m-5-1)
+    (m-3-3) edge[] node[right]{$ \id $}      (m-5-3);
+  \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+There is a more geometric way to consider the 2-category
+$ [\two, \Cat] $, which is useful for keeping all of the
+data in mind.  The 0-cells are line segments (functors), the
+1-cells are filled-in squares (psuedonatural
+transformations), and the 2-cells are cylinders
+(modifications)
+\[
+\begin{tikzpicture}
+  \draw (0,0) ellipse (1 and 0.5);
+  \draw (-1,0) -- (-1,-3);
+  \draw (-1,-3) arc (180:360:1 and 0.5);
+  \draw [dashed] (-1,-3) arc (180:360:1 and -0.5);
+  \draw (1,-3) -- (1,0);
+  \draw (0.55,-0.42) -- (0.55,-3.41);
+  \draw [dashed] (-0.55,0.4) -- (-0.55,-2.5);
+  %\fill [] (-1.25,0) -- (-1.25,-3.5) arc (180:360:1.25 and 0.5) -- (1.25,0) arc (0:180:1.25 and -0.5);
+\end{tikzpicture}
+\]
+such that the path from the top disk down the back side is
+the same as the path down the front side and along the
+bottom disk.
+
+Now that we have defined the 2-category $ [\two,\Cat] $, we
+can define the sub-2-category whose objects are the opfibrations.
+
+
+
+
+
+
+
+\end{document}
+  
+
+
+
+ 
+  
+
+
+
+
+
+
+
+
 
 
 \bibliographystyle{alpha}

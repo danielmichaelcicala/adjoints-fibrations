@@ -4,7 +4,24 @@
 \usepackage{comment}
 \usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd,math,external}
+%\usetikzlibrary{decorations.markings,arrows.meta,calc,fit,quotes,cd,math,external}
+\usetikzlibrary{
+  matrix,
+  arrows,
+  arrows.meta,
+  calc,
+  fit,
+  quotes,
+  cd,
+  math,
+  external,
+  shapes,
+  decorations.markings,
+  decorations.pathreplacing,
+  patterns,
+  decorations.pathmorphing
+}
+
 \usepackage{url}
 \usepackage[inline]{enumitem}
 	\setlist{itemsep=0em, topsep=0em, parsep=0em}
@@ -48,11 +65,14 @@ final,linktoc=page}
 \newcommand{\Set}{\cat{Set}}
 \newcommand{\Grph}{\cat{Grph}}
 \newcommand{\Cat}{\cat{Cat}}
+\newcommand{\twoCat}{\cat{2Cat}}
+\newcommand{\Adj}{\cat{Adj}}
 \newcommand{\one}{\mathbf{1}}
 \newcommand{\two}{\mathbf{2}}
 \newcommand{\Fib}{\cat{Fib}}
 \newcommand{\OpFib}{\cat{OpFib}}
-
+\newcommand{\Corefl}{\cat{Corefl}}
+\newcommand{\Rali}{\cat{Rali}}
 
 \newcommand{\C}{\cat{A}}
 \newcommand{\D}{\cat{X}}
@@ -66,21 +86,18 @@ final,linktoc=page}
 \newcommand{\B}{\cat{B}}
 \newcommand{\Y}{\cat{Y}}
 
-
 \newcommand{\Cocart}{\mathrm{Cocart}}
 \newcommand{\Cart}{\mathrm{Cart}}
-
 
 \newcommand{\op}[1]{\operatorname{#1}}
 \renewcommand{\t}[1]{\text{#1}}
 
 \newcommand{\from}{\colon}
 \newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\Tto}{\Rrightarrow}
 \newcommand{\bydef}{\coloneqq}
 \newcommand{\define}{\textbf}%consider change to bold? or something else?
-\newcommand{\Adj}{\cat{Adj}}
-\newcommand{\Corefl}{\cat{Corefl}}
-\newcommand{\Rali}{\cat{Rali}}
 
 %
 % math operators
@@ -97,6 +114,18 @@ final,linktoc=page}
 \DeclareMathOperator{\colim}{colim}
 \newcommand{\iso}{\cong}
 
+%
+% tikz styles
+%
+
+% arrows for commuting diagram
+\tikzset{
+  cd/.style={
+    ->,
+    scale=6,
+    >=angle 90,
+    font=\scriptsize}
+  }
 
 % its us!
 
