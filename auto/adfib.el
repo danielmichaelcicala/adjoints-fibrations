@@ -1,0 +1,33 @@
+(TeX-add-style-hook
+ "adfib"
+ (lambda ()
+   (TeX-run-style-hooks
+    "latex2e"
+    "adfib_preamble"
+    "front_matter"
+    "amsart"
+    "amsart10")
+   (LaTeX-add-labels
+    "sec:preliminaries"
+    "eq:opfibration"
+    "factor"
+    "reindexing"
+    "lem:fibrewiselimits"
+    "it:2"
+    "lem:street-fibrewise-limits"
+    "prop:coreflection"
+    "sec:groth-fibs-ralis"
+    "prop:opfibtolari"
+    "prop:laritoopfib"
+    "thm:mainthm"
+    "Streetfibs"
+    "thm:street-opfib-to-corefl"
+    "thm:corefl-to-street-opfib"
+    "thm:main-theorem-street-version"
+    "eq:preservelimits"
+    "lem:Lack1"
+    "lem:isofactid")
+   (LaTeX-add-bibliographies
+    "references.bib"))
+ :latex)
+
