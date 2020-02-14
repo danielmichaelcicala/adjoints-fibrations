@@ -3,6 +3,7 @@
  (lambda ()
    (LaTeX-add-bibitems
     "Vasilakopoulou"
+    "rezk"
     "gabrielzisman"
     "Onbimeasurings"
     "hermidaphd"

@@ -11,12 +11,17 @@
 
 \section{Preliminaries}\label{sec:preliminaries}
 
-In this section, we present the necessary background for this paper and take this opportunity to set our notation and conventions.  We specifically cover two flavors of opfibrations: Grothendieck and Street.  We also present, for each type of opfibration, a helpful lemma that relates colimits in the fibres to colimits in the total category.
+In this section, we present the necessary background for this paper
+and take this opportunity to set our notation and conventions. One
+convention we employ is the singular focus on opfibrations instead of
+their dual, fibrations.  We specifically cover two flavors of
+opfibrations: Grothendieck and Street.  We also present, for each type
+of opfibration, a helpful lemma that relates colimits in the fibres to
+colimits in the total category.
 
 \subsection*{Grothendieck Opfibrations}
 
-We recall some basic material from the theory of opfibrations; standard references include \cite{Grayfibredandcofibred,hermidaphd,Handbook2}. 
-For our purposes, we center our presentation mostly around opfibrations.
+We recall some basic material from the theory of (Grothendieck) opfibrations; standard references include \cite{Handbook2,Grayfibredandcofibred,hermidaphd}. 
 
 Consider a functor $\U \colon\X \to \A$. A morphism $\beta \colon x \to y$ in $\X $ over a morphism $f = \U(\beta) \colon a \to b$ in $\A$ is called \define{cocartesian} if and only if, for all $g \colon b \to b'$ in $\A$ and $\gamma \colon x\to y'$ in $\X $ with $\U(\gamma) = g\circ f$, there exists a unique $\delta \colon y\to y'$ in $\X$ such that $\U(\delta) = g$ and $\gamma = \delta \circ \beta$:
 \begin{equation}\label{eq:opfibration}
@@ -49,76 +54,80 @@ for any $f\colon a\to b$ in the base category. It can be verified by the cocarte
 For what follows, it is necessary to clarify the relation between the existence of colimits in the total category of an opfibration to the existence of those colimits in the fibres in a coherent way. For more details, and a proof of the following result, see \cite[Cor. 3.7]{FibredAdjunctions}.
 
 \begin{lem}\label{lem:fibrewiselimits}
-Suppose $\cat{J}$ is a small category and $\U\colon\X\to\A$ is an opfibration. If the base $\A$ has $\cat{J}$-colimits,
-the following are equivalent:
+  Suppose $\cat{J}$ is a small category and $\U\colon\X\to\A$ is an
+  opfibration whose base $\A$ has $\cat{J}$-colimits. The following
+  are equivalent:
 \begin{enumerate}
  \item all fibres have $\cat{J}$-colimits, and the reindexing functors preserve them; \label{it:2}
- \item the total category $\X$ has $\cat{J}$-colimits, and $\U$ (strictly) preserves them.
+ \item the total category $\X$ has $\cat{J}$-colimits, and $\U$ strictly preserves them.
 \end{enumerate}
 \end{lem}
-The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-cocomplete base. The strict preservation of colimits is discussed in detail below \ref{lem:isofactid}.
+The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-cocomplete base. The strict preservation of colimits is discussed in detail in Appendix \ref{lem:isofactid}.
 
 \subsection*{Street Opfibrations}
 
-While fibrations are well-studied and frequently used without
-hesitation, there is an ``evilness'' about them. The term ``evil'' is
-a tongue-in-cheek expression applied to any categorical concept that
-fails to transport across an equivalence of categories.  The aspect of
-an opfibration $ \U \from \X \to \A $ that fails occurs when, given
-any arrow $ f \from a \to b $ and cartesian lifting
-$ \theta \from x \to y $ where $ x $ is in the fiber of $ a $, we
-require that $ Uy $ \emph{equals} $ a $.  After rebasing $ \X $ with
-an equivalent category, it is entirely possible that the equality
-weakens to an isomorphism, meaning that the rebased version of $ U $
-is no longer a fibration. While evil practices in category theory are
-typically avoided, fibrations are still used because, in concrete
-examples, they do satisfy this strict equality.  Even still, there is
-a non-evil version of a fibration. {\chris I love the chatty style but
-  also point of this paragraph. I'm wondering whether it should go to
-  the intro though? No strong opinion}
-
-{\chris Main references?}
+Typically, constructions in category theory should transport across equivalent categories. Opfibrations do not have this property. One can extend an opfibration $U\from\X\to\A$ along an equivalence of categories $\A \to \A'$ and the result $\X\to\A\to\A'$ is not necessarily an opfibration. The aspect that fails is, given a cocartesian lifting $\beta\from x \to y$ of an arrow $f\from a \to b$, we require that $Uy$ \emph{equals} $b$, and this equality may weaken to an isomorphism through an equivalence of categories. Street opfibrations avoid this defect. They were originally defined internally to 2-categories \cite{FibYon}. The definition below is a special case when the 2-category is $\Cat$.
 
 \begin{defn}
   A functor $ U \from \X \to \A $ is a \define{Street
     opfibration} if, for any arrow $ f \from a \to b $ in $ \A
   $ and $ x $ above $ a $, there exists a
   cocartesian arrow  $ \theta \from x \to y $ and an
-  isomorphism $ h \from Ux \iso a $ such that $ fh = U\theta $
+  isomorphism $ h \from b \iso Uy $ such that $ fh = U\theta $.
 \end{defn}
 
-{\chris Daniel, this is the 'easy' version, not the full definition. Please `copy' grothendieck diagram from above and adjust here? the morphism up top can go anywhere not necessarily `above' b}
+There is no amended definition of ``cocartesian arrow'' here; it is the same as above. It is the isomorphism $ h $, which replaces an equality in a Grothendieck opfibration, that ensures Street opfibrations satisfy the priciple of equivalence.
 
-In the Street fibration, the evil equality is replaced by an
-isomorphism $ h $.  One can readily check that rebasing a
-\emph{Street fibration} $ U $ with an equivalent category
-does, in fact, give another Street fibration.
+Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Grothendieck fibrations to Street fibrations, we need a generalized version of Lemma \ref{lem:fibrewiselimits}. In order to do this, we present several standard results as lemmas and recall the definition of an isofibration.
 
-Because we generalize our results in Section
-\ref{sec:groth-fibs-ralis} from Grothendieck fibrations to
-Street fibrations, we need a generalized version of Lemma
-\ref{lem:fibrewiselimits}.
+\begin{defn}
+  A functor $U \from \X \to \A$ is an \define{isofibration} if, for every isomorphism $f \from Ux \to a$ in $\A$, there is an isomorphism $\hat{f} \from x \to x'$ in $\X$ such that $U\hat{f}=f$. 
+\end{defn}
+
+\begin{lem}
+  If a functor is a Street opfibration and isofibration, it is also a Grothendieck fibration. 
+\end{lem}
+
+\begin{proof}
+  Let $U \from\X \to \A$ be both a Street opfibration and isofibration. To an arrow $f \from Ux \to a$, we associate an opcartesian lifting $\theta \from x \to y$ and isomorphism $h \from a \to Uy$. Let $\hat{h^{-1}}$ be the invertible arrow in $\X$ over $h^{-1}$. The cocartesian arrow lift of $f$ is $\theta \hat{h^{-1}}$.  
+\end{proof}
+
+\begin{lem}
+  A Street opfibration can be decomposed into a Grothendieck opfibration followed by an equivalence of categories.
+\end{lem}
+
+\begin{proof}
+  There is a model structure on $\Cat$ whose weak equivalences are equivalences of categories and fibrations are isofibrations \cite{rezk}. Hence, we can decompose a Street opfibration into an isofibration followed by a equivalence of categories. But because the isofibration is equivlant to a Street opfibration, it is also a Street opfibration, hence a Grothendieck opfibration by the previous lemma.  
+\end{proof}
+
 
 \begin{lem} \label{lem:street-fibrewise-limits}
   Suppose $ \cat{J} $ is a small category and $ U \from \X
-  \to \A $ is a Street (op)fibration. If $ \A $ has $ \cat{J}
-  $-(co)limits, the following are equivalent:
+  \to \A $ is a Street opfibration. If $ \A $ has $ \cat{J}
+  $-colimits, the following are equivalent:
   \begin{enumerate}
   \item
     all fibres have $ \cat{J} $-colimits and the
     reindexing functors preserve them;
   \item
-    $ \X $ has $ \cat{J} $-(co)limits and $ U $ preserves
+    $ \X $ has $ \cat{J} $-colimits and $ U $ preserves
     them.
   \end{enumerate}
 \end{lem}
 
 \begin{proof}
-  Every Street fibration can be factored as a Grothendieck
-  fibration followed by an equivalence of categories. {\chris a reference is necessary here, and a diagram expressing that property could go here or earlier, discussing the relation of this new notion with the old.} This
-  lemma holds for Grothendieck fibrations plus categories having
-  (co)limits and functors preserving them are both properties
-  that satisfy the principle of equivalence.   
+  Decompose $U$ into a Street opfibration $U' \from \X \to \A'$ followed by an equivalence $H \from \A' \to \A$ per the previous lemma.  If the $U$-fibres have have $\cat{J}$-colimits, then so do the equivalent $U'$-fibres.  But then by Lemma \ref{lem:fibrewiselimits}, $\X$ has $\cat{J}$-colimits and $U'$ strictly preserves them, which ensures that $U$ preserves them.  
+
+  \daniel{pick up here with 'only if' direction. Think: U preserves colimits implies U' strictly?  U' strictly even needed in grothendieck case?}
+
+
+  Every Street fibration can be factored as a Grothendieck fibration
+  followed by an equivalence of categories. {\chris a reference is
+    necessary here, and a diagram expressing that property could go
+    here or earlier, discussing the relation of this new notion with
+    the old.} This lemma holds for Grothendieck fibrations plus
+  categories having colimits and functors preserving them are both
+  properties that satisfy the principle of equivalence.
 \end{proof}
 
 \subsection*{Coreflections and laris}
@@ -447,34 +456,40 @@ main result of this section.
 % ===============================================================
 % Appendix. Choice of colimits.
 
-\subsection*{Choice of colimits}
+\appendix{}
 
-In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Whereas such an uncommon condition sounds `evil' at first, we remark that it is the necessary such in order to match to the inherent `evilness' of Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration as discussed above.
+\section{Choice of colimits}
 
-In more detail, assuming the axiom of choice we can regard any category with (co)limits as having \emph{chosen} ones, in the sense of choosing a specific adjoint (out of all isomorphic ones) to the constant diagram functor:
+In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Although the strict preservation of colimits does not adhere to the principle of equivalence, it is required when working with Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration as discussed above.
+
+In more detail, assuming the axiom of choice we can regard any category with colimits as having \emph{chosen} ones, in the sense of choosing a specific adjoint (from all isomorphic ones) to the constant diagram functor:
 \begin{displaymath}
  \begin{tikzcd}[sep=.7in]
  \cat{C}\ar[r,pos=.6,"\Delta_\cat{C}"description]\ar[r,phantom,bend left=18,pos=.6,"\bot"]\ar[r,phantom,bend right=18,pos=.6,"\bot"] &  {[}\cat{J},\cat{C}{]}\ar[l,bend right,pos=.4,"\colim_\cat{J}"']\ar[l,bend left,pos=.4,"\lim_\cat{J}"]
  \end{tikzcd}
 \end{displaymath}
-Some categories, like $\Set$, even have a canonical choice corresponding to well-known constructions of (co)limits of sets. In general, a functor $F\colon\cat{C}\to\cat{D}$ between categories with colimits, for example, preserves them when the following diagram
+Some categories, like $\Set$, even have a canonical choice corresponding to well-known constructions of colimits of sets. In general, a functor $F\colon\cat{C}\to\cat{D}$ between categories with colimits, for example, preserves them when the following diagram
 \begin{equation}\label{eq:preservelimits}
   \begin{tikzcd}
 \phantom{A}[\cat{J},\cat{C}]\ar[r,"\colim"]\ar[d,"{[\cat{J},F]}"']\ar[dr,phantom,"\cong"] & \cat{C}\ar[d,"F"] \\
 \phantom{A}[\cat{J},\cat{D}]\ar[r,"\colim"'] & \cat{D}
   \end{tikzcd}
  \end{equation}
-which is the \emph{mate} of the commutative square with $\Delta$'s, commutes up to natural isomorphism.
-The following two lemmas (due to Steve Lack) present two natural settings where functors between categories with chosen (co)limits \emph{strictly} preserve them; evidently, such a thing is to be expected only when the limits in the categories have been both previously constructed from chosen limits in some fixed category.
+ commutes up to natural isomorphism.  The following two lemmas (due to
+ Steve Lack) present two natural settings where functors between
+ categories with chosen colimits strictly preserve them;
+ evidently, such a thing is to be expected only when the colimits in the
+ categories have been both previously constructed from chosen limits
+ in some fixed category.
 \begin{lem}\label{lem:Lack1}
- Suppose $\cat{C}$ is a category with chosen (co)limits (of any class). Then for any two categories $\cat{A}$ and $\cat{B}$ and any functor $F\colon\cat{A}\to\cat{B}$ between them, the pre-composition functor
+ Suppose $\cat{C}$ is a category with chosen colimits of any class. Then for any two categories $\cat{A}$ and $\cat{B}$ and any functor $F\colon\cat{A}\to\cat{B}$ between them, the pre-composition functor
  \begin{displaymath}
   \begin{tikzcd}[row sep=.05in]
   F^*\colon[\cat{B},\cat{C}]\ar[r] & \;[\cat{A},\cat{C}] \\
-  \;\;\;\;\cat{B}\xrightarrow{H}\cat{C}\ar[r,mapsto] & \cat{A}\xrightarrow{F}\cat{B}\xrightarrow{H}\cat{C}
+  \;\;\;\;\left(\cat{B}\xrightarrow{H}\cat{C}\right)\ar[r,mapsto] & \left(\cat{A}\xrightarrow{F}\cat{B}\xrightarrow{H}\cat{C}\right)
   \end{tikzcd}
  \end{displaymath}
-strictly preserves the chosen (co)limits.
+strictly preserves the chosen colimits.
 \end{lem}
 \begin{proof}
  This follows from the pointwise construction of colimits in functor categories.
@@ -482,14 +497,16 @@ strictly preserves the chosen (co)limits.
 
 As a particular case, the following result concerns our motivating example.
 \begin{cor}
-There is a canonical choice of (co)limits in $\Grph$ inherited from those in $\Set$ so that the domain and codomain functors $\Grph\to\Set$ strictly preserve all limits and colimits.
+There is a canonical choice of colimits in $\Grph$ inherited from those in $\Set$ so that the domain and codomain functors $\Grph\to\Set$ strictly preserve all colimits.
 \end{cor}
 
 \begin{proof}
- Consider the two functors $1,2\colon\one{=}\{\bullet\}\longrightarrow\{1\rightrightarrows2\}{=}\two$. Choosing the canonical (co)limits in $\Set$, by \cref{lem:Lack1} we obtain two functors
+  The domain and codomain functors, respectively $1^\ast$ and
+  $2^\ast$, are built from the functors
+  $1,2\colon\one{=}\{\bullet\}\longrightarrow\{1\rightrightarrows2\}{=}\two$.  Choosing the canonical colimits in $\Set$, by \cref{lem:Lack1} we obtain two functors
 \begin{displaymath}
 \begin{tikzcd}
- \Grph=[\two,\Set]\ar[r,shift left,"\mathrm{dom}"]\ar[r,shift right,"\mathrm{cod}"'] & \;[\one,\Set]=\Set
+ \Grph=[\two,\Set]\ar[r,shift left,"1^\ast"]\ar[r,shift right,"2^\ast"'] & \;[\one,\Set]=\Set
  \end{tikzcd}
 \end{displaymath}
 that strictly preserve them.
@@ -497,14 +514,14 @@ that strictly preserve them.
 
 The following case again follows from a construction of chosen limits in common ground; colimits adhere to a dual result.
 \begin{lem}
-Suppose $\cat{C}$ and $\cat{D}$ have chosen limits and $F\colon\cat{C}\to\cat{D}$ is an arbitrary functor. Then the comma category $F\downarrow\cat{D}$ can be equipped with limits in such a way that both projections $\cat{C}\leftarrow F\downarrow\cat{D}\to\cat{D}$ strictly preserve them.
+Suppose $\cat{C}$ and $\cat{D}$ have chosen colimits and $F\colon\cat{C}\to\cat{D}$ is an arbitrary functor. Then the comma category $F\downarrow\cat{D}$ can be equipped with colimits in such a way that both projections $\cat{C}\leftarrow F\downarrow\cat{D}\to\cat{D}$ strictly preserve them.
 \end{lem}
 
 \begin{proof}
- This follows from the canonical construction of limits in comma categories, as found e.g.\ in~\cite[\S 2.16]{Handbook1}.
+ This follows from the canonical construction of colimits in comma categories (see~\cite[\S 2.16]{Handbook1}).
 \end{proof}
 
-Finally, another class of functors which is notable when it comes to strict preservation of (co)limits are (op)fibrations. In more detail, there is no loss of generality for a colimit-preserving opfibration if we assume that colimits are in fact preserved on-the-nose, whereas such a statement does definitely not apply to arbitrary functors. This is due to the following lemma, which is a special case of a more general fact: the embedding of $\OpFib$ in the 2-category $\OpFib_{\sim}$ where 2-cells are squares filled with isomorphisms, is locally fully faithful and essentially surjective (also for fibs...references...\cite{Fib2Fib}?). We thank Claudio Hermida for these observations.
+Finally, opfibrations form another class of functors that is notable when it comes to strictly preserving colimits. In more detail, we do not lose generality by assuming that a colimit preserving opfibration preserves strictly. Such a statement does not apply to arbitrary functors. This is due to the following lemma, which is a special case of a more general fact: the embedding of $\OpFib$ in the 2-category $\OpFib_{\sim}$ where 2-cells are squares filled with isomorphisms, is locally fully faithful and essentially surjective (also for fibs...references...\cite{Fib2Fib}?). We thank Claudio Hermida for these observations.
 \begin{lem}\label{lem:isofactid}
  Suppose $\U$ and $\Q$ are opfibrations, and there is a natural isomorphism
  \begin{displaymath}
