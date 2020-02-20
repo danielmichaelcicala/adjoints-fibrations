@@ -84,7 +84,7 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
   A functor $U \from \X \to \A$ is an \define{isofibration} if, for every isomorphism $f \from Ux \to a$ in $\A$, there is an isomorphism $\hat{f} \from x \to x'$ in $\X$ such that $U\hat{f}=f$. 
 \end{defn}
 
-\begin{lem}
+\begin{lem} \label{lem:street_and_iso_is_groth}
   If a functor is a Street opfibration and isofibration, it is also a Grothendieck fibration. 
 \end{lem}
 
@@ -92,7 +92,7 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
   Let $U \from\X \to \A$ be both a Street opfibration and isofibration. To an arrow $f \from Ux \to a$, we associate an opcartesian lifting $\theta \from x \to y$ and isomorphism $h \from a \to Uy$. Let $\hat{h^{-1}}$ be the invertible arrow in $\X$ over $h^{-1}$. The cocartesian arrow lift of $f$ is $\theta \hat{h^{-1}}$.  
 \end{proof}
 
-\begin{lem}
+\begin{lem} \label{lem:street_decomposed}
   A Street opfibration can be decomposed into a Grothendieck opfibration followed by an equivalence of categories.
 \end{lem}
 
@@ -116,9 +116,46 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
 \end{lem}
 
 \begin{proof}
-  Decompose $U$ into a Street opfibration $U' \from \X \to \A'$ followed by an equivalence $H \from \A' \to \A$ per the previous lemma.  If the $U$-fibres have have $\cat{J}$-colimits, then so do the equivalent $U'$-fibres.  But then by Lemma \ref{lem:fibrewiselimits}, $\X$ has $\cat{J}$-colimits and $U'$ strictly preserves them, which ensures that $U$ preserves them.  
+  Decompose $U$ into a Street opfibration $U' \from \X \to \A'$ followed by an equivalence $H \from \A' \to \A$ per Lemma \ref{lem:street_decomposed}.  If the $U$-fibres have have $\cat{J}$-colimits, then so do the equivalent $U'$-fibres.  By Lemma \ref{lem:fibrewiselimits}, $\X$ has $\cat{J}$-colimits and $U'$ strictly preserves them, which implies that $U$ also preserves them.  
 
-  \daniel{pick up here with 'only if' direction. Think: U preserves colimits implies U' strictly?  U' strictly even needed in grothendieck case?}
+  Conversely, because $U$ preserves $J$-colimits, the diagram
+  \begin{equation*}
+  \begin{tikzpicture}
+    \node (X) at (0,2) {$ \X $};
+    \node (A) at (0,0) {$ \A $};
+    \node (XJ) at (2,2) {$ [J,\X] $};
+    \node (AJ) at (2,0) {$ [J,\A] $};
+    \draw [cd]
+    (X) edge[] node[left]{$U$} (A)
+    (XJ) edge[] node[right]{$[J,U]$} (AJ)
+    (X) edge[] node[above]{$\Delta$} (XJ)
+    (A) edge[yshift=0.3cm] node[above]{$\Delta$} (AJ)
+    (AJ) edge[yshift=-0.3cm] node[below]{$\colim$} (A); % TODO fix these yshifts
+    \node () at (1,0) {$ \bot $};
+  \end{tikzpicture}
+\end{equation*}
+can be completed to 
+\begin{equation*}
+  \begin{tikzpicture}
+    \node (X) at (0,2) {$ \X $};
+    \node (A) at (0,0) {$ \A $};
+    \node (XJ) at (2,2) {$ [J,\X] $};
+    \node (AJ) at (2,0) {$ [J,\A] $};
+    \draw [cd]
+    (X) edge[] node[left]{$U$} (A)
+    (XJ) edge[] node[right]{$[J,U]$} (AJ)
+    (X) edge[yshift=0.3cm] node[above]{$\Delta$} (XJ)
+    (XJ) edge[yshift=0.3cm] node[below]{$\colim$} (X) 
+    (A) edge[yshift=0.3cm] node[above]{$\Delta$} (AJ)
+    (AJ) edge[yshift=-0.3cm] node[below]{$\colim$} (A); % TODO fix these yshifts
+    \node () at (1,0) {$ \bot $};
+    \node () at (1,2) {$ \bot $};
+  \end{tikzpicture}
+\end{equation*}
+
+
+  
+  \daniel{pick up here with 'only if' direction. Think: U preserves colimits implies U' strictly?  U' strictly even needed in grothendieck case? See hermida's paper and my marginal notes}
 
 
   Every Street fibration can be factored as a Grothendieck fibration

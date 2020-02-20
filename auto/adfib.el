@@ -14,6 +14,8 @@
     "reindexing"
     "lem:fibrewiselimits"
     "it:2"
+    "lem:street_and_iso_is_groth"
+    "lem:street_decomposed"
     "lem:street-fibrewise-limits"
     "prop:coreflection"
     "sec:groth-fibs-ralis"
