@@ -147,21 +147,16 @@ We use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofi
 \section{Grothendieck fibrations and ralis}
 \label{sec:groth-fibs-ralis}
 
-In this section, we investigate conditions under which opfibrations and adjunctions with identity unit relate to one another. The main result, \cref{thm:mainthm}, exhibits their bijective correspondence under the intersection of the respective conditions.
+In this section, we investigate the relationship between opfibrations and adjunctions. We start by finding conditions under which an opfibration is a right adjoint.  We then find conditions under which a right adjoint is an opfibration. We conclude this section by exhibiting the correspondence by intersecting the respective conditions.
 
-Initially we establish when an opfibration has a left adjoint; the following result is the dual of \cite[Prop. 4.4]{Grayfibredandcofibred}.
+Initially we establish when an opfibration has a left adjoint. The following result is an answer to the question: when is an opfibration an adjoint? It is dual to a proposition of Gray \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 %changed from has a lari to is a rali to make descriptions of categories easier later - hopefully! Otherwise change back.
-\begin{prop} \label{prop:opfibtolari}
-  Let $\U \from \D \to \C$ be an opfibration. Then
-  $\U$ is a rali if (and only if) its fibers have
-  initial objects which are preserved by the
-  reindexing functors.
+\begin{prop} \label{prop:opfibtolari} Let $\U \from \D \to \C$ be an  opfibration. Then $\U$ is a rali if its fibers have initial objects which are preserved by the reindexing functors.
 \end{prop}
 
 \begin{proof}
-Denote by $\bot_a$ the initial object in each fiber $\D_x$ above an object $a\in\C$ in the base category. Define a left adjoint $\L$
-of $\U$ as follows:
+Denote by $\bot_a$ the initial object in each fiber $\D_x$ above an object $a\in\C$ in the base category. Define a left adjoint $\L$ of $\U$ as follows:
 \begin{displaymath}
 \begin{tikzcd}[row sep=.05in,cells={anchor=east}]
   \L\colon\A\ar[rr] && \X\;\; &\\
@@ -170,25 +165,13 @@ of $\U$ as follows:
 b\ar[rr,mapsto] && \bot_b & f_!(\bot_a)\ar[l,"\sim"']
 \end{tikzcd}
 \end{displaymath}
-where the bottom isomorphism is the unique one
-induced by the fact that each $f_!$ preserves
-initial objects between the respective
-fibers.
+where the bottom isomorphism is the unique one induced by the fact that each $f_!$ preserves initial objects between the respective fibers.
 % looks like the first time we define a
 % morphism in the total category via its
 % unique factorization! alright.
-This assignment is strictly functorial due to the
-universal properties of cocartesian
-liftings. Notice that by definition,
-$\L a =\bot_a$ is in the fibre $\X_a$, which means
-$\U\L a =a$ for any object $a\in\A$.
+This assignment is strictly functorial due to the universal properties of cocartesian liftings. Notice that by definition, $\L a =\bot_a$ is in the fibre $\X_a$, which means $\U\L a =a$ for any object $a\in\A$.
 
-To show this determines a left adjoint of $\U$, it
-suffices to establish a natural bijection
-$\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$,
-$x\in\X$. Indeed, each morphism in the total
-category $k\colon \L a\to x$ above $f=\U k$,
-factorizes uniquely \cref{factor} as
+To show this determines a left adjoint of $\U$, it suffices to establish a natural bijection $\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$, $x\in\X$. Indeed, each morphism in the total category $k\colon \L a\to x$ above $f=\U k$, factorizes uniquely \cref{factor} as
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
 {\bot_a \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\Cocart(f,\bot_a)} && x &\\
@@ -197,21 +180,17 @@ a\ar[rr]_-{f} && \U x & \textrm{in }\A}
 \end{displaymath}
 but since $f_!(\bot_a)\cong\bot_{\U x}$ is the initial object in the fibre above $\U x$, the morphism $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
 
-Finally, the right adjoint $\U$ is indeed a left
-inverse of $\L$, namely the unit of the adjunction
-$\eta\colon 1_\A \to \U\L$ is the identity natural
-transformation: $\U\L a=a$ and moreover $\X (\L a,\L a)\cong\A(a,\U\L a)$ ensures that the identity $\bot_a$ corresponds to the identity on $a$. %which should be clear from the above described bijection!
+Finally, the right adjoint $\U$ is indeed a left inverse of $\L$, namely the unit of the adjunction $\eta\colon 1_\A \to \U\L$ is the identity natural transformation: $\U\L a=a$ and moreover $\X (\L a,\L a)\cong\A(a,\U\L a)$ ensures that the identity $\bot_a$ corresponds to the identity on $a$.
+% which should be clear from the above described bijection!
 \end{proof}
 
-The `only if' direction of the statement is not needed for our purposes. Notice that in particular, since $\U$ is a right adjoint, it ends up preserving all limits that exist in $\X$; this makes the above condition for its existence look slightly unintuitive. 
-
-The dual result states that a fibration is a lali, or equivalently has a rari namely the counit of the adjunction is the identity, if and only if the fibers have terminal objects that are preserved by the reindexing functors. Due to \cref{lem:fibrewiselimits}, we can express both these results as follows.
+Notice that because $\U$ is a right adjoint, it is slightly surprising that the existence of $\U$ is related to $U$ preserving initial objects. While this proposition uses reindexing functors to relate opfibrations and ralis, we can use Lemma \ref{lem:fibrewiselimits} to use a property of $U$ instead.
 
 \begin{cor}
-An (op)fibration is a (right) left adjoint left inverse if the base category has and the functor strictly preserves the (initial) terminal object.
+  An opfibration is a rali if the base category has and the functor strictly preserves the initial object.
 \end{cor}
 
-Next, we examine when a right adjoint left inverse has an opfibration structure. The relevant colimits in this case are pushouts, and the following result provides sufficient conditions in terms of those. Recall the discussion regarding strict preservation of colimits in \cref{sec:preliminaries}.
+Next, we examine when a rali is an opfibration. The relevant condition is that a rali $U$ strictly preserves pushouts. Requiring strict preservation is a strong condition, but can be assumed for a non-trivial class of functors.  We discuss this further in Appendix \ref{sec:choice_of_colimits}.
 
 \begin{prop}\label{prop:laritoopfib}
 Suppose that $\U\colon\X\to\A$ is a rali, with left adjoint right inverse $\L$. Then $\U$ is an opfibration if $\X$ and $\A$ have chosen pushouts such that $\U$ strictly preserves them.
@@ -249,7 +228,7 @@ is \emph{the} pushout of $f$ along the identity, namely $f$ due to our choice. M
 \end{proof}
 %Christina: tried to see whether the converse is true, didn't go far. Remember that from previous prop we got it preserves initial for sure!
 
-Combining \cref{prop:opfibtolari,prop:laritoopfib}, we obtain the following result that establishes certain conditions under which a Grothendieck opfibration structure on a functor corresponds to a rali structure and vice versa. %Christina: no more finite colimits: Steve said that for the strict case, this is more subtle than the ordinary case. Pretty sure that we don't wanna go into details there?
+Combining \cref{prop:opfibtolari,prop:laritoopfib}, we establish certain conditions under which a Grothendieck opfibration corresponds to a rali and vice versa. %Christina: no more finite colimits: Steve said that for the strict case, this is more subtle than the ordinary case. Pretty sure that we don't wanna go into details there?
 %Understand whether other such conditions could exist? More philosophically.
 
 \begin{thm}\label{thm:mainthm}
@@ -262,9 +241,9 @@ Suppose that $\X$ and $\A$ have chosen pushouts and initial objects, and a funct
 \section{Street fibrations and coreflections}\label{Streetfibs}
 
 In this section, we trod the same path as in Section
-\ref{sec:groth-fibs-ralis} yet shed all strictness of the
-preservation of colimits and work with Street opfibrations
-instead of Grothendeick opfibrations.
+\ref{sec:groth-fibs-ralis} but shed any strictness around
+preserving colimits by working with Street opfibrations
+instead of Grothendeick opfibrations and with reflectors instead of ralis
 
 Generalising \cref{prop:opfibtolari}, we obtain
 the following. 
@@ -311,7 +290,7 @@ transport the assumptions on the fibers to the base category
 of our Street fibration.
 
 \begin{cor}
-  A Street (op)fibration is a coreflector if the base
+  A Street opfibration is a reflector if the base
   category has and the functor preserves the (initial)
   terminal object.
 \end{cor}
@@ -435,6 +414,7 @@ main result of this section.
 \appendix{}
 
 \section{Choice of colimits}
+\label{sec:choice_of_colimits}
 
 In what follows, and in particular for our main \cref{thm:mainthm}, we often require that certain colimits must be \emph{strictly} preserved. Although the strict preservation of colimits does not adhere to the principle of equivalence, it is required when working with Grothendieck fibrations. Moreover, in \cref{Streetfibs} we examine the non-strict context which then naturally matches to the notion of a Street fibration as discussed above.
 

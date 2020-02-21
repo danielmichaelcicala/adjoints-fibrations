@@ -26,6 +26,7 @@
     "thm:street-opfib-to-corefl"
     "thm:corefl-to-street-opfib"
     "thm:main-theorem-street-version"
+    "sec:choice_of_colimits"
     "eq:preservelimits"
     "lem:Lack1"
     "lem:isofactid")
