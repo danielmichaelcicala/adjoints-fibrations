@@ -59,9 +59,14 @@ For what follows, it is necessary to clarify the relation between the existence 
   are equivalent:
 \begin{enumerate}
  \item all fibres have $\cat{J}$-colimits, and the reindexing functors preserve them; \label{it:2}
- \item the total category $\X$ has $\cat{J}$-colimits, and $\U$ strictly preserves them.
+ \item the total category $\X$ has $\cat{J}$-colimits, and $\U$ (strictly) preserves them.
 \end{enumerate}
 \end{lem}
+
+\begin{remark}
+  In the above lemma, we do not require $\X$ to strictly preserve colimits when assuming the axiom of choice. 
+\end{remark}
+
 The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-cocomplete base. The strict preservation of colimits is discussed in detail in Appendix \ref{lem:isofactid}.
 
 \subsection*{Street Opfibrations}
@@ -76,7 +81,7 @@ Typically, constructions in category theory should transport across equivalent c
   isomorphism $ h \from b \iso Uy $ such that $ fh = U\theta $.
 \end{defn}
 
-There is no amended definition of ``cocartesian arrow'' here; it is the same as above. It is the isomorphism $ h $, which replaces an equality in a Grothendieck opfibration, that ensures Street opfibrations satisfy the priciple of equivalence.
+There is no amended definition of ``cocartesian arrow'' here; it is the same as above. The isomorphism $ h $, which replaces an equality in a Grothendieck opfibration, ensures that Street opfibrations satisfy the priciple of equivalence.
 
 Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Grothendieck fibrations to Street fibrations, we need a generalized version of Lemma \ref{lem:fibrewiselimits}. In order to do this, we present several standard results as lemmas and recall the definition of an isofibration.
 
@@ -85,7 +90,7 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
 \end{defn}
 
 \begin{lem} \label{lem:street_and_iso_is_groth}
-  If a functor is a Street opfibration and isofibration, it is also a Grothendieck fibration. 
+  A functor that is a Street opfibration and isofibration is also a Grothendieck fibration. 
 \end{lem}
 
 \begin{proof}
@@ -97,9 +102,8 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
 \end{lem}
 
 \begin{proof}
-  There is a model structure on $\Cat$ whose weak equivalences are equivalences of categories and fibrations are isofibrations \cite{rezk}. Hence, we can decompose a Street opfibration into an isofibration followed by a equivalence of categories. But because the isofibration is equivlant to a Street opfibration, it is also a Street opfibration, hence a Grothendieck opfibration by the previous lemma.  
+  There is a model structure on $\Cat$ whose weak equivalences are equivalences of categories and fibrations are isofibrations \cite{rezk}. Hence, we can decompose a Street opfibration into an isofibration followed by a equivalence of categories. The isofibration is equivalent to a Street opfibration so is, itself, a Street opfibration and, therefore by Lemma \ref{lem:street_and_iso_is_groth}, a Grothendieck opfibration.  
 \end{proof}
-
 
 \begin{lem} \label{lem:street-fibrewise-limits}
   Suppose $ \cat{J} $ is a small category and $ U \from \X
@@ -116,62 +120,14 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
 \end{lem}
 
 \begin{proof}
-  Decompose $U$ into a Street opfibration $U' \from \X \to \A'$ followed by an equivalence $H \from \A' \to \A$ per Lemma \ref{lem:street_decomposed}.  If the $U$-fibres have have $\cat{J}$-colimits, then so do the equivalent $U'$-fibres.  By Lemma \ref{lem:fibrewiselimits}, $\X$ has $\cat{J}$-colimits and $U'$ strictly preserves them, which implies that $U$ also preserves them.  
-
-  Conversely, because $U$ preserves $J$-colimits, the diagram
-  \begin{equation*}
-  \begin{tikzpicture}
-    \node (X) at (0,2) {$ \X $};
-    \node (A) at (0,0) {$ \A $};
-    \node (XJ) at (2,2) {$ [J,\X] $};
-    \node (AJ) at (2,0) {$ [J,\A] $};
-    \draw [cd]
-    (X) edge[] node[left]{$U$} (A)
-    (XJ) edge[] node[right]{$[J,U]$} (AJ)
-    (X) edge[] node[above]{$\Delta$} (XJ)
-    (A) edge[yshift=0.3cm] node[above]{$\Delta$} (AJ)
-    (AJ) edge[yshift=-0.3cm] node[below]{$\colim$} (A); % TODO fix these yshifts
-    \node () at (1,0) {$ \bot $};
-  \end{tikzpicture}
-\end{equation*}
-can be completed to 
-\begin{equation*}
-  \begin{tikzpicture}
-    \node (X) at (0,2) {$ \X $};
-    \node (A) at (0,0) {$ \A $};
-    \node (XJ) at (2,2) {$ [J,\X] $};
-    \node (AJ) at (2,0) {$ [J,\A] $};
-    \draw [cd]
-    (X) edge[] node[left]{$U$} (A)
-    (XJ) edge[] node[right]{$[J,U]$} (AJ)
-    (X) edge[yshift=0.3cm] node[above]{$\Delta$} (XJ)
-    (XJ) edge[yshift=0.3cm] node[below]{$\colim$} (X) 
-    (A) edge[yshift=0.3cm] node[above]{$\Delta$} (AJ)
-    (AJ) edge[yshift=-0.3cm] node[below]{$\colim$} (A); % TODO fix these yshifts
-    \node () at (1,0) {$ \bot $};
-    \node () at (1,2) {$ \bot $};
-  \end{tikzpicture}
-\end{equation*}
-
-
-  
-  \daniel{pick up here with 'only if' direction. Think: U preserves colimits implies U' strictly?  U' strictly even needed in grothendieck case? See hermida's paper and my marginal notes}
-
-
-  Every Street fibration can be factored as a Grothendieck fibration
-  followed by an equivalence of categories. {\chris a reference is
-    necessary here, and a diagram expressing that property could go
-    here or earlier, discussing the relation of this new notion with
-    the old.} This lemma holds for Grothendieck fibrations plus
-  categories having colimits and functors preserving them are both
-  properties that satisfy the principle of equivalence.
+  Per Lemma \ref{lem:street_decomposed}, decompose $U$ into $H U'$ where $U'$ is a Street opfibration and $H$ is an equivalence. The result follows by applying Lemma \ref{lem:fibrewiselimits} to $U'$.  
 \end{proof}
 
 \subsection*{Coreflections and laris}
 
 The main result of this paper is a correspondence between fibrations and adjoints, under certain assumptions. The adjunctions involved are a stricter version of the well-known \emph{coreflections}, whose definition we recall. %if we need ref for this super standard thing, Borceaux 1
 
-\begin{prop}\label{prop:coreflection}
+\begin{prop}[\cite[Prop.~3.4.1]{Handbook1}]\label{prop:coreflection}
 The following are equivalent for an adjunction $\L\dashv\U\colon\X\to\A$:
  \begin{enumerate}
   \item the left adjoint $\L$ is fully faithful;
@@ -183,7 +139,7 @@ Under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also isomorphisms.
 The above clauses also imply that the induced comonad $(LU,L\eta_G,\epsilon)$ on $\X$ is \emph{idempotent}. Such an adjunction is called a \define{coreflection}, $\A$ is a \define{coreflective} subcategory of $\U$ and the right adjoint $U$ is called the \define{coreflector}.
 
 Connected to the issues of `evilness' discussed already is a stricter version of a coreflector that actually appears in the desired correspondence between (Gro\-the\-ndi\-eck) fibrations and adjoints.
-We use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\X\to\A$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\A=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Of course, under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also identities $ULU=U$.
+We use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\X\to\A$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\A=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Of course, under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also identities and $ULU=U$.
 
 Analogously, if a functor has a \emph{rari} or equivalently is a \emph{lali}, then the counit of the adjunction is the identity; this comes as a special case of the dual notion of a \emph{reflection} of categories.
 
