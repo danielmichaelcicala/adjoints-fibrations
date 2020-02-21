@@ -3,8 +3,15 @@
 \begin{document}
 \input{front_matter.tex}
 
+% TODO write intro
+% TODO go through all comments
+% TODO make commutative diagrams uniform
+% TODO make \cref vs \ref
+
+
 % ===============================================================
 % Introduction
+
 
 % ===============================================================
 % Preliminaries. Basic def's and set notation. Include lemmas
@@ -125,9 +132,9 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
 
 \subsection*{Coreflections and laris}
 
-The main result of this paper is a correspondence between fibrations and adjoints, under certain assumptions. The adjunctions involved are a stricter version of the well-known \emph{coreflections}, whose definition we recall. %if we need ref for this super standard thing, Borceaux 1
+The main result of this paper is a correspondence between fibrations and adjoints, under certain assumptions. The adjunctions involved are a stricter version of the well-known \emph{coreflections}, whose definition we recall. 
 
-\begin{prop}[\cite[Prop.~3.4.1]{Handbook1}]\label{prop:coreflection}
+\begin{prop}[{\cite[Prop.~3.4.1]{Handbook1}}]\label{prop:coreflection}
 The following are equivalent for an adjunction $\L\dashv\U\colon\X\to\A$:
  \begin{enumerate}
   \item the left adjoint $\L$ is fully faithful;
@@ -151,27 +158,22 @@ In this section, we investigate the relationship between opfibrations and adjunc
 
 Initially we establish when an opfibration has a left adjoint. The following result is an answer to the question: when is an opfibration an adjoint? It is dual to a proposition of Gray \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
-%changed from has a lari to is a rali to make descriptions of categories easier later - hopefully! Otherwise change back.
 \begin{prop} \label{prop:opfibtolari} Let $\U \from \D \to \C$ be an  opfibration. Then $\U$ is a rali if its fibers have initial objects which are preserved by the reindexing functors.
 \end{prop}
 
 \begin{proof}
-Denote by $\bot_a$ the initial object in each fiber $\D_x$ above an object $a\in\C$ in the base category. Define a left adjoint $\L$ of $\U$ as follows:
+Denote by $\bot_a$ the initial object in fiber $\X_a$. Define a functor $\L \from \A \to \X$ as shown in the diagram
 \begin{displaymath}
 \begin{tikzcd}[row sep=.05in,cells={anchor=east}]
   \L\colon\A\ar[rr] && \X\;\; &\\
   a\ar[rr,mapsto]\ar[dd,"f"'] && \bot_a\ar[dd,dashed,"\L f"']\ar[ddr,"{\Cocart(f,\bot_a)}"] & \\
 \hole \\
-b\ar[rr,mapsto] && \bot_b & f_!(\bot_a)\ar[l,"\sim"']
+b\ar[rr,mapsto] && \bot_b & f_!(\bot_a)\ar[l,"\iso"']
 \end{tikzcd}
 \end{displaymath}
-where the bottom isomorphism is the unique one induced by the fact that each $f_!$ preserves initial objects between the respective fibers.
-% looks like the first time we define a
-% morphism in the total category via its
-% unique factorization! alright.
-This assignment is strictly functorial due to the universal properties of cocartesian liftings. Notice that by definition, $\L a =\bot_a$ is in the fibre $\X_a$, which means $\U\L a =a$ for any object $a\in\A$.
+where $f_!(\bot_a) \xto \bot_b$ arises from $f_!$ preserving initial objects. This assignment is functorial due to the universal properties of cocartesian liftings.
 
-To show this determines a left adjoint of $\U$, it suffices to establish a natural bijection $\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$, $x\in\X$. Indeed, each morphism in the total category $k\colon \L a\to x$ above $f=\U k$, factorizes uniquely \cref{factor} as
+To show that $L$ is left adjoint to $\U$, it suffices to establish a natural bijection $\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$, $x\in\X$. Indeed, each morphism in the total category $k\colon \L a\to x$ above $f=\U k$, factorizes uniquely (cf.~\cref{factor}) as
 \begin{displaymath}
 \xymatrix @C=.5in @R=.3in
 {\bot_a \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\Cocart(f,\bot_a)} && x &\\
@@ -180,8 +182,7 @@ a\ar[rr]_-{f} && \U x & \textrm{in }\A}
 \end{displaymath}
 but since $f_!(\bot_a)\cong\bot_{\U x}$ is the initial object in the fibre above $\U x$, the morphism $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
 
-Finally, the right adjoint $\U$ is indeed a left inverse of $\L$, namely the unit of the adjunction $\eta\colon 1_\A \to \U\L$ is the identity natural transformation: $\U\L a=a$ and moreover $\X (\L a,\L a)\cong\A(a,\U\L a)$ ensures that the identity $\bot_a$ corresponds to the identity on $a$.
-% which should be clear from the above described bijection!
+Finally, $\U$ is a left inverse of $\L$ because the unit of the adjunction $\eta\colon 1_\A \to \U\L$ is the identity natural transformation. Indeed, $\U\L a=U\bot_a=a$ and moreover, applying the natural bijection coming from the adjunction to \[\X (\bot_a,\bot_a)=\X (\L a,\L a)\cong\A(a,\U\L a)=\A (a,a)\] ensures that the identity on $\bot_a$ corresponds to the identity on $a$.
 \end{proof}
 
 Notice that because $\U$ is a right adjoint, it is slightly surprising that the existence of $\U$ is related to $U$ preserving initial objects. While this proposition uses reindexing functors to relate opfibrations and ralis, we can use Lemma \ref{lem:fibrewiselimits} to use a property of $U$ instead.
