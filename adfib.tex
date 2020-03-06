@@ -107,18 +107,14 @@ To relate opfibrations to right adjoints, we use the following lemma which clari
 \end{lem}
 
 \begin{remark}
-  This lemma still holds when $\U$ merely preserves colimits if the axiom of
-  choice is assumed. To assuage those who are cautious about the axiom
-  of choice, we discuss in Appendix \ref{lem:isofactid} several
-  classes of functions that may safely be assumed to strictly preserve
-  colimits.
+  This lemma still holds when $\U$ merely preserves colimits because, when $U$ is an opfibration, we can change our choice of colimits in the total category so that $U$ does strictly preserve them (Lemma \ref{lem:isofactid}).
 \end{remark}
 
 When condition \ref{it:2} holds, we typically say the opfibration has
 \emph{opfibred $\cat{J}$-colimits} though, in principle, this does not
 require a $\cat{J}$-cocomplete base.
 
-\subsection{Street Opfibrations}
+\subsection{Street Opfibrations} % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Typically, we ask for constructions in category theory to transport
 across equivalent categories. Grothendieck opfibrations, in general,
@@ -140,7 +136,7 @@ internally to 2-categories \cite{FibYon}, we restrict our attention $\Cat$.
   Figure \ref{fig:street_opfib})
 \end{defn}
 
-\begin{figure}[h]
+\begin{figure}
   \fbox{
     \begin{minipage}{1.0\linewidth}
       \centering
@@ -233,7 +229,7 @@ the definition of an isofibration.
   result follows by applying Lemma \ref{lem:fibrewiselimits} to $U'$.
 \end{proof}
 
-\subsection{Coreflectors and ralis}
+\subsection{Coreflectors and ralis} % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The main results of this paper are a correspondence between the
 Grothendieck and Street opfibrations and certain right adjoint
@@ -270,137 +266,128 @@ $\A$ a \define{coreflective} subcategory of $\X$.
 
 
 % ===============================================================
-% Groth fibs and ralis. Examine relationship between.
 
-\section{Grothendieck fibrations and ralis}
+\section{Grothendieck opfibrations and ralis}
 \label{sec:groth-fibs-ralis}
 
-In this section, we investigate the relationship between Grothendieck opfibrations and right adjoints. We start by finding conditions under which an opfibration is a right adjoint.  We then find conditions under which a right adjoint is an opfibration. We conclude this section by exhibiting the correspondence by intersecting the respective conditions.
+In this section, we investigate the relationship between Grothendieck opfibrations and right adjoints. We start by finding conditions under which a Grothendieck opfibration is a right adjoint.  Next, we find conditions under which a right adjoint is a Grothendieck opfibration. We conclude by exhibiting a correspondence between the two by intersecting the respective conditions.
 
-The following result is an answer to the question: when is an opfibration a right adjoint? It is dual to a proposition of Gray \cite[Prop. 4.4]{Grayfibredandcofibred}.
+The following result gives an answer to the question: When is a Grothendieck opfibration a right adjoint? It is dual to a proposition of Gray \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
-\begin{prop} \label{prop:opfibtolari} Let $\U \from \D \to \C$ be an  opfibration. Then $\U$ is a rali if its fibres have initial objects which are preserved by the reindexing functors.
+\begin{prop} \label{prop:opfibtolari} Let $\U \from \A \to \X$ be a Grothendieck  opfibration. If the fibres of $\U$ have initial objects and the reindexing functors preserve them, then $\U$ is a rali.
 \end{prop}
 
 \begin{proof}
-Denote by $\bot_a$ the initial object in fiber $\X_a$. Define a functor $\L \from \A \to \X$ as shown in the diagram
-\begin{equation*}
-  \begin{tikzpicture}
-    \node (b) at (0,0) {$ b $};
-    \node (botb) at (2,0) {$ \bot_b $};
-    \node (f) at (4,0) {$ f_!(\bot_a) $};
-    \node (a) at (0,1.5) {$ a $};
-    \node (bota) at (2,1.5) {$ \bot_a $};
-    \node (A) at (0,2) {$ \A $};
-    \node (X) at (2,2) {$ \X $};
-    \draw [cd] 
-    (a) edge[] node[left]{$f$} (b)
-    (bota) edge[dashed] node[left]{$Lf$} (botb)
-    (bota) edge[] node[right]{$\Cocart(f,\bot_a)$} (f)
-    (A) edge[] node[above]{$L$} (X)
-    (f) edge[] node[above]{$\iso$} (botb) ;
-    \draw [|->]
-    (a) edge[] (bota)
-    (b) edge[] (botb);
-  \end{tikzpicture}
-\end{equation*}
-
- % the below beautiful diagram was sacrificed for the sake of
-% uniformity accross all diagrams and I don't know xypic
-%
-%
+  Let $\bot_a$ denote the initial object in fiber $\X_a$. Define a
+  functor $\L \from \A \to \X$ by setting $La = \bot_a$ and $L(f \from a \to b) = ! \circ \Cocart(f,\bot_a)$, where $!$ is the canonical map $f_!(\bot_a) \to \bot_b$ induced by the reindexing functors preserving initial objects (see Figure~\ref{fig:opfib_to_rali}). This assignment is functorial due to the universal property of each cocartesian lift.
   
-% \begin{tikzcd}[row sep=.05in,cells={anchor=east}]
-%   \L\colon\A\ar[rr] && \X\;\; &\\
-%   a\ar[rr,mapsto]\ar[dd,"f"'] && \bot_a\ar[dd,dashed,"\L f"']\ar[ddr,"{\Cocart(f,\bot_a)}"] & \\
-% \hole \\
-% b\ar[rr,mapsto] && \bot_b & f_!(\bot_a)\ar[l,"\iso"']
-% \end{tikzcd}
+  \begin{figure}
+    \fbox{
+      \begin{minipage}{1.0\linewidth}
+        \centering
+        \begin{tikzpicture}
+          \node (b) at (0,0) {$ b $};
+          \node (botb) at (2,0) {$ \bot_b $};
+          \node (f) at (4,0) {$ f_!(\bot_a) $};
+          \node (a) at (0,1.5) {$ a $};
+          \node (bota) at (2,1.5) {$ \bot_a $};
+          \node (A) at (0,2) {$ \A $};
+          \node (X) at (2,2) {$ \X $};
+          \draw [cd] 
+          (a) edge[] node[left]{$f$} (b)
+          %(bota) edge[dashed] node[left]{$Lf$} (botb)
+          (bota) edge[] node[left]{$Lf$} (botb)
+          (bota) edge[] node[right]{$\Cocart(f,\bot_a)$} (f)
+          (A) edge[] node[above]{$L$} (X)
+          (f) edge[] node[above]{$\iso$} node[below]{$!$} (botb);
+          %\draw [|->] (0.8,0.75) to (1.2,0.75);
+        \end{tikzpicture}
+        \caption{Left adjoint for Proposition \ref{prop:opfibtolari}}
+        \label{fig:opfib_to_rali}
+      \end{minipage}
+      }
+\end{figure}
 
-where $f_!(\bot_a) \xto \bot_b$ arises from $f_!$ preserving initial objects. This assignment is functorial due to the universal properties of cocartesian liftings.
+To show that $\L$ is left adjoint to $\U$, we establish a natural bijection $$\X(\L a,x) \xto{\iso} \A(a,\U x) = \A(ULa,Ux)$$ by $k \mapsto Uk$. Uniqueness follows from the unique factorization of $k$ into $! \circ \Cocart (Uk,\bot_a)$ (cf.~Diagram \ref{factor}) and naturality follows from the universal property of opfibrations.
 
-To show that $L$ is left adjoint to $\U$, it suffices to establish a natural bijection $\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$, $x\in\X$. Indeed, each arrow in the total category $k\colon \L a\to x$ above $f=\U k$, factorizes uniquely (cf.~Diagram \ref{factor}) as
-\begin{equation*}
-  \begin{tikzpicture}[baseline=(current bounding box.center)]
-    \node (a) at (0,0) {$ a $};
-    \node (Ux) at (3,0) {$ Ux $};
-    \node (bot) at (0,3) {$ \bot_a $};
-    \node (x) at (3,3) {$ x $};
-    \node (fbot) at (3,2) {$ f_!(\bot_a) $};
-    \draw [cd]
-      (a) edge[] node[below]{$f$} (Ux)
-      (bot) edge[] node[above]{$k$} (x)
-      (bot) edge[] node[below=6pt,pos=0.4]{$\Cocart(f,\bot_a)$} (fbot)
-      (fbot) edge[dashed] node[right]{$s$} (x);
-    \node () at (5,2.5) {in $ \X $};
-    \node () at (5,0) {in $ \A $};
-    \draw [dotted]
-    (bot) edge[] (a)
-    (fbot) edge[] (Ux);
-  \end{tikzpicture}
-\end{equation*}
+% An arrow $k\colon \L a\to x$ in the total category lies over $\U k$, so $k$ uniquely factorizes as
+% \begin{equation*}
+%   \begin{tikzpicture}[baseline=(current bounding box.center)]
+%     \node (a) at (0,0) {$ a $};
+%     \node (Ux) at (3,0) {$ Ux $};
+%     \node (bot) at (0,3) {$ \bot_a $};
+%     \node (x) at (3,3) {$ x $};
+%     \node (fbot) at (3,2) {$ Uk_!(\bot_a) $};
+%     \draw [cd]
+%       (a) edge[] node[below]{$f$} (Ux)
+%       (bot) edge[] node[above]{$k$} (x)
+%       (bot) edge[] node[below=6pt,pos=0.4]{$\Cocart(Uk,\bot_a)$} (fbot)
+%       (fbot) edge[dashed] node[right]{$\delta$} (x);
+%     \node () at (5,2.5) {in $ \X $};
+%     \node () at (5,0) {in $ \A $};
+%     \draw [dotted]
+%     (bot) edge[] (a)
+%     (fbot) edge[] (Ux);
+%   \end{tikzpicture}
+% \end{equation*}
+% (cf.~Diagram \ref{factor}) Because $f_!(\bot_a)\cong\bot_{\U x}$ is
+% the initial object in the fibre above $\U x$, the arrow $\delta$ is in fact
+% unique. As a result, $k$ uniquely corresponds to $Uk$, hence the bijection. Naturality follows from the universal property of the obfibration.
 
-% the below beautiful diagram was sacrificed for the sake of
-% uniformity accross all diagrams and I don't know xypic
-%
-%
-% \begin{displaymath}
-% \xymatrix @C=.5in @R=.3in
-% {\bot_a \ar @{.>}[dd]\ar[rr]^k \ar[drr]_-{\Cocart(f,\bot_a)} && x &\\
-% && f_!(\bot_a) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\X \\
-% a\ar[rr]_-{f} && \U x & \textrm{in }\A}
-% \end{displaymath}
-but since $f_!(\bot_a)\cong\bot_{\U x}$ is the initial object in the fibre above $\U x$, the arrow $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
-
-Finally, $\U$ is a left inverse of $\L$ because the unit of the adjunction $\eta\colon 1_\A \to \U\L$ is the identity natural transformation. Indeed, $\U\L a=U\bot_a=a$ and moreover, applying the natural bijection coming from the adjunction to \[\X (\bot_a,\bot_a)=\X (\L a,\L a)\cong\A(a,\U\L a)=\A (a,a)\] ensures that the identity on $\bot_a$ corresponds to the identity on $a$.
+Finally, we show that $\U$ is a left inverse of $\L$ because the unit of the adjunction $\eta\colon 1_\A \to \U\L$ is the identity natural transformation. Indeed, $\U\L a=U\bot_a=a$ and moreover, applying the natural bijection coming from the adjunction gives \[\X (\bot_a,\bot_a)=\X (\L a,\L a)\cong\A(a,\U\L a)=\A (a,a)\] which ensures that the identity on $\bot_a$ corresponds to the identity on $a$.
 \end{proof}
 
-Notice that because $\U$ is a right adjoint, it is slightly surprising that the existence of $\U$ is related to $U$ preserving initial objects. While this proposition uses reindexing functors to relate opfibrations and ralis, we can use Lemma \ref{lem:fibrewiselimits} to use a property of $U$ instead.
+This result contains a slight surprise. Our opfibration becoming a right adjoint depends on it preserving initial objects. While this proposition
+uses reindexing functors to relate opfibrations and ralis, we can use Lemma \ref{lem:fibrewiselimits} shift the hypothesis to a property of $U$ instead.
 
 \begin{cor}
   An opfibration is a rali if the base category has and the functor strictly preserves the initial object.
 \end{cor}
 
-Next, we examine when a rali is an opfibration. The relevant condition is that a rali $U$ strictly preserves pushouts, choosen so that the pushouts strictly preserve identities. Strict preservation is a strong condition, but this can be safely assumed for a non-trivial class of functors.  We discuss this further in Appendix \ref{sec:choice_of_colimits}.
+Next, we examine when a rali is an opfibration, which happens when it
+strictly preserves pushouts. Our pushouts are choosen so that they strictly
+preserve identities. Of course, strict preservation is a strong condition but it
+can be safely assumed for a non-trivial class of functors as discussed in Appendix \ref{sec:choice_of_colimits}.
 
 \begin{prop}\label{prop:laritoopfib}
-  Suppose that $\U\colon\X\to\A$ is a rali. Then $\U$ is an opfibration if $\X$ and $\A$ have chosen pushouts and $\U$ strictly preserves them.
+  Suppose that $\U\colon\X\to\A$ is a rali with left adjoint $\L$. Then $\U$ is an opfibration if $\X$ and $\A$ have chosen pushouts and $\U$ strictly preserves them.
 \end{prop}
 
 \begin{proof}
-  Take an arrow $f\colon a\to b$ in $\A$ and an object $x$ above $a$, as in
-%   \begin{displaymath}
-% \xymatrix @C=.5in @R=.3in
-% {x \ar @{.>}[d]_-{\U} &&& \textrm{in }\X \\
-% a\ar[rr]_-{f} && b & \textrm{in }\A .}
-% \end{displaymath}
-  Define the cocartesian lifting of $x$ along $f$ to be the horizontal dashed arrow to the (chosen) pushout of the following diagram in $\X$
-  \begin{equation*}
-    \begin{tikzpicture}
-      \node (x) at (0,0) {$ x $};
-      \node (po) at (3,0) {$ x+_{LUx}Lb $};
-      \node (LUx) at (0,1) {$ LUx $};
-      \node (Lb) at (3,1) {$ Lb $};
-      \draw [cd] 
-      (LUx) edge[] node[left]{$\epsilon_a$} (x)
-      (LUx) edge[] node[above]{$Lf$} (Lb)
-      (Lb) edge[] (po)
-      (x) edge[] node[below]{$\Cocart(f,x)$} (po);
-      \draw (2.6,0.3) -- (2.6,0.4) -- (2.7,0.4);
-    \end{tikzpicture}
-  \end{equation*}
+  Take an arrow $f\colon a\to b$ in $\A$ and an object $x$ above $a$.
+  Define the cocartesian lifting of $x$ along $f$ to be the (chosen)
+  pushout of $Lf$ along the counit $\epsilon_x$.
 
-% the below beautiful diagram was sacrificed for the sake of
-% uniformity accross all diagrams and I don't know xypic
-%
-%
-% \begin{displaymath}
-%  \begin{tikzcd}
-%    \L\U x \ar[r,"\L f"]\ar[d,"\varepsilon_a"']\ar[dr, phantom, "\ulcorner", pos=1] & \L b\ar[d,dashed] \\
-%    x\ar[r,dashed] & x+_{\L\U x} \L b
-%  \end{tikzcd}
-% \end{displaymath}
-where $\varepsilon\colon \L\U\Rightarrow1_\X$ is the counit of the adjunction $\L\dashv \U$. To verify this is a cocartesian lifting, first of all it must be mapped to $f$ via $\U$: if we apply $\U$ to the above square, using the facts that $\U\varepsilon_x=1_{a}$, $\U\L f=f$ (by Proposition \ref{prop:coreflection}) and $$\U (x+_{\L\U x}\L b)=\U x+_{\U\L\U x}\U\L b = a+_{a} b $$ since $\U$ strictly preserves pushouts, the resulting colimit diagram
+  \begin{figure}
+    \fbox{
+      \begin{minipage}{1.0\linewidth}
+        \centering
+        \begin{tikzpicture}
+          \node (x) at (0,0) {$ x $};
+          \node (po) at (3,0) {$ x+_{LUx}Lb $};
+          \node (LUx) at (0,1) {$ LUx $};
+          \node (Lb) at (3,1) {$ Lb $};
+          \draw [cd] 
+          (LUx) edge[] node[left]{$\epsilon_a$} (x)
+          (LUx) edge[] node[above]{$Lf$} (Lb)
+          (Lb) edge[] (po)
+          (x) edge[] node[below]{$\Cocart(f,x)$} (po);
+          \draw (2.6,0.3) -- (2.6,0.4) -- (2.7,0.4);
+        \end{tikzpicture}
+        \caption{Defining the cocartesian lift}
+        \label{fig:rali_to_opfib}        
+      \end{minipage}
+      }
+  \end{figure}
+
+  To verify $\Cocart(f,x)$ is a cocartesian lifting, first of all it
+  must be mapped to $f$ via $\U$. To see this, apply $U$ to the above
+  square. Before doing so, consider serveral facts. Proposition
+  \ref{prop:coreflection} implies that $U\epsilon_x = 1_a$ and
+  $ULf=f$. Pushouts in $\A$ preserve identity. Also, because $U$
+  strictly preserves pushouts, we have that
+  $$\U (x+_{\L\U x}\L b)=\U x+_{\U\L\U x}\U\L b = a+_{a} b $$
+  Now, the image of the above square under $U$ is
   \begin{equation*}
     \begin{tikzpicture}
       \node (a1) at (0,0) {$ a $};
@@ -409,32 +396,24 @@ where $\varepsilon\colon \L\U\Rightarrow1_\X$ is the counit of the adjunction $\
       \node (b) at (3,1) {$ b $};
       \draw [cd] 
       (a2) edge[] node[left]{$1_a$} (a1)
-      (a2) edge[] node[above]{$Lf$} (b)
+      (a2) edge[] node[above]{$f$} (b)
       (b) edge[] node[right]{$1_b$} (po)
-      (a) edge[] node[below]{$f$} (po);
+      (a1) edge[] node[below]{$f$} (po);
       \draw (2.6,0.3) -- (2.6,0.4) -- (2.7,0.4);
     \end{tikzpicture}
-  \end{equation*}
-
-  % the below beautiful diagram was sacrificed for the sake of
-% uniformity accross all diagrams and I don't know xypic
-%
-% 
-% \begin{displaymath}
-%  \begin{tikzcd}
-%   a\ar[r,"f"]\ar[d,"1_a"'] & b\ar[d,dashed] \\
-% a\ar[r,dashed] & a+_{a}b=b
-%  \end{tikzcd}
-% \end{displaymath}
-is \emph{the} pushout of $f$ along the identity, namely $f$ due to our choice. Moreover, the universal property (cf.~Diagram \ref{fig:opfibration}) of the proposed cocartesian lifting follows from universality of pushouts thus the one direction of the proof is complete.
+  \end{equation*} 
+  Moreover, the universal property (cf.~Diagram \ref{fig:opfibration})
+  of the proposed cocartesian lifting follows from universality of
+  pushouts.
 \end{proof}
-%Christina: tried to see whether the converse is true, didn't go far. Remember that from previous prop we got it preserves initial for sure!
 
-Combining \cref{prop:opfibtolari,prop:laritoopfib}, we establish certain conditions under which a Grothendieck opfibration corresponds to a rali and vice versa. %Christina: no more finite colimits: Steve said that for the strict case, this is more subtle than the ordinary case. Pretty sure that we don't wanna go into details there?
-%Understand whether other such conditions could exist? More philosophically.
+Combining Propositions \ref{prop:opfibtolari} and \ref{prop:laritoopfib}, we establish certain conditions under which a Grothendieck opfibration corresponds to a rali and vice versa.
 
 \begin{thm}\label{thm:mainthm}
-Suppose that $\X$ and $\A$ have chosen pushouts and initial objects, and a functor $\U\colon\X\to\A$ strictly preserves them. Then $\U$ is a right adjoint left inverse if and only if $\U$ is an opfibration.
+  Suppose that $\X$ and $\A$ have chosen pushouts and initial objects,
+  and a functor $\U\colon\X\to\A$ strictly preserves them. Then $\U$
+  is a right adjoint left inverse if and only if $\U$ is an
+  opfibration.
 \end{thm}
 
 % ===============================================================
