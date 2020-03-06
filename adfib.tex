@@ -4,7 +4,6 @@
 \input{front_matter.tex}
 
 % TODO write intro
-% TODO draft 2
 
 % ===============================================================
 % Introduction
@@ -18,18 +17,27 @@
 In this section, we present the necessary background for this paper
 and take this opportunity to set our notation and conventions. One
 convention we employ is the singular focus on opfibrations instead of
-their dual, fibrations.  We specifically cover two flavors of
-opfibrations: Grothendieck and Street.  We also present, for each type
-of opfibration, a helpful lemma that relates colimits in the fibres to
-colimits in the total category.
+their dual, fibrations.  We cover two flavors of opfibrations,
+Grothendieck and Street, and also present a lemma that relates
+colimits in the fibres to colimits in the total category.
 
 \subsection*{Grothendieck Opfibrations} % ~~~~~~~~~~~~~~~~~~~~
 
 We recall some basic material from the theory of (Grothendieck) opfibrations; standard references include \cite{Handbook2,Grayfibredandcofibred,hermidaphd}. 
 
-Consider a functor $\U \colon\X \to \A$. A morphism $\beta \colon x \to y$ in $\X $ over a morphism $f = \U(\beta) \colon a \to b$ in $\A$ is called \define{cocartesian} if and only if, for all $g \colon b \to b'$ in $\A$ and $\gamma \colon x\to y'$ in $\X $ with $\U(\gamma) = g\circ f$, there exists a unique $\delta \colon y\to y'$ in $\X$ such that $\U(\delta) = g$ and $\gamma = \delta \circ \beta$:
-\begin{equation} \label{eq:opfibration}
-  \begin{tikzpicture}[baseline=(current bounding box.center)]
+Fix a functor $\U \colon\X \to \A$. An object $x$ in $\X$ is said to
+\define{be over} an object $a$ in $\A$ if $Ux=a$. The same terminology
+applies for arrows. An arrow $\beta$ in $\X $ over an arrow
+$f \from a \to b$ in $\A$ is called \define{cocartesian} if and only
+if, for all $g \colon b \to b'$ in $\A$ and $\gamma \colon x\to y'$ in
+$\X $ with $\U(\gamma) = g\circ f$, there exists a unique
+$\delta \colon y\to y'$ in $\X$ such that $\U(\delta) = g$ and
+$\gamma = \delta \circ \beta$ (see Figure \ref{fig:opfibration})
+\begin{figure} 
+  \fbox{
+    \begin{minipage}{1.0\linewidth}
+      \centering
+  \begin{tikzpicture}
     \node (a) at (0,0) {$ a $};
     \node (b) at (2,0) {$ b $};
     \node (b') at (3,1) {$ b' $};
@@ -50,27 +58,16 @@ Consider a functor $\U \colon\X \to \A$. A morphism $\beta \colon x \to y$ in $\
     (y) edge[] (b)
     (y') edge[] (b');
   \end{tikzpicture}
-\end{equation}
+  \caption{Cocartesian Lifting}
+  \label{fig:opfibration}
+\end{minipage}
+}
+\end{figure}
 
-% the below beautiful diagram was sacrificed for the sake of
-% uniformity accross all diagrams and I don't know xypic
-%
-%
-% \begin{equation}\label{eq:opfibration1}
-% \xymatrix @R=.1in @C=.6in
-% {&& y'\ar @{.>}@/_/[dd] &&\\
-% x\ar[r]_-{\beta} \ar @{.>}@/_/[dd]
-% \ar[urr]^-{\gamma} & 
-% y \ar @{.>}@/_/[dd] \ar @{-->}[ur]_-{\exists! \delta}
-% && \textrm{in }\X\\
-% && b' &&\\
-% a\ar[r]_-{f=\U\beta} \ar[urr]^-{g\circ f=\U\gamma}
-%  & b \ar[ur]_-g && \textrm{in }\A}
-% \end{equation}
-For any object $a\in\A$, we denote by $\X_a$ the \define{fibre} of $U$ over $a$, i.e. the subcategory of $\X$ which consists of objects $x$ above $a$, namely $\U(x) = a$, and vertical morphisms $\beta$, namely $\U(\beta) = 1_a$. The functor $\U \colon \X \to \A$ is an \define{opfibration} if and only if, for all $f \colon a \to b$ in $\A$ and $x\in\X_a$, there is a cocartesian morphism $\beta$ with domain $x$ above $f$; it is called a \define{cocartesian lifting} of $b$ along $f$. The category $\A$ is called the \define{base} of the opfibration, and $\X $ its \define{total category}.
+For any object $a$ in $\A$, let $\X_a$ denote the \define{fibre} of $U$ over $a$, that is the subcategory of $\X$ that consists of the objects $x$ over $a$ and \define{vertical arrows} (those sent by $U$ to $1_a$). The functor $\U \colon \X \to \A$ is an \define{opfibration} if and only if, for all $f \colon a \to b$ in $\A$ and $x$ in $\X_a$, there is a cocartesian arrow $\beta$ with domain $x$ above $f$; it is called a \define{cocartesian lifting} of $b$ along $f$. The category $\A$ is called the \define{base} of the opfibration, and $\X $ its \define{total category}.
 Of course, this is a dual notion to that of a \define{fibration}.
 
-For any opfibration $\U\colon \X \to\A$, assuming the axiom of choice we may select a cocartesian arrow over each $f\colon a\to b$ in $\A$ and $x\in\X_a$, denoted by $\Cocart(f,x)\colon x\to f_!(x)$. Such a choice of cocartesian liftings is called a \define{cleavage} for $\U$, which is then called a \define{cloven opfibration}; in this way, any opfibration can be assumed to be cloven. As a special case of the universal property, any arrow in the total category of an opfibration factorizes uniquely into a cocartesian morphism followed by a vertical one:
+For any opfibration $\U\colon \X \to\A$, we may use the axiom of choice to select a cocartesian lift $\Cocart(f,x)\colon x\to f_!(x)$ of each $f\colon a\to b$ in $\A$ and $x$ in $X_a$. An opfibration equipped with a choice of cocartesian liftings is called a \define{cloven opfibration}.  Moving forward, we take all opfibration to be cloven. As a special case of the universal property, every arrow in the total category of an opfibration factorizes uniquely into a cocartesian arrow followed by a vertical arrow:
 \begin{equation}\label{factor}
 \begin{tikzpicture}[baseline=(current bounding box.center)]
   \node (a) at (0,0) {$ a $};
@@ -91,23 +88,13 @@ For any opfibration $\U\colon \X \to\A$, assuming the axiom of choice we may sel
 \end{tikzpicture}
 \end{equation}
 
-% the below beautiful diagram was sacrificed for the sake of
-% uniformity accross all diagrams and I don't know xypic
-%
-%
-% \begin{equation}\label{factor}
-% \xymatrix @C=.6in @R=.3in
-% {x \ar @{.>}[dd]\ar[rr]^\gamma \ar[drr]_-{\Cocart(f,x)} && y &\\
-% && f_!x \ar @{-->}[u]_-{\delta} \ar @{.>}[d] & \textrm{in }\X  \\
-% a\ar[rr]_-{f} && b & \textrm{in }\A.}
-% \end{equation}
-The choice of cocartesian liftings in a cloven opfibration induces a so-called \define{reindexing functor} between the fibre categories
+The choice of cocartesian liftings in a cloven opfibration induces a \define{reindexing functor} between the fibre categories
 \begin{equation}\label{reindexing}
- f_!\colon\X_a\to\X_b
+ f_!\colon\X_a\to\X_b,
 \end{equation}
-for any $f\colon a\to b$ in the base category. It can be verified by the cocartesian lifting property that $(1_a)_!\cong1_{\X_a}$ and $(f\circ g)_!\cong f_!\circ g_!$. If these isomorphisms are equalities, we have the notion of a \define{split} (op)fibration.
+one for each $f\colon a\to b$ in the base category. It can be verified by the cocartesian lifting property that $(1_a)_!\cong1_{\X_a}$ and $(f\circ g)_!\cong f_!\circ g_!$. 
 
-For what follows, it is necessary to clarify the relation between the existence of colimits in the total category of an opfibration to the existence of those colimits in the fibres in a coherent way. For more details, and a proof of the following result, see \cite[Cor. 3.7]{FibredAdjunctions}.
+To relate opfibrations to right adjoints, we use the following lemma which clarifies the relationship between the existence of colimits in the total category of an opfibration to the existence of those colimits in the fibres. For more details and a proof of the following result, see \cite[Cor. 3.7]{FibredAdjunctions}.
 
 \begin{lem}\label{lem:fibrewiselimits}
   Suppose $\cat{J}$ is a small category and $\U\colon\X\to\A$ is an
@@ -120,45 +107,110 @@ For what follows, it is necessary to clarify the relation between the existence 
 \end{lem}
 
 \begin{remark}
-  In the above lemma, we do not require $\X$ to strictly preserve colimits when assuming the axiom of choice. 
+  This lemma still holds when $\U$ merely preserves colimits if the axiom of
+  choice is assumed. To assuage those who are cautious about the axiom
+  of choice, we discuss in Appendix \ref{lem:isofactid} several
+  classes of functions that may safely be assumed to strictly preserve
+  colimits.
 \end{remark}
 
-The above formulation and its dual version relate opfibrations specifically with colimits and fibrations with limits. Notice that condition \ref{it:2} is the usual formal definition of when an arbitrary opfibration has \emph{opfibred $\cat{J}$-colimits}, which in principle does not require a $\cat{J}$-cocomplete base. The strict preservation of colimits is discussed in detail in Appendix \ref{lem:isofactid}.
+When condition \ref{it:2} holds, we typically say the opfibration has
+\emph{opfibred $\cat{J}$-colimits} though, in principle, this does not
+require a $\cat{J}$-cocomplete base.
 
-\subsection*{Street Opfibrations}
+\subsection{Street Opfibrations}
 
-Typically, constructions in category theory should transport across equivalent categories. Opfibrations do not have this property. One can extend an opfibration $U\from\X\to\A$ along an equivalence of categories $\A \to \A'$ and the result $\X\to\A\to\A'$ is not necessarily an opfibration. The aspect that fails is, given a cocartesian lifting $\beta\from x \to y$ of an arrow $f\from a \to b$, we require that $Uy$ \emph{equals} $b$, and this equality may weaken to an isomorphism through an equivalence of categories. Street opfibrations avoid this defect. They were originally defined internally to 2-categories \cite{FibYon}. The definition below is a special case when the 2-category is $\Cat$.
+Typically, we ask for constructions in category theory to transport
+across equivalent categories. Grothendieck opfibrations, in general,
+do not have this property. That is, given a Grothendieck opfibration
+$U \from \X \to \A$ and equivalence of categories $E \from \X' \to \X$
+or $E' \from \A \to \A'$, neither $UE$ nor $E'U$ are necessarily
+Grothendieck opfibrations.  Indeed, given an arrow $f \from a \to b$
+in $\A$ with cocartesian lifting $\beta \from x \to y$, a Grothendieck
+opfibration requires an equality $Uy=b$ which may weaken to an
+isomorphism after extending $\U$ by an equivalence. Street
+opfibrations avoid this defect. While they were originally defined
+internally to 2-categories \cite{FibYon}, we restrict our attention $\Cat$.
 
 \begin{defn}
-  A functor $ U \from \X \to \A $ is a \define{Street
-    opfibration} if, for any arrow $ f \from a \to b $ in $ \A
-  $ and $ x $ above $ a $, there exists a
-  cocartesian arrow  $ \theta \from x \to y $ and an
-  isomorphism $ h \from b \iso Uy $ such that $ fh = U\theta $.
+  A functor $ U \from \X \to \A $ is a \define{Street opfibration} if,
+  for any arrow $ f \from a \to b $ in $ \A $ and $ x $ over $ a $,
+  there exists a cocartesian arrow $ \theta \from x \to y $ and an
+  isomorphism $ h \from b \iso Uy $ such that $ fh = U\theta $ (see
+  Figure \ref{fig:street_opfib})
 \end{defn}
 
-There is no amended definition of ``cocartesian arrow'' here; it is the same as above. The isomorphism $ h $, which replaces an equality in a Grothendieck opfibration, ensures that Street opfibrations satisfy the priciple of equivalence.
+\begin{figure}[h]
+  \fbox{
+    \begin{minipage}{1.0\linewidth}
+      \centering
+    \begin{tikzpicture}[baseline=(current bounding box.center)]
+    \node (a) at (0,0) {$ a $};
+    \node (b) at (2,0) {$ b $};
+    \node (Uy) at (3,1) {$ Uy $};
+    \node (x) at (0,3) {$ x $};
+    \node (y) at (3,3) {$ y $};
+    \draw [cd] 
+    (a) edge[] node[below]{$f$} (b)
+    (b) edge[] node[below]{$h$} (Uy)
+    (a) edge[] node[above=3pt,pos=0.3]{$U\beta$} (Uy)
+    (x) edge[] node[above]{$\beta$} (y);
+    \node () at (5,3) {in $ \X $};
+    \node () at (5,0.5) {in $ \A $};
+    \draw [dotted]
+    (x) edge[] (a)
+    (y) edge[] (Uy);
+  \end{tikzpicture}
+  \caption{Street Opfibration}
+  \label{fig:street_opfib}
+\end{minipage}
+}
+\end{figure}
 
-Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Grothendieck fibrations to Street fibrations, we need a generalized version of Lemma \ref{lem:fibrewiselimits}. In order to do this, we present several standard results as lemmas and recall the definition of an isofibration.
+The definition of ``cocartesian arrow'' here is the same used for
+Grothendieck opfibrations. The isomorphism $ h $, which replaces an
+equality in a Grothendieck opfibration, ensures that Street
+opfibrations do transport across equivalences. 
+
+In Section \ref{sec:groth-fibs-ralis}, we expose a relationship
+between Street opfibrations and right adjoints for which we use a
+generalized version of Lemma \ref{lem:fibrewiselimits}. In order to
+prove this lemma, we first present several standard results and recall
+the definition of an isofibration.
 
 \begin{defn}
-  A functor $U \from \X \to \A$ is an \define{isofibration} if, for every isomorphism $f \from Ux \to a$ in $\A$, there is an isomorphism $\hat{f} \from x \to x'$ in $\X$ such that $U\hat{f}=f$. 
+  A functor $U \from \X \to \A$ is an \define{isofibration} if, for
+  every isomorphism $f \from Ux \to a$ in $\A$, there is an
+  isomorphism $\hat{f} \from x \to x'$ in $\X$ such that $U\hat{f}=f$.
 \end{defn}
 
-\begin{lem} \label{lem:street_and_iso_is_groth}
-  A functor that is a Street opfibration and isofibration is also a Grothendieck fibration. 
+\begin{lem} \label{lem:street_and_iso_is_groth} If a functor is a
+  Street opfibration and an isofibration, then it is also a
+  Grothendieck fibration.
 \end{lem}
 
 \begin{proof}
-  Let $U \from\X \to \A$ be both a Street opfibration and isofibration. To an arrow $f \from Ux \to a$, we associate an opcartesian lifting $\theta \from x \to y$ and isomorphism $h \from a \to Uy$. Let $\hat{h^{-1}}$ be the invertible arrow in $\X$ over $h^{-1}$. The cocartesian arrow lift of $f$ is $\theta \hat{h^{-1}}$.  
+  Let $U \from\X \to \A$ be both a Street opfibration and
+  isofibration. To an arrow $f \from Ux \to a$, we associate an
+  cocartesian lifting $\theta \from x \to y$ and isomorphism
+  $h \from a \to Uy$. Let $\hat{h^{-1}}$ be the invertible arrow in
+  $\X$ over $h^{-1}$. The cocartesian arrow lift of $f$ is
+  $\theta \hat{h^{-1}}$.
 \end{proof}
 
-\begin{lem} \label{lem:street_decomposed}
-  A Street opfibration can be decomposed into a Grothendieck opfibration followed by an equivalence of categories.
+\begin{lem} \label{lem:street_decomposed} A Street opfibration can be
+  decomposed into a Grothendieck opfibration followed by an
+  equivalence of categories.
 \end{lem}
 
 \begin{proof}
-  There is a model structure on $\Cat$ whose weak equivalences are equivalences of categories and fibrations are isofibrations \cite{rezk}. Hence, we can decompose a Street opfibration into an isofibration followed by a equivalence of categories. The isofibration is equivalent to a Street opfibration so is, itself, a Street opfibration and, therefore by Lemma \ref{lem:street_and_iso_is_groth}, a Grothendieck opfibration.  
+  There is a model structure on $\Cat$ whose weak equivalences are
+  equivalences of categories and whose fibrations are isofibrations
+  \cite{rezk}. Hence, we can decompose a Street opfibration into an
+  isofibration followed by a equivalence of categories. The
+  isofibration is equivalent to a Street opfibration so is itself a
+  Street opfibration and therefore, by Lemma
+  \ref{lem:street_and_iso_is_groth}, a Grothendieck opfibration.
 \end{proof}
 
 \begin{lem} \label{lem:street-fibrewise-limits}
@@ -176,26 +228,46 @@ Because we generalize our results in Section \ref{sec:groth-fibs-ralis} from Gro
 \end{lem}
 
 \begin{proof}
-  Per Lemma \ref{lem:street_decomposed}, decompose $U$ into $H U'$ where $U'$ is a Street opfibration and $H$ is an equivalence. The result follows by applying Lemma \ref{lem:fibrewiselimits} to $U'$.  
+  Per Lemma \ref{lem:street_decomposed}, decompose $U$ into $H U'$
+  where $U'$ is a Street opfibration and $H$ is an equivalence. The
+  result follows by applying Lemma \ref{lem:fibrewiselimits} to $U'$.
 \end{proof}
 
-\subsection*{Coreflections and laris}
+\subsection{Coreflectors and ralis}
 
-The main result of this paper is a correspondence between fibrations and adjoints, under certain assumptions. The adjunctions involved are a stricter version of the well-known \emph{coreflections}, whose definition we recall. 
+The main results of this paper are a correspondence between the
+Grothendieck and Street opfibrations and certain right adjoint
+functors. In this section, we recall the definitions of these certain
+right adjoints, ralis and coreflectors. These sorts of right adjoints
+are closely related, with ralis having the stronger definition.
+
+A \define{rali}, or right-adjoint-left-inverse, is the right adjoint
+$\U$ portion of an adjunction $\L\dashv\U\colon\X\to\A$ that satisfies
+the equation $UL=1_{\A}$ or, equivalently, has a unit consisting of
+only identity arrows. If $\epsilon$ is the counit of a rali, then
+$\U\epsilon$ and $\epsilon_\L$ are also identities. Also, the equation
+$ULU=U$ holds. The term \define{lari}, or left-adjoint-right-inverse,
+was introduced by Gray \cite{Grayfibredandcofibred}.
+
+Just as a Street opfibration is a weaker version of a Grothendieck
+opfibration, a coreflector is a weaker version of a rali.  This next
+proposition gives defining properties for a coreflector.
 
 \begin{prop}[{\cite[Prop.~3.4.1]{Handbook1}}]\label{prop:coreflection}
-The following are equivalent for an adjunction $\L\dashv\U\colon\X\to\A$:
- \begin{enumerate}
-  \item the left adjoint $\L$ is fully faithful;
+  The following are equivalent for an adjunction
+  $\L\dashv\U\colon\X\to\A$:
+  \begin{enumerate}
+  \item the left adjoint $\L$ is full and faithful;
   \item the unit $\eta\colon1_\A\Rightarrow \U\L$ is an isomorphism.
  \end{enumerate}
-Under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also isomorphisms.
+ Under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also
+ isomorphisms.
 \end{prop}
 
-The above clauses also imply that the induced comonad $(LU,L\eta_G,\epsilon)$ on $\X$ is \emph{idempotent}. Such an adjunction is called a \define{coreflection}, $\A$ is a \define{coreflective} subcategory of $\U$ and the right adjoint $U$ is called the \define{coreflector}.
+An adjuntion $\L\dashv\U$ satisfiying these properties is called a
+\define{coreflection}, the right adjoint $\U$ a \define{coreflector}, and
+$\A$ a \define{coreflective} subcategory of $\X$.
 
-Connected to the issues of `evilness' discussed already is a stricter version of a coreflector that actually appears in the desired correspondence between (Gro\-the\-ndi\-eck) fibrations and adjoints.
-We use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofibred}, for the notion of a `left adjoint, right inverse' functor. Explicitly, if $\U\colon\X\to\A$ has a lari $\L$, then $\L\dashv \U$ and $\eta\colon1_\A=\U\L$. Equivalently, in this case we can say that $\U$ is a \emph{rali}, namely it is a right adjoint, left inverse of some $\L$ --- still the unit of the adjunction is the identity, with $\U$ now being a left inverse. Of course, under these conditions, $\U\epsilon$ and $\epsilon_\L$ are also identities and $ULU=U$.
 
 % ===============================================================
 % Groth fibs and ralis. Examine relationship between.
@@ -203,9 +275,9 @@ We use the acronym \emph{lari}, originally introduced in~\cite{Grayfibredandcofi
 \section{Grothendieck fibrations and ralis}
 \label{sec:groth-fibs-ralis}
 
-In this section, we investigate the relationship between opfibrations and adjunctions. We start by finding conditions under which an opfibration is a right adjoint.  We then find conditions under which a right adjoint is an opfibration. We conclude this section by exhibiting the correspondence by intersecting the respective conditions.
+In this section, we investigate the relationship between Grothendieck opfibrations and right adjoints. We start by finding conditions under which an opfibration is a right adjoint.  We then find conditions under which a right adjoint is an opfibration. We conclude this section by exhibiting the correspondence by intersecting the respective conditions.
 
-Initially we establish when an opfibration has a left adjoint. The following result is an answer to the question: when is an opfibration an adjoint? It is dual to a proposition of Gray \cite[Prop. 4.4]{Grayfibredandcofibred}.
+The following result is an answer to the question: when is an opfibration a right adjoint? It is dual to a proposition of Gray \cite[Prop. 4.4]{Grayfibredandcofibred}.
 
 \begin{prop} \label{prop:opfibtolari} Let $\U \from \D \to \C$ be an  opfibration. Then $\U$ is a rali if its fibres have initial objects which are preserved by the reindexing functors.
 \end{prop}
@@ -247,7 +319,7 @@ Denote by $\bot_a$ the initial object in fiber $\X_a$. Define a functor $\L \fro
 
 where $f_!(\bot_a) \xto \bot_b$ arises from $f_!$ preserving initial objects. This assignment is functorial due to the universal properties of cocartesian liftings.
 
-To show that $L$ is left adjoint to $\U$, it suffices to establish a natural bijection $\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$, $x\in\X$. Indeed, each morphism in the total category $k\colon \L a\to x$ above $f=\U k$, factorizes uniquely (cf.~Diagram \ref{factor}) as
+To show that $L$ is left adjoint to $\U$, it suffices to establish a natural bijection $\X(\L a,x)\cong\A(a,\U x)$ for any $a\in\A$, $x\in\X$. Indeed, each arrow in the total category $k\colon \L a\to x$ above $f=\U k$, factorizes uniquely (cf.~Diagram \ref{factor}) as
 \begin{equation*}
   \begin{tikzpicture}[baseline=(current bounding box.center)]
     \node (a) at (0,0) {$ a $};
@@ -278,7 +350,7 @@ To show that $L$ is left adjoint to $\U$, it suffices to establish a natural bij
 % && f_!(\bot_a) \ar @{-->}[u]_-s \ar @{.>}[d] & \textrm{in }\X \\
 % a\ar[rr]_-{f} && \U x & \textrm{in }\A}
 % \end{displaymath}
-but since $f_!(\bot_a)\cong\bot_{\U x}$ is the initial object in the fibre above $\U x$, the morphism $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
+but since $f_!(\bot_a)\cong\bot_{\U x}$ is the initial object in the fibre above $\U x$, the arrow $s$ is in fact unique. As a result, every $k$ uniquely corresponds to some $f$ in that way, and this isomorphism is natural.
 
 Finally, $\U$ is a left inverse of $\L$ because the unit of the adjunction $\eta\colon 1_\A \to \U\L$ is the identity natural transformation. Indeed, $\U\L a=U\bot_a=a$ and moreover, applying the natural bijection coming from the adjunction to \[\X (\bot_a,\bot_a)=\X (\L a,\L a)\cong\A(a,\U\L a)=\A (a,a)\] ensures that the identity on $\bot_a$ corresponds to the identity on $a$.
 \end{proof}
@@ -296,7 +368,7 @@ Next, we examine when a rali is an opfibration. The relevant condition is that a
 \end{prop}
 
 \begin{proof}
-  Take a morphism $f\colon a\to b$ in $\A$ and an object $x$ above $a$, as in
+  Take an arrow $f\colon a\to b$ in $\A$ and an object $x$ above $a$, as in
 %   \begin{displaymath}
 % \xymatrix @C=.5in @R=.3in
 % {x \ar @{.>}[d]_-{\U} &&& \textrm{in }\X \\
@@ -328,7 +400,7 @@ Next, we examine when a rali is an opfibration. The relevant condition is that a
 %    x\ar[r,dashed] & x+_{\L\U x} \L b
 %  \end{tikzcd}
 % \end{displaymath}
-  where $\varepsilon\colon \L\U\Rightarrow1_\X$ is the counit of the adjunction $\L\dashv \U$. To verify this is a cocartesian lifting, first of all it must be mapped to $f$ via $\U$: if we apply $\U$ to the above square, using the facts that $\U\varepsilon_x=1_{a}$, $\U\L f=f$ (by Proposition \ref{prop:coreflection}) and $$\U (x+_{\L\U x}\L b)=\U x+_{\U\L\U x}\U\L b = a+_{a} b $$ since $\U$ strictly preserves pushouts, the resulting colimit diagram
+where $\varepsilon\colon \L\U\Rightarrow1_\X$ is the counit of the adjunction $\L\dashv \U$. To verify this is a cocartesian lifting, first of all it must be mapped to $f$ via $\U$: if we apply $\U$ to the above square, using the facts that $\U\varepsilon_x=1_{a}$, $\U\L f=f$ (by Proposition \ref{prop:coreflection}) and $$\U (x+_{\L\U x}\L b)=\U x+_{\U\L\U x}\U\L b = a+_{a} b $$ since $\U$ strictly preserves pushouts, the resulting colimit diagram
   \begin{equation*}
     \begin{tikzpicture}
       \node (a1) at (0,0) {$ a $};
@@ -354,8 +426,8 @@ Next, we examine when a rali is an opfibration. The relevant condition is that a
 % a\ar[r,dashed] & a+_{a}b=b
 %  \end{tikzcd}
 % \end{displaymath}
-% is \emph{the} pushout of $f$ along the identity, namely $f$ due to our choice. Moreover, the universal property (cf.~Diagram \ref{eq:opfibration}) of the proposed cocartesian lifting follows from universality of pushouts thus the one direction of the proof is complete.
-% \end{proof}
+is \emph{the} pushout of $f$ along the identity, namely $f$ due to our choice. Moreover, the universal property (cf.~Diagram \ref{fig:opfibration}) of the proposed cocartesian lifting follows from universality of pushouts thus the one direction of the proof is complete.
+\end{proof}
 %Christina: tried to see whether the converse is true, didn't go far. Remember that from previous prop we got it preserves initial for sure!
 
 Combining \cref{prop:opfibtolari,prop:laritoopfib}, we establish certain conditions under which a Grothendieck opfibration corresponds to a rali and vice versa. %Christina: no more finite colimits: Steve said that for the strict case, this is more subtle than the ordinary case. Pretty sure that we don't wanna go into details there?
@@ -368,7 +440,7 @@ Suppose that $\X$ and $\A$ have chosen pushouts and initial objects, and a funct
 % ===============================================================
 % Street fibs and corefls. Examine relationship between.
 
-\section{Street fibrations and coreflections}\label{Streetfibs}
+\section{Street opfibrations and coreflectors}\label{Streetfibs}
 
 In this section, we trod the same path as in Section \ref{sec:groth-fibs-ralis} but shed any strictness around preserving colimits by working with Street opfibrations instead of Grothendeick opfibrations and with reflectors instead of ralis
 

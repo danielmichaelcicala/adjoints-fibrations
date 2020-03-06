@@ -9,11 +9,12 @@
     "amsart10")
    (LaTeX-add-labels
     "sec:preliminaries"
-    "eq:opfibration"
+    "fig:opfibration"
     "factor"
     "reindexing"
     "lem:fibrewiselimits"
     "it:2"
+    "fig:street_opfib"
     "lem:street_and_iso_is_groth"
     "lem:street_decomposed"
     "lem:street-fibrewise-limits"
