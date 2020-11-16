@@ -4,7 +4,7 @@
 *.swp
 *.aux
 *.bbl
-adfib_notes.pdf
+adfib.pdf
 *.log
 *.tex~
 *.backup
