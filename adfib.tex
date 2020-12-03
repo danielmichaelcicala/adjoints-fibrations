@@ -675,6 +675,15 @@ As a result, if $\U$ is an opfibration that preserves $\cat{J}$-colimits for som
  \end{displaymath}
 essentially changing the choice of colimits in the total category and establishing that $Q$ now strictly preserves them. In a dual way, we may assume that any fibration strictly preserves chosen limits, if it preserves limits in the ordinary sense.
 
+As a concrete example of the implications of the above result, suppose that $\U\colon\cat{X}\to\cat{A}$ is an opfibration that preserves coproducts. This means that for any $x,y\in\cat{X}$, there is a canonical isomorphism $U(x+y)\cong U(x)+U(y)$ in $\cat{A}$ which we can call $k$, for some choice of coproducts in $\cat{X}$ and $\cat{A}$. Fixing the ones in the base category $\cat{A}$, we can change the choice of coproducts in $\cat{X}$ so that $\U$ strictly preserves them, by considering the cocartesian lifting of $x+y$ along the isomorphism $k$
+\begin{displaymath}
+ \begin{tikzcd}[column sep=.5in]
+ x+y\ar[r,"{\Cocart(k,x+y)}"]\ar[d,dotted,no head] & k_!(x+y)\ar[d,dotted,no head] && \textrm{in }\X \\
+ U(x+y)\ar[r,"\cong","k"'] & U(x)+U(y) && \textrm{in }\A
+ \end{tikzcd}
+\end{displaymath}
+We can then verify that $k_!(x+y)$ has the universal property of a coproduct in $\X$.
+
 
 
 \bibliographystyle{plain}
